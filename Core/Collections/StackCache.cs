@@ -57,7 +57,7 @@ namespace NiTiS.Core.Collections
                 size = 0;
                 array = new T[defaultCapacity];
 
-                using IEnumerator<T> en = collection.GetEnumerator();
+                IEnumerator<T> en = collection.GetEnumerator();
                 while (en.MoveNext())
                 {
                     Push(en.Current);

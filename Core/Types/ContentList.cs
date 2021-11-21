@@ -7,11 +7,12 @@ namespace NiTiS.Core.Types
 {
     public interface ContentList<T>
     {
-        public void Load();
+         void Load();
     }
+#if NETCOREAPP3_1_OR_GREATER
     public interface IReturnAllElements<T>
     {
-        public List<T> GetAllElements()
+        List<T> GetAllElements()
         {
             var g = GetType().GetFields();
             List<object> list = new List<object>();
@@ -25,6 +26,6 @@ namespace NiTiS.Core.Types
             }
             return list.OfType<T>().ToList();
         }
-        public List<T> GetElements();
     }
+#endif
 }
