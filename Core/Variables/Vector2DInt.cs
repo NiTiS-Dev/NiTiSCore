@@ -3,11 +3,8 @@
 namespace NiTiS.Core.Variables
 {
     [DebuggerDisplay("2DInt ({X}:{Y})")]
-    public struct Vector2DInt : IVector<int>, INiTiSType
+    public struct Vector2DInt : IVector<int>
     {
-        private static NiVersion version = new NiVersion(1, "1.0");
-        public NiVersion Version => version;
-
         public int X;
         public int Y;
         public const int dimensionCount = 2;
@@ -39,8 +36,14 @@ namespace NiTiS.Core.Variables
         public static Vector2DInt operator -(Vector2DInt a, Vector2DInt b) => new Vector2DInt(a.X - b.X, a.Y - b.Y);
         public static Vector2DInt operator *(Vector2DInt a, Vector2DInt b) => new Vector2DInt(a.X * b.X, a.Y * b.Y);
         public static Vector2DInt operator /(Vector2DInt a, Vector2DInt b) => new Vector2DInt(a.X / b.X, a.Y / b.Y);
-        public Vector2D Vector => new Vector2D(X);
-
+        
+        #region Transforms
+        public static explicit operator Vector3D(Vector2DInt b) => new Vector3D(b.X, b.Y, 0);
+        public static explicit operator Vector3DInt(Vector2DInt b) => new Vector3DInt(b.X, b.Y, 0);
+        public static implicit operator Vector2D(Vector2DInt b) => new Vector2DInt(b.X, b.Y);
+        public static implicit operator Vector1D(Vector2DInt b) => new Vector1D(b.X);
+        public static implicit operator Vector1DInt(Vector2DInt b) => new Vector1DInt(b.X);
+        #endregion
         public override string ToString() => "{" + X + ":" + Y + "}";
     }
 }
