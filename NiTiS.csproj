@@ -2,9 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <AssemblyName>NiTiSCore</AssemblyName>
+	  <AssemblyVersion>1.1.0.0</AssemblyVersion>
+	  <Authors>NickName73,NiTiS</Authors>
+	  <Version>1.1.0</Version>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Core\Collections\" />
-  </ItemGroup>
 </Project>
