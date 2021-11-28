@@ -1,9 +1,10 @@
-﻿using System;
+﻿using NiTiS.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace NiTiS.Core.Variables
+namespace NiTiS.Core.Types
 {
     [DebuggerDisplay("3DInt ({X}:{Y}:{Z})")]
     public struct Vector3DInt : IVector<int>
@@ -11,25 +12,14 @@ namespace NiTiS.Core.Variables
         public int X;
         public int Y;
         public int Z;
-        public const int dimensionCount = 3;
-        public int GetDimensionCount() => dimensionCount;
-        public int GetValueByDimension(char dimension)
+        public int GetValueByDimension(DimensionAxis axis)
         {
-            if (dimension == 'x' || dimension == 'X')
+            switch (axis)
             {
-                return X;
-            }
-            else if (dimension == 'y' || dimension == 'Y')
-            {
-                return Y;
-            }
-            else if (dimension == 'z' || dimension == 'Y')
-            {
-                return Z;
-            }
-            else
-            {
-                return 0;
+                case DimensionAxis.X: return X;
+                case DimensionAxis.Y: return Y;
+                case DimensionAxis.Z: return Z;
+                default: return 0;
             }
         }
 

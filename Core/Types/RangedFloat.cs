@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace NiTiS.Core.Variables
+namespace NiTiS.Core.Types
 {
     [DebuggerDisplay("Float ({MinValue()}~{Value()}~{MaxValue()})")]
     public struct RangedFloat : IRangedVar<float>

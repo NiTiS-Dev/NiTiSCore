@@ -1,9 +1,10 @@
-﻿using System;
+﻿using NiTiS.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace NiTiS.Core.Variables
+namespace NiTiS.Core.Types
 {
     [DebuggerDisplay("3DFloat ({X}:{Y}:{Z})")]
     public struct Vector3D : IVector<float>
@@ -11,25 +12,14 @@ namespace NiTiS.Core.Variables
         public float X;
         public float Y;
         public float Z;
-        public const int dimensionCount = 3;
-        public int GetDimensionCount() => dimensionCount;
-        public float GetValueByDimension(char dimension)
+        public float GetValueByDimension(DimensionAxis axis)
         {
-            if (dimension == 'x' || dimension == 'X')
+            switch (axis)
             {
-                return X;
-            }
-            else if (dimension == 'y' || dimension == 'Y')
-            {
-                return Y;
-            }
-            else if (dimension == 'z' || dimension == 'Y')
-            {
-                return Z;
-            }
-            else
-            {
-                return 0;
+                    case DimensionAxis.X: return X;
+                    case DimensionAxis.Y: return Y;
+                    case DimensionAxis.Z: return Z;
+                default: return 0;
             }
         }
 
@@ -53,7 +43,22 @@ namespace NiTiS.Core.Variables
         public static implicit operator Vector1D(Vector3D b) => new Vector1D(b.X);
         public static implicit operator Vector1DInt(Vector3D b) => new Vector1DInt( (int)b.X);
         #endregion
-
+        #region Static Fields
+        public static Vector3D Foward => new Vector3D(1, 0, 0);
+        public static Vector3D Backwards => new Vector3D(-1, 0, 0);
+        public static Vector3D Right => new Vector3D(0, 0, 1);
+        public static Vector3D Left => new Vector3D(0, 0, -1);
+        public static Vector3D Up => new Vector3D(0, 1, 0);
+        public static Vector3D Down => new Vector3D(0, -1, 0);
+        #endregion
         public override string ToString() => "{" + X + ":" + Y + ":" + Z + "}";
+        public double LengthSquared => X * X + Y * Y + Z * Z;
+        public double Length => System.Math.Sqrt(LengthSquared);
+        public void Normalize()
+        {
+            X = (float)(X / Length);
+            Y = (float)(Y / Length);
+            Z = (float)(Z / Length);
+        }
     }
 }

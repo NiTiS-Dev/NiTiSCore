@@ -1,27 +1,20 @@
-﻿using System.Diagnostics;
+﻿using NiTiS.Core.Enums;
+using System.Diagnostics;
 
-namespace NiTiS.Core.Variables
+namespace NiTiS.Core.Types
 {
     [DebuggerDisplay("2DFloat ({X}:{Y})")]
-    public struct Vector2D : IVector<float>
+    public struct Vector2D : IVector<float> , IRationalVector
     {
         public float X;
         public float Y;
-        public const int dimensionCount = 2;
-        public int GetDimensionCount() => dimensionCount;
-        public float GetValueByDimension(char dimension)
+        public float GetValueByDimension(DimensionAxis axis)
         {
-            if (dimension == 'x' || dimension == 'X')
+            switch (axis)
             {
-                return X;
-            }
-            else if (dimension == 'y' || dimension == 'Y')
-            {
-                return Y;
-            }
-            else
-            {
-                return 0;
+                case DimensionAxis.X: return X;
+                case DimensionAxis.Y: return Y;
+                default: return 0;
             }
         }
 
@@ -44,7 +37,20 @@ namespace NiTiS.Core.Variables
         public static implicit operator Vector1D(Vector2D b) => new Vector1D(b.X);
         public static implicit operator Vector1DInt(Vector2D b) => new Vector1DInt( (int)b.X);
         #endregion
+        #region Static Fields
+        public static Vector2D Right => new Vector2D(1, 0);
+        public static Vector2D Left => new Vector2D(-1, 0);
+        public static Vector2D Up => new Vector2D(0, 1);
+        public static Vector2D Down => new Vector2D(0, -1);
+        #endregion
 
         public override string ToString() => "{" + X + ":" + Y + "}";
+        public double LengthSquared => X * X + Y * Y;
+        public double Length => System.Math.Sqrt(LengthSquared);
+        public void Normalize()
+        {
+            X =  (float)(X / Length);
+            Y =  (float)(Y / Length);
+        }
     }
 }

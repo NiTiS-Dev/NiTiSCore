@@ -1,30 +1,23 @@
-﻿using System.Diagnostics;
+﻿using NiTiS.Core.Enums;
+using System.Diagnostics;
 
-namespace NiTiS.Core.Variables
+namespace NiTiS.Core.Types
 {
     [DebuggerDisplay("2DInt ({X}:{Y})")]
     public struct Vector2DInt : IVector<int>
     {
         public int X;
         public int Y;
-        public const int dimensionCount = 2;
-        public int GetDimensionCount() => dimensionCount;
-        public int GetValueByDimension(char dimension)
+
+        public int GetValueByDimension(DimensionAxis axis)
         {
-            if (dimension == 'x' || dimension == 'X')
+            switch (axis)
             {
-                return X;
-            }
-            else if (dimension == 'y' || dimension == 'Y')
-            {
-                return Y;
-            }
-            else
-            {
-                return 0;
+                case DimensionAxis.X: return X;
+                case DimensionAxis.Y: return Y;
+                default: return 0;
             }
         }
-
         public Vector2DInt(int x = 0, int y = 0)
         {
             X = x;

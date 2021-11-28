@@ -1,4 +1,4 @@
-﻿using NiTiS.Core.Variables;
+﻿using NiTiS.Core.Types;
 using NiTiS.Core.Collections;
 using System.Collections.Generic;
 using System.Collections;

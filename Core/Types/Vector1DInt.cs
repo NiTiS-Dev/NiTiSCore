@@ -1,29 +1,17 @@
-﻿using System;
+﻿using NiTiS.Core.Enums;
+using System;
 using System.Diagnostics;
 
-namespace NiTiS.Core.Variables
+namespace NiTiS.Core.Types
 {
     [DebuggerDisplay("1DInt ({X})")]
     public struct Vector1DInt : IVector<int>
     {
 
         public int X;
-        public const int dimensionCount = 1;
-        public int GetDimensionCount()
+        public int GetValueByDimension(DimensionAxis axis)
         {
-            return dimensionCount;
-        }
-
-        public int GetValueByDimension(char dimension)
-        {
-            if (dimension == 'x' || dimension == 'X')
-            {
-                return X;
-            }
-            else
-            {
-                return 0;
-            }
+            if (axis == DimensionAxis.X) { return X; } else { return 0; }
         }
 
         public Vector1DInt(int x = 0)

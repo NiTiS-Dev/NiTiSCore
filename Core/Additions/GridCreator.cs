@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using NiTiS.Core.Variables;
+using NiTiS.Core.Types;
 
 namespace NiTiS.Core.Additions
 {

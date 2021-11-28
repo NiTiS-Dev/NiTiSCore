@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace NiTiS.Core.Variables
+namespace NiTiS.Core.Types
 {
     [DebuggerDisplay("Int ({MinValue()}~{Value()}~{MaxValue()})")]
     public struct RangedInt : IRangedVar<int>
