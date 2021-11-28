@@ -1,4 +1,4 @@
-﻿namespace NiTiS.Core.Variables
+﻿namespace NiTiS.Core.Types
 {
     public interface IRangedVar<T>
     {

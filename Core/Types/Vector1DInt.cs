@@ -1,27 +1,18 @@
-﻿using System;
+﻿using NiTiS.Core.Enums;
+using System;
 using System.Diagnostics;
 
-namespace NiTiS.Core.Variables
+namespace NiTiS.Core.Types
 {
     [DebuggerDisplay("1DInt ({X})")]
-    public struct Vector1DInt : IVector<int>, INiTiSType
+    public struct Vector1DInt : IVector<int>
     {
-        private static NiVersion version = new NiVersion(1, "1.0");
-        public NiVersion Version => version;
 
         public int X;
-        public const int dimensionCount = 1;
-        public int GetDimensionCount()
+        public int GetValueByDimension(DimensionAxis axis)
         {
-            return dimensionCount;
+            if (axis == DimensionAxis.X) { return X; } else { return 0; }
         }
-
-        public int GetValueByDimension(char dimension)
-        {
-            throw new NotImplementedException();
-        }
-        public static readonly Vector1DInt left = new Vector1DInt(-1);
-        public static readonly Vector1D right = new Vector1D(-1);
 
         public Vector1DInt(int x = 0)
         {
@@ -33,7 +24,14 @@ namespace NiTiS.Core.Variables
         public static Vector1DInt operator -(Vector1DInt a, Vector1DInt b) => new Vector1DInt(a.X - b.X);
         public static Vector1DInt operator *(Vector1DInt a, Vector1DInt b) => new Vector1DInt(a.X * b.X);
         public static Vector1DInt operator /(Vector1DInt a, Vector1DInt b) => new Vector1DInt(a.X / b.X);
-        public Vector1D Vector => new Vector1D(X);
+        
+        #region Transforms
+        public static explicit operator Vector3D(Vector1DInt b) => new Vector3D(b.X, 0, 0);
+        public static explicit operator Vector3DInt(Vector1DInt b) => new Vector3DInt(b.X, 0, 0);
+        public static explicit operator Vector2D(Vector1DInt b) => new Vector2D(b.X, 0);
+        public static explicit operator Vector2DInt(Vector1DInt b) => new Vector2DInt(b.X, 0);
+        public static implicit operator Vector1D(Vector1DInt b) => new Vector1D(b.X);
+        #endregion
 
         public override string ToString() => "{" + X + "}";
     }

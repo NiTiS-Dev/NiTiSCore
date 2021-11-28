@@ -1,15 +1,12 @@
 ﻿using System.Diagnostics;
 
-namespace NiTiS.Core.Variables
+namespace NiTiS.Core.Types
 {
     [DebuggerDisplay("Float ({MinValue()}~{Value()}~{MaxValue()})")]
-    public struct RangedFloat : IRangedVar<float> , INiTiSType
+    public struct RangedFloat : IRangedVar<float>
     {
         private float value;
         private float min, max;
-        private static NiVersion version = new NiVersion(1, "1.0");
-        public NiVersion Version => version;
-
         public float MaxValue() => max;
 
         public float MinValue() => min;

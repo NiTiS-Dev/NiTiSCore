@@ -1,14 +1,12 @@
 ﻿using System.Diagnostics;
 
-namespace NiTiS.Core.Variables
+namespace NiTiS.Core.Types
 {
     [DebuggerDisplay("Int ({MinValue()}~{Value()}~{MaxValue()})")]
-    public struct RangedInt : IRangedVar<int>, INiTiSType
+    public struct RangedInt : IRangedVar<int>
     {
         private int value;
         private int min, max;
-        private static NiVersion version = new NiVersion(1, "1.0");
-        public NiVersion Version => version;
         public int MaxValue() => max;
 
         public int MinValue() => min;

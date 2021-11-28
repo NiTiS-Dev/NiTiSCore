@@ -2,5 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <AssemblyName>NiTiSCore</AssemblyName>
+	  <AssemblyVersion>1.2.0.0</AssemblyVersion>
+	  <Authors>NickName73,NiTiS</Authors>
+	  <Version>1.2.0</Version>
   </PropertyGroup>
 </Project>
