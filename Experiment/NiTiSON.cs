@@ -21,9 +21,6 @@ namespace NiTiS.Experiment
 				nts.Place("gay", 45000);
 				nts.Place("gogol", 4099);
 				nts.Place("kirusha", 201);
-
-				File.WriteAllBytes("/sdcard/.code/DSharp/raw.nitison", nts.Bytes);
-				byte[] btsRead = File.ReadAllBytes("/sdcard/.code/DSharp/raw.nitison");
 				string str = "";
 				string name = "";
 				byte[] obj = new byte[0];
