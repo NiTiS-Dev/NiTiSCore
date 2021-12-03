@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 
-namespace CSharp_Shell
+namespace NiTiS.Experiment
 {
 	public static class Program
 	{
