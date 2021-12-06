@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using NiTiS.Core.Types;
 
-namespace NiTiS.Experement
+namespace NiTiS.Experiment
 {
 	[System.AttributeUsage(AttributeTargets.Enum, AllowMultiple = false)]
 	public class StringEnumAttribute : System.Attribute{
