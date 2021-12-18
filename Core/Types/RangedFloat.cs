@@ -7,11 +7,11 @@ namespace NiTiS.Core.Types
     {
         private float value;
         private float min, max;
-        public float MaxValue() => max;
+        public float MaxValue => max;
 
-        public float MinValue() => min;
+        public float MinValue => min;
 
-        public float Value() => value;
+        public float Value => value;
         public void SetValue(float value)
         {
             float futureValue = this.value + value;

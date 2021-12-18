@@ -1,8 +1,6 @@
 ﻿using NiTiS.Core.Enums;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
+using static System.Math;
 
 namespace NiTiS.Core.Types
 {
@@ -30,11 +28,15 @@ namespace NiTiS.Core.Types
             Z = z;
         }
         public static Vector3D operator +(Vector3D a) => a;
+        public static Vector3D operator ++(Vector3D a) => a + new Vector3D(1,1,1);
         public static Vector3D operator -(Vector3D a) => new Vector3D(-a.X, -a.Y, -a.Z);
+        public static Vector3D operator --(Vector3D a) => a - new Vector3D(1,1,1);
         public static Vector3D operator +(Vector3D a, Vector3D b) => new Vector3D(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
         public static Vector3D operator -(Vector3D a, Vector3D b) => new Vector3D(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
         public static Vector3D operator *(Vector3D a, Vector3D b) => new Vector3D(a.X * b.X, a.Y * b.Y, a.Z * b.Z);
+        public static Vector3D operator *(Vector3D a, float b) => new Vector3D(a.X * b, a.Y * b, a.Z * b);
         public static Vector3D operator /(Vector3D a, Vector3D b) => new Vector3D(a.X / b.X, a.Y / b.Y, a.Z / b.Z);
+        public static Vector3D operator /(Vector3D a, float b) => new Vector3D(a.X / b, a.Y / b, a.Z / b);
 
         #region Transforms
         public static implicit operator Vector3DInt(Vector3D b) => new Vector3DInt((int)b.X, (int)b.Y, (int)b.Z);
@@ -43,22 +45,12 @@ namespace NiTiS.Core.Types
         public static implicit operator Vector1D(Vector3D b) => new Vector1D(b.X);
         public static implicit operator Vector1DInt(Vector3D b) => new Vector1DInt( (int)b.X);
         #endregion
-        #region Static Fields
-        public static Vector3D Foward => new Vector3D(1, 0, 0);
-        public static Vector3D Backwards => new Vector3D(-1, 0, 0);
-        public static Vector3D Right => new Vector3D(0, 0, 1);
-        public static Vector3D Left => new Vector3D(0, 0, -1);
-        public static Vector3D Up => new Vector3D(0, 1, 0);
-        public static Vector3D Down => new Vector3D(0, -1, 0);
-        #endregion
-        public override string ToString() => "{" + X + ":" + Y + ":" + Z + "}";
-        public double LengthSquared => X * X + Y * Y + Z * Z;
-        public double Length => System.Math.Sqrt(LengthSquared);
+        public double LengthSquared => (X * X) + (Y * Y) + (Z * Z);
+        public double Length => Sqrt(LengthSquared);
         public void Normalize()
         {
-            X = (float)(X / Length);
-            Y = (float)(Y / Length);
-            Z = (float)(Z / Length);
+            this /= (float)Length;
         }
+        public override string ToString() => "{" + X + ":" + Y + ":" + Z + "}";
     }
 }

@@ -7,11 +7,11 @@ namespace NiTiS.Core.Types
     {
         private int value;
         private int min, max;
-        public int MaxValue() => max;
+        public int MaxValue => max;
 
-        public int MinValue() => min;
+        public int MinValue => min;
 
-        public int Value() => value;
+        public int Value => value;
         public void SetValue(int value)
         {
             int futureValue = this.value + value;

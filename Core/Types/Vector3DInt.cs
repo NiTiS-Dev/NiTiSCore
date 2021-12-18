@@ -1,8 +1,6 @@
 ﻿using NiTiS.Core.Enums;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
+using static System.Math;
 
 namespace NiTiS.Core.Types
 {
@@ -30,11 +28,15 @@ namespace NiTiS.Core.Types
             Z = z;
         }
         public static Vector3DInt operator +(Vector3DInt a) => a;
+        public static Vector3DInt operator ++(Vector3DInt a) => a + new Vector3DInt(1,1,1);
         public static Vector3DInt operator -(Vector3DInt a) => new Vector3DInt(-a.X, -a.Y, -a.Z);
+        public static Vector3DInt operator --(Vector3DInt a) => a - new Vector3DInt(1,1,1);
         public static Vector3DInt operator +(Vector3DInt a, Vector3DInt b) => new Vector3DInt(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
         public static Vector3DInt operator -(Vector3DInt a, Vector3DInt b) => new Vector3DInt(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
         public static Vector3DInt operator *(Vector3DInt a, Vector3DInt b) => new Vector3DInt(a.X * b.X, a.Y * b.Y, a.Z * b.Z);
+        public static Vector3DInt operator *(Vector3DInt a, int b) => new Vector3DInt(a.X * b, a.Y * b, a.Z * b);
         public static Vector3DInt operator /(Vector3DInt a, Vector3DInt b) => new Vector3DInt(a.X / b.X, a.Y / b.Y, a.Z / b.Z);
+        public static Vector3DInt operator /(Vector3DInt a, int b) => new Vector3DInt(a.X / b, a.Y / b, a.Z / b);
 
         #region Transforms
         public static implicit operator Vector3D(Vector3DInt b) => new Vector3D(b.X,b.Y,b.Z);
@@ -43,7 +45,12 @@ namespace NiTiS.Core.Types
         public static implicit operator Vector1D(Vector3DInt b) => new Vector1D(b.X);
         public static implicit operator Vector1DInt(Vector3DInt b) => new Vector1DInt(b.X);
         #endregion
-
+        public double LengthSquared => (X * X) + (Y * Y) + (Z * Z);
+        public double Length => Sqrt(LengthSquared);
+        public void Normalize()
+        {
+            this /= (int)Length;
+        }
         public override string ToString() => "{" + X + ":" + Y + ":" + Z + "}";
     }
 }

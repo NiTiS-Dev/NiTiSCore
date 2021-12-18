@@ -1,10 +1,11 @@
 ﻿using NiTiS.Core.Enums;
 using System.Diagnostics;
+using static System.Math;
 
 namespace NiTiS.Core.Types
 {
     [DebuggerDisplay("2DFloat ({X}:{Y})")]
-    public struct Vector2D : IVector<float> , IRationalVector
+    public struct Vector2D : IVector<float>
     {
         public float X;
         public float Y;
@@ -24,11 +25,15 @@ namespace NiTiS.Core.Types
             Y = y;
         }
         public static Vector2D operator +(Vector2D a) => a;
+        public static Vector2D operator ++(Vector2D a) => a + new Vector2D(1,1);
         public static Vector2D operator -(Vector2D a) => new Vector2D(-a.X,-a.Y);
+        public static Vector2D operator --(Vector2D a) => a - new Vector2D(1,1);
         public static Vector2D operator +(Vector2D a, Vector2D b) => new Vector2D(a.X + b.X, a.Y + b.Y);
         public static Vector2D operator -(Vector2D a, Vector2D b) => new Vector2D(a.X - b.X, a.Y - b.Y);
         public static Vector2D operator *(Vector2D a, Vector2D b) => new Vector2D(a.X * b.X, a.Y * b.Y);
+        public static Vector2D operator *(Vector2D a, float b) => new Vector2D(a.X * b, a.Y * b);
         public static Vector2D operator /(Vector2D a, Vector2D b) => new Vector2D(a.X / b.X, a.Y / b.Y);
+        public static Vector2D operator /(Vector2D a, float b) => new Vector2D(a.X / b, a.Y / b);
 
         #region Transforms
         public static explicit operator Vector3D(Vector2D b) => new Vector3D(b.X, b.Y, 0);
@@ -37,20 +42,13 @@ namespace NiTiS.Core.Types
         public static implicit operator Vector1D(Vector2D b) => new Vector1D(b.X);
         public static implicit operator Vector1DInt(Vector2D b) => new Vector1DInt( (int)b.X);
         #endregion
-        #region Static Fields
-        public static Vector2D Right => new Vector2D(1, 0);
-        public static Vector2D Left => new Vector2D(-1, 0);
-        public static Vector2D Up => new Vector2D(0, 1);
-        public static Vector2D Down => new Vector2D(0, -1);
-        #endregion
 
-        public override string ToString() => "{" + X + ":" + Y + "}";
-        public double LengthSquared => X * X + Y * Y;
-        public double Length => System.Math.Sqrt(LengthSquared);
+        public double LengthSquared => (X * X) + (Y * Y);
+        public double Length => Sqrt(LengthSquared);
         public void Normalize()
         {
-            X =  (float)(X / Length);
-            Y =  (float)(Y / Length);
+            this /= (float)Length;
         }
+        public override string ToString() => "{" + X + ":" + Y + "}";
     }
 }
