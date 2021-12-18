@@ -43,9 +43,10 @@ namespace NiTiS.Core.Collections
             return new EnumCollection<Enu>(values);
         }
         private EnumCollection() { }
-        private EnumCollection(System.Array aray)
+        private EnumCollection(Array? array)
         {
-            foreach(Enu enu in aray)
+            if (array is null) return;
+            foreach(Enu enu in array)
             {
                 list.Add(enu);
             }

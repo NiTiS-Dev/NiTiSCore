@@ -1,15 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>netcoreapp2.0</TargetFramework>
+		<PackageId>NiTiSCore</PackageId>
+		<TargetFrameworks>netcoreapp2.0</TargetFrameworks>
+		<LangVersion>7.3</LangVersion>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<AssemblyName>NiTiSCore</AssemblyName>
-		<AssemblyVersion>1.3.0.0</AssemblyVersion>
+		<AssemblyVersion>1.3.1.0</AssemblyVersion>
 		<Authors>NickName73,NiTiS</Authors>
+		<Company>NiTiS</Company>
+		<Product>NiTiSCore</Product>
+		<Title>NiTiSCore</Title>
 		<Description>Core for NiTiS projects</Description>
-		<Version>1.3.0</Version>
+		<Version>1.3.1</Version>
+		<Summary>Core for NiTiS projects</Summary>
 		<Configurations>Debug;R20;R31</Configurations>
 		<DefineConstants>NITISCORE20_OR_MORE;NITISCORE</DefineConstants>
-		<PackageIconUrl>https://github.com/NickName73/NiTiSCore/blob/main/iconLogoHD.png</PackageIconUrl>
+		<PackageIconUrl>https://github.com/NickName73/NiTiSCore/blob/main/iconLogo.png?raw=true</PackageIconUrl>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/NickName73/NiTiSCore</RepositoryUrl>
@@ -20,22 +26,18 @@
 		<PackageIcon>iconLogo.png</PackageIcon>
 		<PackageTags>NiTiS;NickName73</PackageTags>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<RootNamespace>NiTiS.Core</RootNamespace>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)' == 'R31'">
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFrameworks>netcoreapp2.0;netcoreapp3.1</TargetFrameworks>
+		<LangVersion>8.0</LangVersion>
 		<DefineConstants>NITISCORE31_OR_MORE;NITISCORE</DefineConstants>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='R20|AnyCPU'">
-	  <Optimize>True</Optimize>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='R31|AnyCPU'">
-	  <Optimize>True</Optimize>
+		<Optimize>true</Optimize>
 	</PropertyGroup>
 	<ItemGroup>
-	  <Content Include="iconLogo.png">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </Content>
 	  <None Include="LICENSE" Pack="true" PackagePath="" />
+		<None Include="iconLogo.png"></None>
 	</ItemGroup>
 	<ItemGroup>
 	  <None Update="iconLogo.png">

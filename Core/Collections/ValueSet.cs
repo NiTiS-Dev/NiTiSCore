@@ -7,7 +7,7 @@ namespace NiTiS.Core.Collections
 {
     public class ValueSet : IEnumerable<KeyValuePair<string,string>> ,IEnumerable
     {
-        private Dictionary<string, string> values = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> values = new Dictionary<string, string>();
         public static ValueSet FromString(string text)
         {
             ValueSet valueSet = new ValueSet();
@@ -37,8 +37,9 @@ namespace NiTiS.Core.Collections
             }
             return text;
         }
-        public void ReadFromString(string text)
+        public void ReadFromString(string? text)
         {
+            if (text is null) return;
             this.Clear();
             foreach (KeyValuePair<string,string> valuePair in FromString(text))
             {

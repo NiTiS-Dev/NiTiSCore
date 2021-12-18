@@ -7,6 +7,6 @@ namespace NiTiS.Core
         /// <summary>
         /// Used to display logs inside the NiTiSCore
         /// </summary>
-        public static ILogger logger;
+        public static ILogger? logger;
     }
 }
