@@ -37,7 +37,7 @@ namespace NiTiS.Core.Collections
             }
             return text;
         }
-        public void ReadFromString(string? text)
+        public void ReadFromString(string text)
         {
             if (text is null) return;
             this.Clear();

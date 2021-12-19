@@ -5,13 +5,13 @@
 		<LangVersion>7.3</LangVersion>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<AssemblyName>NiTiSCore</AssemblyName>
-		<AssemblyVersion>1.3.1.0</AssemblyVersion>
+		<AssemblyVersion>1.3.2.0</AssemblyVersion>
 		<Authors>NickName73,NiTiS</Authors>
 		<Company>NiTiS</Company>
 		<Product>NiTiSCore</Product>
 		<Title>NiTiSCore</Title>
 		<Description>Core for NiTiS projects</Description>
-		<Version>1.3.1</Version>
+		<Version>1.3.2</Version>
 		<Summary>Core for NiTiS projects</Summary>
 		<Configurations>Debug;R20;R31</Configurations>
 		<DefineConstants>NITISCORE20_OR_MORE;NITISCORE</DefineConstants>

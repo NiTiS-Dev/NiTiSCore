@@ -43,7 +43,7 @@ namespace NiTiS.Core.Collections
             return new EnumCollection<Enu>(values);
         }
         private EnumCollection() { }
-        private EnumCollection(Array? array)
+        private EnumCollection(Array array)
         {
             if (array is null) return;
             foreach(Enu enu in array)

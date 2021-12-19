@@ -1,9 +1,11 @@
-﻿using System.Diagnostics;
+﻿using NiTiS.Core.Additions;
+using System;
+using System.Diagnostics;
 
 namespace NiTiS.Core.Types
 {
-    [DebuggerDisplay("Int ({MinValue()}~{Value()}~{MaxValue()})")]
-    public struct RangedInt : IRangedVar<int>
+    [DebuggerDisplay("Int ({MinValue}~{Value}~{MaxValue})")]
+    public struct RangedInt : IRangedVar<int>, IRawable<string>
     {
         private int value;
         private int min, max;
@@ -34,6 +36,32 @@ namespace NiTiS.Core.Types
             this.value = value;
             this.min = min;
             this.max = max;
+        }
+        public override string ToString()
+        {
+            return $"{min}~{value}~{max}";
+        }
+        string IRawable<string>.GetRaw()
+        {
+            return min + ":" + value + ":" + max;
+        }
+
+        public void Restore(string rawData)
+        {
+            try
+            {
+                int[] values = rawData.Split(':').ForEachElements((element) =>
+                {
+                    return Int32.Parse(element);
+                }).ToArray();
+                min = values[0];
+                value = values[1];
+                max = values[2];
+            }
+            catch (Exception ex)
+            {
+                Global.logger?.Log(ex.Message);
+            }
         }
     }
 }
