@@ -23,7 +23,7 @@ namespace NiTiS.Core.Collections
                 }
                 else
                 {
-                    Global.logger?.Log("Error when parse on {index} line");
+                    throw new Exception("Error when parse on {index} line");
                 }
             }
             return valueSet;

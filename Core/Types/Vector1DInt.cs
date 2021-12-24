@@ -28,8 +28,10 @@ namespace NiTiS.Core.Types
         public static Vector1DInt operator *(Vector1DInt a, int b) => new Vector1DInt(a.X * b);
         public static Vector1DInt operator /(Vector1DInt a, Vector1DInt b) => new Vector1DInt(a.X / b.X);
         public static Vector1DInt operator /(Vector1DInt a, int b) => new Vector1DInt(a.X / b);
-        
+
         #region Transforms
+        public static explicit operator Vector4D(Vector1DInt b) => new Vector4D(b.X, 0, 0, 0);
+        public static explicit operator Vector4DInt(Vector1DInt b) => new Vector4DInt(b.X, 0, 0, 0);
         public static explicit operator Vector3D(Vector1DInt b) => new Vector3D(b.X, 0, 0);
         public static explicit operator Vector3DInt(Vector1DInt b) => new Vector3DInt(b.X, 0, 0);
         public static explicit operator Vector2D(Vector1DInt b) => new Vector2D(b.X, 0);

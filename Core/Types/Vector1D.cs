@@ -30,6 +30,8 @@ namespace NiTiS.Core.Types
         public Vector1DInt VectorInt => new Vector1DInt((int)X);
 
         #region Transforms
+        public static explicit operator Vector4D(Vector1D b) => new Vector4D(b.X, 0, 0, 0);
+        public static explicit operator Vector4DInt(Vector1D b) => new Vector4DInt( (int)b.X, 0, 0, 0);
         public static explicit operator Vector3D(Vector1D b) => new Vector3D(b.X, 0, 0);
         public static explicit operator Vector3DInt(Vector1D b) => new Vector3DInt( (int)b.X, 0, 0);
         public static explicit operator Vector2D(Vector1D b) => new Vector2D(b.X, 0);

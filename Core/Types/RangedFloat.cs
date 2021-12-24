@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using NiTiS.Core.Attributes;
 
 namespace NiTiS.Core.Types
 {
@@ -9,11 +10,13 @@ namespace NiTiS.Core.Types
     public struct RangedFloat : IRangedVar<float> , IRawable<string>
     {
         private float value;
-        private float min, max;
+        private float min;
+        private float max;
+        [NiTiSONIgnore]
         public float MaxValue => max;
-
+        [NiTiSONIgnore]
         public float MinValue => min;
-
+        [NiTiSONIgnore]
         public float Value => value;
         public void SetValue(float value)
         {
@@ -60,7 +63,7 @@ namespace NiTiS.Core.Types
             }
             catch(Exception ex)
             {
-                Global.logger?.Log(ex.Message);
+                throw ex;
             }
         }
     }

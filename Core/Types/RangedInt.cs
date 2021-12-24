@@ -1,6 +1,7 @@
 ﻿using NiTiS.Core.Additions;
 using System;
 using System.Diagnostics;
+using NiTiS.Core.Attributes;
 
 namespace NiTiS.Core.Types
 {
@@ -9,10 +10,11 @@ namespace NiTiS.Core.Types
     {
         private int value;
         private int min, max;
+        [NiTiSONIgnore]
         public int MaxValue => max;
-
+        [NiTiSONIgnore]
         public int MinValue => min;
-
+        [NiTiSONIgnore]
         public int Value => value;
         public void SetValue(int value)
         {
@@ -41,7 +43,7 @@ namespace NiTiS.Core.Types
         {
             return $"{min}~{value}~{max}";
         }
-        string IRawable<string>.GetRaw()
+        public string GetRaw()
         {
             return min + ":" + value + ":" + max;
         }
@@ -60,7 +62,7 @@ namespace NiTiS.Core.Types
             }
             catch (Exception ex)
             {
-                Global.logger?.Log(ex.Message);
+                throw ex;
             }
         }
     }

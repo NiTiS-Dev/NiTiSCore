@@ -8,6 +8,10 @@ namespace NiTiS.Core.Math
 {
     public static class VectorMath
     {
+        public static Vector4D Vector4DOf(float size)
+        {
+            return new Vector4D(size, size, size, size);
+        }
         public static Vector3D Vector3DOf(float size)
         {
             return new Vector3D(size, size, size);
@@ -22,9 +26,13 @@ namespace NiTiS.Core.Math
         }
         public static bool CompareVectors(IVector<float> left, IVector<float> right, EnumCollection<DimensionAxis> axis)
         {
+            return CompareVectors<float>(left, right, axis);
+        }
+        public static bool CompareVectors<T>(IVector<T> left, IVector<T> right, EnumCollection<DimensionAxis> axis)
+        {
             foreach(DimensionAxis i in axis)
             {
-                if(left.GetValueByDimension(i) != right.GetValueByDimension(i))
+                if(!left.GetValueByDimension(i).Equals(right.GetValueByDimension(i)))
                     return false;
             }
             return true;

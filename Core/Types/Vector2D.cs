@@ -36,6 +36,8 @@ namespace NiTiS.Core.Types
         public static Vector2D operator /(Vector2D a, float b) => new Vector2D(a.X / b, a.Y / b);
 
         #region Transforms
+        public static explicit operator Vector4D(Vector2D b) => new Vector4D(b.X, b.Y, 0, 0);
+        public static explicit operator Vector4DInt(Vector2D b) => new Vector4DInt((int)b.X, (int)b.Y, 0, 0);
         public static explicit operator Vector3D(Vector2D b) => new Vector3D(b.X, b.Y, 0);
         public static explicit operator Vector3DInt(Vector2D b) => new Vector3DInt( (int)b.X, (int)b.Y, 0);
         public static implicit operator Vector2DInt(Vector2D b) => new Vector2DInt( (int)b.X, (int)b.Y);

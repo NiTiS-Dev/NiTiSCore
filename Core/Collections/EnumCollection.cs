@@ -7,7 +7,7 @@ using NiTiS.Core.Enums;
 
 namespace NiTiS.Core.Collections
 {
-    public class EnumCollection<Enu> : IEnumerable where Enu : struct, Enum
+    public class EnumCollection<ET> : IEnumerable where ET : struct, Enum
     {
         public static EnumCollection<DimensionAxis> Axis3D
         {
@@ -30,12 +30,12 @@ namespace NiTiS.Core.Collections
                 return EnumCollection<DimensionAxis>.Of<DimensionAxis>(DimensionAxis.X);
             }
         }
-        protected List<Enu> list = new List<Enu>();
+        protected List<ET> list = new List<ET>();
         public static EnumCollection<Enu> Of<Enu>(params Enu[] enums) where Enu : struct, Enum
         {
-            var n = new EnumCollection<Enu>();
-            n.list.AddRange(enums);
-            return n;
+            var enumCollection = new EnumCollection<Enu>();
+            enumCollection.list.AddRange(enums);
+            return enumCollection;
         }
         public static EnumCollection<Enu> Of<Enu>() where Enu : struct, Enum
         {
@@ -46,7 +46,7 @@ namespace NiTiS.Core.Collections
         private EnumCollection(Array array)
         {
             if (array is null) return;
-            foreach(Enu enu in array)
+            foreach(ET enu in array)
             {
                 list.Add(enu);
             }
