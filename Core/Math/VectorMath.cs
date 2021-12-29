@@ -1,6 +1,4 @@
-﻿using NiTiS.Core.Attributes;
-using NiTiS.Core.Types;
-using System;
+﻿using NiTiS.Core.Types;
 using NiTiS.Core.Enums;
 using NiTiS.Core.Collections;
 

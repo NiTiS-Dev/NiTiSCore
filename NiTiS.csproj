@@ -4,14 +4,14 @@
 		<TargetFrameworks>netcoreapp2.0;netcoreapp3.1</TargetFrameworks>
 		<LangVersion>7.3</LangVersion>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<AssemblyName>NiTiSCore</AssemblyName>
-		<AssemblyVersion>1.4.0.0</AssemblyVersion>
+		<AssemblyName>NiTiSCore$(Configuration)</AssemblyName>
+		<AssemblyVersion>1.5.0.0</AssemblyVersion>
 		<Authors>NickName73,NiTiS</Authors>
 		<Company>NiTiS</Company>
 		<Product>NiTiSCore</Product>
 		<Title>NiTiSCore</Title>
 		<Description>Core for NiTiS projects</Description>
-		<Version>1.4.0</Version>
+		<Version>1.5.0</Version>
 		<Summary>Core for NiTiS projects</Summary>
 		<Configurations>Debug;R20;R31</Configurations>
 		<DefineConstants>NITISCORE20_OR_MORE;NITISCORE</DefineConstants>
@@ -28,6 +28,7 @@
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<RootNamespace>NiTiS</RootNamespace>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)' == 'R31'">
 		<TargetFrameworks>netcoreapp2.0;netcoreapp3.1</TargetFrameworks>

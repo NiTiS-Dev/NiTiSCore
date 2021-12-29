@@ -5,6 +5,7 @@ using NiTiS.Core.Additions;
 
 namespace NiTiS.Core.Collections
 {
+    [Obsolete]
     public class ValueSet : IEnumerable<KeyValuePair<string,string>> ,IEnumerable
     {
         private readonly Dictionary<string, string> values = new Dictionary<string, string>();

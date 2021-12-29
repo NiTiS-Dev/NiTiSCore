@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NiTiS.Core.Attributes;
+using System;
 using System.Collections.Generic;
 
 namespace NiTiS.Core.Additions
@@ -41,6 +42,13 @@ namespace NiTiS.Core.Additions
                 yield return func(item);
             }
         }
+        public static void ForEachElements<T>(this IEnumerable<T> enumerable, Action<T> action)
+        {
+            foreach (var item in enumerable)
+            {
+                action(item);
+            }
+        }
         public static T[] ToArray<T>(this IEnumerable<T> enumerable)
         {
             List<T> list = new List<T>();
@@ -49,6 +57,41 @@ namespace NiTiS.Core.Additions
                 list.Add(item);
             }
             return list.ToArray();
+        }
+        public static string GetEnumValueName(this Enum enam)
+        {
+            Type enumType = enam.GetType();
+            string name = enumType.GetEnumName(enam);
+            try
+            {
+                EnumInfoAttribute enumInfo = (EnumInfoAttribute)enumType.GetMember(enam.ToString())[0].GetCustomAttributes(typeof(EnumInfoAttribute), false)[0];
+                if (enumInfo != null)
+                {
+                    return enumInfo.Name;
+                }
+                return name;
+            }
+            catch (Exception)
+            {
+                return name;
+            }
+        }
+        public static string GetEnumValueDescription(this Enum enam)
+        {
+            Type enumType = enam.GetType();
+            try
+            {
+                EnumInfoAttribute enumInfo = (EnumInfoAttribute)enumType.GetMember(enam.ToString())[0].GetCustomAttributes(typeof(EnumInfoAttribute), false)[0];
+                if (enumInfo != null)
+                {
+                    return enumInfo.Description;
+                }
+                return "";
+            }
+            catch (Exception)
+            {
+                return "";
+            }
         }
     }
 }
