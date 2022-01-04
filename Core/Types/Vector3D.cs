@@ -1,11 +1,14 @@
 ﻿using NiTiS.Core.Enums;
+using System;
 using System.Diagnostics;
+using System.Runtime.Serialization;
 using static System.Math;
 
 namespace NiTiS.Core.Types
 {
+    [Serializable]
     [DebuggerDisplay("3DFloat ({X}:{Y}:{Z})")]
-    public struct Vector3D : IVector<float>
+    public struct Vector3D : IVector<float>, ISerializable, IEquatable<Vector3D>, IEquatable<Vector3DInt>
     {
         public float X;
         public float Y;
@@ -37,6 +40,11 @@ namespace NiTiS.Core.Types
         public static Vector3D operator *(Vector3D a, float b) => new Vector3D(a.X * b, a.Y * b, a.Z * b);
         public static Vector3D operator /(Vector3D a, Vector3D b) => new Vector3D(a.X / b.X, a.Y / b.Y, a.Z / b.Z);
         public static Vector3D operator /(Vector3D a, float b) => new Vector3D(a.X / b, a.Y / b, a.Z / b);
+        public static bool operator ==(Vector3D lhs, Vector3D rhs) => lhs.Equals(rhs);
+        public static bool operator !=(Vector3D lhs, Vector3D rhs) => !lhs.Equals(rhs);
+        public static bool operator ==(Vector3D lhs, Vector3DInt rhs) => lhs.Equals(rhs);
+        public static bool operator !=(Vector3D lhs, Vector3DInt rhs) => !lhs.Equals(rhs);
+        public Vector3DInt VectorInt => new Vector3DInt((int)X, (int)Y,(int)X);
 
         #region Transforms
         public static explicit operator Vector4D(Vector3D b) => new Vector4D(b.X, b.Y, b.Z, 0);
@@ -54,5 +62,53 @@ namespace NiTiS.Core.Types
             this /= (float)Length;
         }
         public override string ToString() => "{" + X + ":" + Y + ":" + Z + "}";
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("x", X);
+            info.AddValue("y", Y);
+            info.AddValue("z", Z);
+        }
+        public bool Equals(Vector3DInt other)
+        {
+            if (other.X != X) { return false; }
+            if (other.Y != Y) { return false; }
+            if (other.Z != Z) { return false; }
+            return true;
+        }
+
+        public bool Equals(Vector3D other)
+        {
+            if (other.X != X) { return false; }
+            if (other.Y != Y) { return false; }
+            if (other.Z != Z) { return false; }
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -307843816;
+            hashCode = hashCode * -1521134295 + X.GetHashCode();
+            hashCode = hashCode * -1521134295 + Y.GetHashCode();
+            hashCode = hashCode * -1521134295 + Z.GetHashCode();
+            return hashCode;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj is Vector3DInt vec)
+            {
+                return this.Equals(vec);
+            }
+            if (obj is Vector3D vecInt)
+            {
+                return this.Equals(vecInt);
+            }
+            return base.Equals(obj);
+        }
+        public Vector3D(SerializationInfo info, StreamingContext context)
+        {
+            X = info.GetSingle("x");
+            Y = info.GetSingle("y");
+            Z = info.GetSingle("z");
+        }
     }
 }

@@ -1,11 +1,14 @@
 ﻿using NiTiS.Core.Enums;
+using System;
 using System.Diagnostics;
+using System.Runtime.Serialization;
 using static System.Math;
 
 namespace NiTiS.Core.Types
 {
+    [Serializable]
     [DebuggerDisplay("2DFloat ({X}:{Y})")]
-    public struct Vector2D : IVector<float>
+    public struct Vector2D : IVector<float>, ISerializable, IEquatable<Vector2D>, IEquatable<Vector2DInt>
     {
         public float X;
         public float Y;
@@ -34,6 +37,11 @@ namespace NiTiS.Core.Types
         public static Vector2D operator *(Vector2D a, float b) => new Vector2D(a.X * b, a.Y * b);
         public static Vector2D operator /(Vector2D a, Vector2D b) => new Vector2D(a.X / b.X, a.Y / b.Y);
         public static Vector2D operator /(Vector2D a, float b) => new Vector2D(a.X / b, a.Y / b);
+        public static bool operator ==(Vector2D lhs, Vector2D rhs) => lhs.Equals(rhs);
+        public static bool operator !=(Vector2D lhs, Vector2D rhs) => !lhs.Equals(rhs);
+        public static bool operator ==(Vector2D lhs, Vector2DInt rhs) => lhs.Equals(rhs);
+        public static bool operator !=(Vector2D lhs, Vector2DInt rhs) => !lhs.Equals(rhs);
+        public Vector2DInt VectorInt => new Vector2DInt((int)X,(int)Y);
 
         #region Transforms
         public static explicit operator Vector4D(Vector2D b) => new Vector4D(b.X, b.Y, 0, 0);
@@ -52,5 +60,50 @@ namespace NiTiS.Core.Types
             this /= (float)Length;
         }
         public override string ToString() => "{" + X + ":" + Y + "}";
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("x", X);
+            info.AddValue("y", Y);
+        }
+
+        public bool Equals(Vector2D other)
+        {
+            if (other.X != X) { return false; }
+            if (other.Y != Y) { return false; }
+            return true;
+        }
+
+        public bool Equals(Vector2DInt other)
+        {
+            if (other.X != X) { return false; }
+            if (other.Y != Y) { return false; }
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 1861411795;
+            hashCode = hashCode * -1521134295 + X.GetHashCode();
+            hashCode = hashCode * -1521134295 + Y.GetHashCode();
+            return hashCode;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj is Vector2DInt vec)
+            {
+                return this.Equals(vec);
+            }
+            if (obj is Vector2D vecInt)
+            {
+                return this.Equals(vecInt);
+            }
+            return base.Equals(obj);
+        }
+
+        public Vector2D(SerializationInfo info, StreamingContext context)
+        {
+            X = info.GetSingle("x");
+            Y = info.GetSingle("y");
+        }
     }
 }

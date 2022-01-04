@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
-namespace NiTiS.Core.Types
+namespace NiTiS.Core.Math
 {
-    public class ArithmeticProgression
+    [DebuggerDisplay("Progression [{First}:*{Q}] {Get(1)},{Get(2)},{Get(3)}")]
+    public class GeometricProgression : IProgression
     {
-        public double First { get; private set; }
-        public double D { get; private set; }
-        public ArithmeticProgression(double first, double d)
+        public double First { get; set; }
+        public double Q { get; private set; }
+        public GeometricProgression(double first, double q)
         {
             First = first;
-            D = d;
+            Q = q;
         }
         public double Get(int index)
         {
-            return First + (D * (index -1));
+            return First * System.Math.Pow(Q, index - 1);
         }
         public double this[int index]
         {
@@ -24,11 +26,14 @@ namespace NiTiS.Core.Types
                 return Get(index);
             }
         }
+        public double Sum(int endIndex)
+        {
+            return (First * (System.Math.Pow(Q,endIndex) - 1)) / (Q - 1);
+        }
         public IEnumerable<double> SumArray(int endIndex)
         {
-            for(int i = 0; i < endIndex;)
+            for (int i = 0; i < endIndex; ++i)
             {
-                i++;
                 yield return Get(i);
             }
         }
@@ -39,7 +44,7 @@ namespace NiTiS.Core.Types
             {
                 i++;
                 yield return Get(i);
-            }while(predicate(Get(i)));
+            } while (predicate(Get(i)));
         }
     }
 }

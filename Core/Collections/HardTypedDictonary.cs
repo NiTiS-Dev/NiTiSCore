@@ -14,6 +14,12 @@ namespace NiTiS.Core.Collections.Generic
         {
             dict.Add(typeof(T), obj);
         }
+
+        public void Clear()
+        {
+            dict.Clear();
+        }
+
         public bool Exists<T>()
         {
             return dict.ContainsKey(typeof(T));
@@ -26,6 +32,11 @@ namespace NiTiS.Core.Collections.Generic
         public IEnumerator GetEnumerator()
         {
             return dict.GetEnumerator();
+        }
+
+        public bool Remove(Type item)
+        {
+            return dict.Remove(item);
         }
     }
 }

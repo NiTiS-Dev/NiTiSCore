@@ -1,6 +1,6 @@
 ﻿namespace NiTiS.Core.Collections.Generic
 {
-    public class Twosome<L,R>
+    public class Twosome<L,R> 
     {
         public delegate string Concat(L l,R r);
         private L left;

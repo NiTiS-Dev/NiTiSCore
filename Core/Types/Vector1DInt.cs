@@ -1,11 +1,14 @@
 ﻿using NiTiS.Core.Enums;
 using static System.Math;
 using System.Diagnostics;
+using System.Runtime.Serialization;
+using System;
 
 namespace NiTiS.Core.Types
 {
+    [Serializable]
     [DebuggerDisplay("1DInt ({X})")]
-    public struct Vector1DInt : IVector<int>
+    public struct Vector1DInt : IVector<int>, ISerializable, IEquatable<Vector1DInt>, IEquatable<Vector1D>
     {
 
         public int X;
@@ -28,6 +31,10 @@ namespace NiTiS.Core.Types
         public static Vector1DInt operator *(Vector1DInt a, int b) => new Vector1DInt(a.X * b);
         public static Vector1DInt operator /(Vector1DInt a, Vector1DInt b) => new Vector1DInt(a.X / b.X);
         public static Vector1DInt operator /(Vector1DInt a, int b) => new Vector1DInt(a.X / b);
+        public static bool operator ==(Vector1DInt lhs, Vector1D rhs) => lhs.Equals(rhs);
+        public static bool operator !=(Vector1DInt lhs, Vector1D rhs) => !lhs.Equals(rhs);
+        public static bool operator ==(Vector1DInt lhs, Vector1DInt rhs) => lhs.Equals(rhs);
+        public static bool operator !=(Vector1DInt lhs, Vector1DInt rhs) => !lhs.Equals(rhs);
 
         #region Transforms
         public static explicit operator Vector4D(Vector1DInt b) => new Vector4D(b.X, 0, 0, 0);
@@ -47,6 +54,43 @@ namespace NiTiS.Core.Types
         {
             if (X == 0) { return; }
             if (X < 0) { X = -1; } else { X = 1; }
+        }
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("x", X);
+        }
+        public bool Equals(Vector1DInt other)
+        {
+            if (other.X != X) { return false; }
+            return true;
+        }
+
+        public bool Equals(Vector1D other)
+        {
+            if (other.X != X) { return false; }
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            return -1830369473 + X.GetHashCode();
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj is Vector1DInt vec)
+            {
+                return this.Equals(vec);
+            }
+            if (obj is Vector1D vecInt)
+            {
+                return this.Equals(vecInt);
+            }
+            return base.Equals(obj);
+        }
+
+        public Vector1DInt(SerializationInfo info, StreamingContext context)
+        {
+            X = info.GetInt32("x");
         }
     }
 }

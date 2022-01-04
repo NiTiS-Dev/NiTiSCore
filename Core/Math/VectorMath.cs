@@ -22,15 +22,20 @@ namespace NiTiS.Core.Math
         {
             return new Vector1D(size);
         }
-        public static bool CompareVectors(IVector<float> left, IVector<float> right, EnumCollection<DimensionAxis> axis)
-        {
-            return CompareVectors<float>(left, right, axis);
-        }
         public static bool CompareVectors<T>(IVector<T> left, IVector<T> right, EnumCollection<DimensionAxis> axis)
         {
             foreach(DimensionAxis i in axis)
             {
                 if(!left.GetValueByDimension(i).Equals(right.GetValueByDimension(i)))
+                    return false;
+            }
+            return true;
+        }
+        public static bool CompareVectors<T>(IVector<T> left, IVector<T> right, params DimensionAxis[] axis)
+        {
+            foreach (DimensionAxis i in axis)
+            {
+                if (!left.GetValueByDimension(i).Equals(right.GetValueByDimension(i)))
                     return false;
             }
             return true;
