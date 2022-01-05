@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/NickName73/NiTiSCore/blob/main/background@025x.png?raw=true">
+  <img src="https://github.com/NickName73/NiTiSCore/blob/singleton/background@025x.png?raw=true">
   <h1 align="center">
     The C# library for NiTiS project 
   </h1>
