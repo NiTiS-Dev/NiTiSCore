@@ -1,8 +1,5 @@
-﻿using NiTiS.Core.Attributes;
-
-namespace NiTiS.Core.Enums
+﻿namespace NiTiS.Core.Enums
 {
-    [NiTiSCoreTypeInfo("1.0.0.0", "2.0.0.0")]
     public enum DimensionAxis
     {
         X = 2,

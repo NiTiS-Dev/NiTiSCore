@@ -1,5 +1,4 @@
-﻿using NiTiS.Core.Attributes;
-using NiTiS.Core.Enums;
+﻿using NiTiS.Core.Enums;
 using System;
 using System.Diagnostics;
 #if NITIS_SERIALIZATION
@@ -13,13 +12,12 @@ namespace NiTiS.Core.Types
     [Serializable]
 #endif
     [DebuggerDisplay("3DFloat ({X}:{Y}:{Z})")]
-    [NiTiSCoreTypeInfo("1.3.0.0", "2.0.0.0")]
-    public struct Vector3D : 
+    public struct Vector3D :
         IVector<float>,
 #if NITIS_SERIALIZATION
         ISerializable,
 #endif
-        IEquatable<Vector3D>, 
+        IEquatable<Vector3D>,
         IEquatable<Vector3DInt>
     {
         public float X;
@@ -29,9 +27,9 @@ namespace NiTiS.Core.Types
         {
             switch (axis)
             {
-                    case DimensionAxis.X: return X;
-                    case DimensionAxis.Y: return Y;
-                    case DimensionAxis.Z: return Z;
+                case DimensionAxis.X: return X;
+                case DimensionAxis.Y: return Y;
+                case DimensionAxis.Z: return Z;
                 default: return 0;
             }
         }
@@ -43,9 +41,9 @@ namespace NiTiS.Core.Types
             Z = z;
         }
         public static Vector3D operator +(Vector3D a) => a;
-        public static Vector3D operator ++(Vector3D a) => a + new Vector3D(1,1,1);
+        public static Vector3D operator ++(Vector3D a) => a + new Vector3D(1, 1, 1);
         public static Vector3D operator -(Vector3D a) => new Vector3D(-a.X, -a.Y, -a.Z);
-        public static Vector3D operator --(Vector3D a) => a - new Vector3D(1,1,1);
+        public static Vector3D operator --(Vector3D a) => a - new Vector3D(1, 1, 1);
         public static Vector3D operator +(Vector3D a, Vector3D b) => new Vector3D(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
         public static Vector3D operator -(Vector3D a, Vector3D b) => new Vector3D(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
         public static Vector3D operator *(Vector3D a, Vector3D b) => new Vector3D(a.X * b.X, a.Y * b.Y, a.Z * b.Z);
@@ -56,16 +54,16 @@ namespace NiTiS.Core.Types
         public static bool operator !=(Vector3D lhs, Vector3D rhs) => !lhs.Equals(rhs);
         public static bool operator ==(Vector3D lhs, Vector3DInt rhs) => lhs.Equals(rhs);
         public static bool operator !=(Vector3D lhs, Vector3DInt rhs) => !lhs.Equals(rhs);
-        public Vector3DInt VectorInt => new Vector3DInt((int)X, (int)Y,(int)X);
+        public Vector3DInt VectorInt => new Vector3DInt((int)X, (int)Y, (int)X);
 
         #region Transforms
         public static explicit operator Vector4D(Vector3D b) => new Vector4D(b.X, b.Y, b.Z, 0);
         public static explicit operator Vector4DInt(Vector3D b) => new Vector4DInt((int)b.X, (int)b.Y, (int)b.Z, 0);
         public static implicit operator Vector3DInt(Vector3D b) => new Vector3DInt((int)b.X, (int)b.Y, (int)b.Z);
-        public static implicit operator Vector2D(Vector3D b) => new Vector2D(b.X,b.Y);
-        public static implicit operator Vector2DInt(Vector3D b) => new Vector2DInt( (int)b.X, (int)b.Y);
+        public static implicit operator Vector2D(Vector3D b) => new Vector2D(b.X, b.Y);
+        public static implicit operator Vector2DInt(Vector3D b) => new Vector2DInt((int)b.X, (int)b.Y);
         public static implicit operator Vector1D(Vector3D b) => new Vector1D(b.X);
-        public static implicit operator Vector1DInt(Vector3D b) => new Vector1DInt( (int)b.X);
+        public static implicit operator Vector1DInt(Vector3D b) => new Vector1DInt((int)b.X);
         #endregion
         public double LengthSquared => (X * X) + (Y * Y) + (Z * Z);
         public double Length => Sqrt(LengthSquared);

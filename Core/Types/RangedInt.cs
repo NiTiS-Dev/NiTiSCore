@@ -1,12 +1,9 @@
-﻿using NiTiS.Core.Additions;
-using NiTiS.Core.Attributes;
-using System;
+﻿using System;
 using System.Diagnostics;
 
 namespace NiTiS.Core.Types
 {
     [DebuggerDisplay("Int ({MinValue}~{Value}~{MaxValue})")]
-    [NiTiSCoreTypeInfo("1.0.0.0", "2.0.0.0")]
     public struct RangedInt : IRangedVar<int>, IEquatable<RangedInt>, IEquatable<int>
     {
         private int value;

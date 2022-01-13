@@ -1,5 +1,4 @@
-﻿using NiTiS.Core.Attributes;
-using NiTiS.Core.Enums;
+﻿using NiTiS.Core.Enums;
 using System;
 using System.Diagnostics;
 #if NITIS_SERIALIZATION
@@ -13,13 +12,12 @@ namespace NiTiS.Core.Types
     [Serializable]
 #endif
     [DebuggerDisplay("3DInt ({X}:{Y}:{Z})")]
-    [NiTiSCoreTypeInfo("1.3.0.0", "2.0.0.0")]
-    public struct Vector3DInt : 
+    public struct Vector3DInt :
         IVector<int>,
 #if NITIS_SERIALIZATION
         ISerializable,
 #endif
-        IEquatable<Vector3DInt>, 
+        IEquatable<Vector3DInt>,
         IEquatable<Vector3D>
     {
         public int X;
@@ -57,7 +55,7 @@ namespace NiTiS.Core.Types
         public static bool operator ==(Vector3DInt lhs, Vector3DInt rhs) => lhs.Equals(rhs);
         public static bool operator !=(Vector3DInt lhs, Vector3DInt rhs) => !lhs.Equals(rhs);
 
-#region Transforms
+        #region Transforms
         public static explicit operator Vector4D(Vector3DInt b) => new Vector4D(b.X, b.Y, b.Z, 0);
         public static explicit operator Vector4DInt(Vector3DInt b) => new Vector4DInt(b.X, b.Y, b.Z, 0);
         public static implicit operator Vector3D(Vector3DInt b) => new Vector3D(b.X, b.Y, b.Z);
@@ -65,7 +63,7 @@ namespace NiTiS.Core.Types
         public static implicit operator Vector2DInt(Vector3DInt b) => new Vector2DInt(b.X, b.Y);
         public static implicit operator Vector1D(Vector3DInt b) => new Vector1D(b.X);
         public static implicit operator Vector1DInt(Vector3DInt b) => new Vector1DInt(b.X);
-#endregion
+        #endregion
         public double LengthSquared => (X * X) + (Y * Y) + (Z * Z);
         public double Length => Sqrt(LengthSquared);
         public void Normalize()

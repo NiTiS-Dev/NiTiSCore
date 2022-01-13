@@ -1,5 +1,4 @@
-﻿using NiTiS.Core.Attributes;
-using NiTiS.Core.Enums;
+﻿using NiTiS.Core.Enums;
 using System;
 using System.Diagnostics;
 #if NITIS_SERIALIZATION
@@ -13,13 +12,12 @@ namespace NiTiS.Core.Types
     [Serializable]
 #endif
     [DebuggerDisplay("1DInt ({X})")]
-    [NiTiSCoreTypeInfo("1.0.0.0", "2.0.0.0")]
-    public struct Vector1DInt : 
+    public struct Vector1DInt :
         IVector<int>,
 #if NITIS_SERIALIZATION
         ISerializable,
 #endif
-        IEquatable<Vector1DInt>, 
+        IEquatable<Vector1DInt>,
         IEquatable<Vector1D>
     {
 

@@ -1,11 +1,8 @@
-﻿using NiTiS.Core.Attributes;
-
-namespace NiTiS.Core.Collections.Generic
+﻿namespace NiTiS.Core.Collections.Generic
 {
-    [NiTiSCoreTypeInfo("1.3.0.0", "2.0.0.0")]
-    public class Twosome<L,R> 
+    public class Twosome<L, R>
     {
-        public delegate string Concat(L l,R r);
+        public delegate string Concat(L l, R r);
         private L left;
         private R right;
 
@@ -31,7 +28,7 @@ namespace NiTiS.Core.Collections.Generic
         }
         public string ToString(Concat concat)
         {
-            return concat(left,right);
+            return concat(left, right);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using NiTiS.Core.Attributes;
-using NiTiS.Core.Enums;
+﻿using NiTiS.Core.Enums;
 using System;
 using System.Diagnostics;
 #if NITIS_SERIALIZATION
@@ -13,13 +12,12 @@ namespace NiTiS.Core.Types
     [Serializable]
 #endif
     [DebuggerDisplay("2DFloat ({X}:{Y})")]
-    [NiTiSCoreTypeInfo("1.0.0.0", "2.0.0.0")]
-    public struct Vector2D : 
+    public struct Vector2D :
         IVector<float>,
 #if NITIS_SERIALIZATION
         ISerializable,
 #endif
-        IEquatable<Vector2D>, 
+        IEquatable<Vector2D>,
         IEquatable<Vector2DInt>
     {
         public float X;
@@ -40,9 +38,9 @@ namespace NiTiS.Core.Types
             Y = y;
         }
         public static Vector2D operator +(Vector2D a) => a;
-        public static Vector2D operator ++(Vector2D a) => a + new Vector2D(1,1);
-        public static Vector2D operator -(Vector2D a) => new Vector2D(-a.X,-a.Y);
-        public static Vector2D operator --(Vector2D a) => a - new Vector2D(1,1);
+        public static Vector2D operator ++(Vector2D a) => a + new Vector2D(1, 1);
+        public static Vector2D operator -(Vector2D a) => new Vector2D(-a.X, -a.Y);
+        public static Vector2D operator --(Vector2D a) => a - new Vector2D(1, 1);
         public static Vector2D operator +(Vector2D a, Vector2D b) => new Vector2D(a.X + b.X, a.Y + b.Y);
         public static Vector2D operator -(Vector2D a, Vector2D b) => new Vector2D(a.X - b.X, a.Y - b.Y);
         public static Vector2D operator *(Vector2D a, Vector2D b) => new Vector2D(a.X * b.X, a.Y * b.Y);
@@ -53,16 +51,16 @@ namespace NiTiS.Core.Types
         public static bool operator !=(Vector2D lhs, Vector2D rhs) => !lhs.Equals(rhs);
         public static bool operator ==(Vector2D lhs, Vector2DInt rhs) => lhs.Equals(rhs);
         public static bool operator !=(Vector2D lhs, Vector2DInt rhs) => !lhs.Equals(rhs);
-        public Vector2DInt VectorInt => new Vector2DInt((int)X,(int)Y);
+        public Vector2DInt VectorInt => new Vector2DInt((int)X, (int)Y);
 
         #region Transforms
         public static explicit operator Vector4D(Vector2D b) => new Vector4D(b.X, b.Y, 0, 0);
         public static explicit operator Vector4DInt(Vector2D b) => new Vector4DInt((int)b.X, (int)b.Y, 0, 0);
         public static explicit operator Vector3D(Vector2D b) => new Vector3D(b.X, b.Y, 0);
-        public static explicit operator Vector3DInt(Vector2D b) => new Vector3DInt( (int)b.X, (int)b.Y, 0);
-        public static implicit operator Vector2DInt(Vector2D b) => new Vector2DInt( (int)b.X, (int)b.Y);
+        public static explicit operator Vector3DInt(Vector2D b) => new Vector3DInt((int)b.X, (int)b.Y, 0);
+        public static implicit operator Vector2DInt(Vector2D b) => new Vector2DInt((int)b.X, (int)b.Y);
         public static implicit operator Vector1D(Vector2D b) => new Vector1D(b.X);
-        public static implicit operator Vector1DInt(Vector2D b) => new Vector1DInt( (int)b.X);
+        public static implicit operator Vector1DInt(Vector2D b) => new Vector1DInt((int)b.X);
         #endregion
 
         public double LengthSquared => (X * X) + (Y * Y);

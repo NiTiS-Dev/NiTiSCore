@@ -1,12 +1,10 @@
-﻿using NiTiS.Core.Attributes;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace NiTiS.Core.Collections.Pseudo
 {
-    [NiTiSCoreTypeInfo("1.3.0.0", "2.0.0.0")]
-    public class RangeInt : IEnumerable , IEnumerable<Int32>
+    public class RangeInt : IEnumerable, IEnumerable<Int32>
     {
         private int start;
         private int end;
@@ -19,11 +17,11 @@ namespace NiTiS.Core.Collections.Pseudo
         public IEnumerator GetEnumerator()
         {
             int it = 1;
-            if(start > end)
+            if (start > end)
             {
                 it = -1;
             }
-            if(start == end)
+            if (start == end)
             {
                 yield break;
             }

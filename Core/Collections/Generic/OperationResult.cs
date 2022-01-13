@@ -1,9 +1,7 @@
-﻿using NiTiS.Core.Attributes;
-using NiTiS.Core.Enums;
+﻿using NiTiS.Core.Enums;
 
 namespace NiTiS.Core.Collections.Generic
 {
-    [NiTiSCoreTypeInfo("2.0.0.0", "2.0.0.0")]
     public class OperationResult<T>
     {
         private Result result;

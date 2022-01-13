@@ -1,5 +1,4 @@
-﻿using NiTiS.Core.Attributes;
-using NiTiS.Core.Enums;
+﻿using NiTiS.Core.Enums;
 using System;
 using System.Diagnostics;
 #if NITIS_SERIALIZATION
@@ -13,13 +12,12 @@ namespace NiTiS.Core.Types
     [Serializable]
 #endif
     [DebuggerDisplay("2DInt ({X}:{Y})")]
-    [NiTiSCoreTypeInfo("1.0.0.0", "2.0.0.0")]
-    public struct Vector2DInt : 
+    public struct Vector2DInt :
         IVector<int>,
 #if NITIS_SERIALIZATION
         ISerializable,
 #endif
-        IEquatable<Vector2DInt>, 
+        IEquatable<Vector2DInt>,
         IEquatable<Vector2D>
     {
         public int X;
@@ -40,9 +38,9 @@ namespace NiTiS.Core.Types
             Y = y;
         }
         public static Vector2DInt operator +(Vector2DInt a) => a;
-        public static Vector2DInt operator ++(Vector2DInt a) => a + new Vector2DInt(1,1);
-        public static Vector2DInt operator -(Vector2DInt a) => new Vector2DInt(-a.X,-a.Y);
-        public static Vector2DInt operator --(Vector2DInt a) => a - new Vector2DInt(1,1);
+        public static Vector2DInt operator ++(Vector2DInt a) => a + new Vector2DInt(1, 1);
+        public static Vector2DInt operator -(Vector2DInt a) => new Vector2DInt(-a.X, -a.Y);
+        public static Vector2DInt operator --(Vector2DInt a) => a - new Vector2DInt(1, 1);
         public static Vector2DInt operator +(Vector2DInt a, Vector2DInt b) => new Vector2DInt(a.X + b.X, a.Y + b.Y);
         public static Vector2DInt operator -(Vector2DInt a, Vector2DInt b) => new Vector2DInt(a.X - b.X, a.Y - b.Y);
         public static Vector2DInt operator *(Vector2DInt a, Vector2DInt b) => new Vector2DInt(a.X * b.X, a.Y * b.Y);

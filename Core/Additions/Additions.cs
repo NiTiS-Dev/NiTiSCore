@@ -1,39 +1,20 @@
-﻿using NiTiS.Core.Attributes;
+﻿#if NITIS_EXTENSIONS
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace NiTiS.Core.Additions
 {
-    [NiTiSCoreTypeInfo("1.3.0.0", "2.0.0.0")]
     public static class Additions
     {
         public static string TrimWhiteSpaceFromStartAndEnd(this string text)
         {
-            while(text[0] == ' ')
-            {
-                text = text.Substring(1);
-            }
-            while(text[text.Length - 1] == ' ')
-            {
-                text = text.TrimEnd(' ');
-            }
-            return text;
-        }
-        [Obsolete("Its old format")]
-        public static string FormatForValueSet(this string text)
-        {
-            return text.Replace(":", @"\u003a").Replace("\r", @"\u000d").Replace("\n", @"\u000a");
-        }
-        [Obsolete("Its old format")]
-        public static string FormatFromValueSet(this string text)
-        {
-            return text.Replace(@"\u003a", ":").Replace(@"\u000d", "\r").Replace(@"\u000a", "\n");
+            return text.TrimEnd(' ').TrimStart(' ');
         }
         public static string FromArrayToString(this IEnumerable<string> enumerable)
         {
             string text = "";
-            foreach(var item in enumerable)
+            foreach (var item in enumerable)
             {
                 text += item ?? "";
             }
@@ -83,7 +64,7 @@ namespace NiTiS.Core.Additions
             string name = enumType.GetEnumName(enam);
             try
             {
-                EnumInfoAttribute enumInfo = (EnumInfoAttribute)enumType.GetMember(enam.ToString())[0].GetCustomAttributes(typeof(EnumInfoAttribute), false)[0];
+                Attributes.EnumInfoAttribute enumInfo = (Attributes.EnumInfoAttribute)enumType.GetMember(enam.ToString())[0].GetCustomAttributes(typeof(Attributes.EnumInfoAttribute), false)[0];
                 if (enumInfo != null)
                 {
                     return enumInfo.Name;
@@ -100,7 +81,7 @@ namespace NiTiS.Core.Additions
             Type enumType = enam.GetType();
             try
             {
-                EnumInfoAttribute enumInfo = (EnumInfoAttribute)enumType.GetMember(enam.ToString())[0].GetCustomAttributes(typeof(EnumInfoAttribute), false)[0];
+                Attributes.EnumInfoAttribute enumInfo = (Attributes.EnumInfoAttribute)enumType.GetMember(enam.ToString())[0].GetCustomAttributes(typeof(Attributes.EnumInfoAttribute), false)[0];
                 if (enumInfo != null)
                 {
                     return enumInfo.Description;
@@ -119,3 +100,4 @@ namespace NiTiS.Core.Additions
         }
     }
 }
+#endif

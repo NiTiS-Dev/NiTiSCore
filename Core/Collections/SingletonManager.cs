@@ -1,9 +1,5 @@
-﻿using NiTiS.Core.Attributes;
-using System;
-
-namespace NiTiS.Core.Collections
+﻿namespace NiTiS.Core.Collections
 {
-    [NiTiSCoreTypeInfo("1.5.0.0", "2.0.0.0")]
     public static class SingletonManager
     {
         private static volatile HardTypedDictonary dictonary = new HardTypedDictonary();

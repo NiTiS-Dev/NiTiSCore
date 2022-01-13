@@ -1,8 +1,5 @@
-﻿using NiTiS.Core.Attributes;
-
-namespace NiTiS.Core.Types
+﻿namespace NiTiS.Core.Types
 {
-    [NiTiSCoreTypeInfo("1.0.0.0", "2.0.0.0")]
     public interface IRangedVar<T>
     {
         /// <summary>
@@ -21,6 +18,6 @@ namespace NiTiS.Core.Types
         /// <summary>
         /// Returns the value of variable
         /// </summary>
-        T Value { get;}
+        T Value { get; }
     }
 }

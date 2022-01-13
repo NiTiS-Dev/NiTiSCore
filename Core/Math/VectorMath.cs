@@ -1,11 +1,9 @@
-﻿using NiTiS.Core.Attributes;
-using NiTiS.Core.Collections;
+﻿using NiTiS.Core.Collections;
 using NiTiS.Core.Enums;
 using NiTiS.Core.Types;
 
 namespace NiTiS.Core.Math
 {
-    [NiTiSCoreTypeInfo("1.3.0.0", "2.0.0.0")]
     public static class VectorMath
     {
         public static Vector4D Vector4DOf(float size)
@@ -26,9 +24,9 @@ namespace NiTiS.Core.Math
         }
         public static bool CompareVectors<T>(IVector<T> left, IVector<T> right, EnumCollection<DimensionAxis> axis)
         {
-            foreach(DimensionAxis i in axis)
+            foreach (DimensionAxis i in axis)
             {
-                if(!left.GetValueByDimension(i).Equals(right.GetValueByDimension(i)))
+                if (!left.GetValueByDimension(i).Equals(right.GetValueByDimension(i)))
                     return false;
             }
             return true;

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using NiTiS.Core.Attributes;
+﻿#if NITIS_TASKS
 using NiTiS.Core.Types;
+using System;
+using System.Threading.Tasks;
 
 namespace NiTiS.Core.Additions
 {
-    [NiTiSCoreTypeInfo("1.0.0.0", "2.0.0.0")]
     public static class GridCreator
     {
         public static async void Create1DGridAsync(int sizeX, bool startFromZero, Action<Vector1DInt> op) => await Task.Run(() => Create1DGrid(sizeX, startFromZero, op));
@@ -40,7 +39,7 @@ namespace NiTiS.Core.Additions
                 {
                     for (int z = offset; z < sizeY + offset; z++)
                     {
-                        op(new Vector3DInt(x,y,z));
+                        op(new Vector3DInt(x, y, z));
                     }
                 }
             }
@@ -54,7 +53,7 @@ namespace NiTiS.Core.Additions
                 {
                     for (int z = offset; z < sizeY + offset; z++)
                     {
-                        for(int w = offset; w < sizeW + offset; w++)
+                        for (int w = offset; w < sizeW + offset; w++)
                         {
                             op(new Vector4DInt(x, y, z, w));
                         }
@@ -64,3 +63,4 @@ namespace NiTiS.Core.Additions
         }
     }
 }
+#endif

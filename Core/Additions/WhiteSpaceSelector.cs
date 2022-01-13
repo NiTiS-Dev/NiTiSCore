@@ -1,11 +1,7 @@
-﻿using NiTiS.Core.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace NiTiS.Core.Additions
 {
-    [NiTiSCoreTypeInfo("2.0.0.0", "2.0.0.0")]
     public sealed class WhiteSpaceSelector : ISelector
     {
         private int matchs = 0;
@@ -14,6 +10,7 @@ namespace NiTiS.Core.Additions
         public string Convert(string value, bool invert = false)
         {
             string newValue = "";
+#if NITIS_EXTENSIONS
             Additions.ForEachElements<char>(value, (e) =>
             {
                 if (Char.IsWhiteSpace(e))
@@ -32,6 +29,25 @@ namespace NiTiS.Core.Additions
                     }
                 }
             });
+#else
+            foreach(char c in value) {
+                if (Char.IsWhiteSpace(c))
+                {
+                    matchs++;
+                    if (invert)
+                    {
+                        newValue += c;
+                    }
+                }
+                else
+                {
+                    if (!invert)
+                    {
+                        newValue += c;
+                    }
+                }
+            }
+#endif
             return newValue;
         }
     }
