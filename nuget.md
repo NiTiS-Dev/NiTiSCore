@@ -1,4 +1,4 @@
-![Logo](https://github.com/NickName73/NickName73/raw/main/Micros/nitis-core-logo.png?raw=true)
+![Logo](https://raw.githubusercontent.com/NickName73/NickName73/main/Micros/nitis-core-logo-medium.png)
 
 # The C# library for NiTiS project
 
