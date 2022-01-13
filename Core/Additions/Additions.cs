@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace NiTiS.Core.Additions
 {
+    [NiTiSCoreTypeInfo("1.3.0.0", "2.0.0.0")]
     public static class Additions
     {
         public static string TrimWhiteSpaceFromStartAndEnd(this string text)
@@ -18,10 +19,12 @@ namespace NiTiS.Core.Additions
             }
             return text;
         }
+        [Obsolete("Its old format")]
         public static string FormatForValueSet(this string text)
         {
             return text.Replace(":", @"\u003a").Replace("\r", @"\u000d").Replace("\n", @"\u000a");
         }
+        [Obsolete("Its old format")]
         public static string FormatFromValueSet(this string text)
         {
             return text.Replace(@"\u003a", ":").Replace(@"\u000d", "\r").Replace(@"\u000a", "\n");
@@ -34,6 +37,10 @@ namespace NiTiS.Core.Additions
                 text += item ?? "";
             }
             return text;
+        }
+        public static string Multiply(this string value, int repeat)
+        {
+            return String.Concat(System.Linq.Enumerable.Repeat(value, repeat));
         }
         public static IEnumerable<T2> ForEachElements<T1, T2>(this IEnumerable<T1> enumerable, Func<T1, T2> func)
         {
@@ -92,6 +99,10 @@ namespace NiTiS.Core.Additions
             {
                 return "";
             }
+        }
+        public static bool Invert(this bool value, bool invert = true)
+        {
+            return invert ? !value : value;
         }
     }
 }

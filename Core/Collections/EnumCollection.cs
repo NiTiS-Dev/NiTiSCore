@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 using NiTiS.Core.Enums;
+using NiTiS.Core.Attributes;
 
 namespace NiTiS.Core.Collections
 {
+    [NiTiSCoreTypeInfo("1.3.0.0", "2.0.0.0")]
     public class EnumCollection<ET> : IEnumerable where ET : struct, Enum
     {
         public static EnumCollection<DimensionAxis> Axis3D

@@ -1,4 +1,5 @@
-﻿using NiTiS.Core.Enums;
+﻿using NiTiS.Core.Attributes;
+using NiTiS.Core.Enums;
 using System;
 using System.Diagnostics;
 using System.Runtime.Serialization;
@@ -8,6 +9,7 @@ namespace NiTiS.Core.Types
 {
     [Serializable]
     [DebuggerDisplay("2DFloat ({X}:{Y})")]
+    [NiTiSCoreTypeInfo("1.0.0.0", "2.0.0.0")]
     public struct Vector2D : IVector<float>, ISerializable, IEquatable<Vector2D>, IEquatable<Vector2DInt>
     {
         public float X;

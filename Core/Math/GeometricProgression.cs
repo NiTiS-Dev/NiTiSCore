@@ -1,11 +1,12 @@
-﻿using System;
+﻿using NiTiS.Core.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 
 namespace NiTiS.Core.Math
 {
     [DebuggerDisplay("Progression [{First}:*{Q}] {Get(1)},{Get(2)},{Get(3)}")]
+    [NiTiSCoreTypeInfo("1.4.0.0", "2.0.0.0")]
     public class GeometricProgression : IProgression
     {
         public double First { get; set; }
@@ -19,6 +20,10 @@ namespace NiTiS.Core.Math
         {
             return First * System.Math.Pow(Q, index - 1);
         }
+        public static double Get(int index, double first, double q)
+        {
+            return first * System.Math.Pow(q, index - 1);
+        }
         public double this[int index]
         {
             get
@@ -29,6 +34,10 @@ namespace NiTiS.Core.Math
         public double Sum(int endIndex)
         {
             return (First * (System.Math.Pow(Q,endIndex) - 1)) / (Q - 1);
+        }
+        public static double Sum(int endIndex, double first, double q)
+        {
+            return (first * (System.Math.Pow(q, endIndex) - 1)) / (q - 1);
         }
         public IEnumerable<double> SumArray(int endIndex)
         {

@@ -1,5 +1,8 @@
-﻿namespace NiTiS.Core.Types
+﻿using NiTiS.Core.Attributes;
+
+namespace NiTiS.Core.Types
 {
+    [NiTiSCoreTypeInfo("1.0.0.0", "2.0.0.0")]
     public interface IRangedVar<T>
     {
         /// <summary>

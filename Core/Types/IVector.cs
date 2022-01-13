@@ -1,10 +1,12 @@
-﻿using NiTiS.Core.Enums;
+﻿using NiTiS.Core.Attributes;
+using NiTiS.Core.Enums;
 
 namespace NiTiS.Core.Types
 {
     /// <summary>
     /// Specifies that the object is a vector
     /// </summary>
+    [NiTiSCoreTypeInfo("1.0.0.0", "2.0.0.0")]
     public interface IVector
     {
         /// <summary>
@@ -24,6 +26,7 @@ namespace NiTiS.Core.Types
     /// Interface for creating vectors
     /// </summary>
     /// <typeparam name="T">Determines how the vector is measured</typeparam>
+    [NiTiSCoreTypeInfo("1.0.0.0", "2.0.0.0")]
     public interface IVector<T> : IVector
     {
         /// <summary>

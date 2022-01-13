@@ -1,9 +1,11 @@
-﻿using NiTiS.Core.Types;
-using NiTiS.Core.Enums;
+﻿using NiTiS.Core.Attributes;
 using NiTiS.Core.Collections;
+using NiTiS.Core.Enums;
+using NiTiS.Core.Types;
 
 namespace NiTiS.Core.Math
 {
+    [NiTiSCoreTypeInfo("1.3.0.0", "2.0.0.0")]
     public static class VectorMath
     {
         public static Vector4D Vector4DOf(float size)

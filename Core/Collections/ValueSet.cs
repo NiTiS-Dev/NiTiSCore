@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using NiTiS.Core.Additions;
+using NiTiS.Core.Attributes;
 
 namespace NiTiS.Core.Collections
 {
     [Obsolete]
+    [NiTiSCoreTypeInfo("1.3.0.0", "2.0.0.0")]
     public class ValueSet : IEnumerable<KeyValuePair<string,string>> ,IEnumerable
     {
         private readonly Dictionary<string, string> values = new Dictionary<string, string>();

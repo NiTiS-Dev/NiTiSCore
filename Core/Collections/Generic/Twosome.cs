@@ -1,5 +1,8 @@
-﻿namespace NiTiS.Core.Collections.Generic
+﻿using NiTiS.Core.Attributes;
+
+namespace NiTiS.Core.Collections.Generic
 {
+    [NiTiSCoreTypeInfo("1.3.0.0", "2.0.0.0")]
     public class Twosome<L,R> 
     {
         public delegate string Concat(L l,R r);

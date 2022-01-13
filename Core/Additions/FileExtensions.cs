@@ -1,8 +1,10 @@
-﻿using System;
+﻿using NiTiS.Core.Attributes;
+using System;
 using System.IO;
 
 namespace NiTiS.Core.Additions
 {
+    [NiTiSCoreTypeInfo("1.6.0.0", "2.0.0.0")]
     public static class FileExtensions
     {
         /// <summary>

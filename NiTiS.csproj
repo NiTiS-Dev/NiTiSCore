@@ -4,25 +4,26 @@
 		<TargetFrameworks>netcoreapp2.0;netcoreapp3.1</TargetFrameworks>
 		<LangVersion>7.3</LangVersion>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<AssemblyName>NiTiSCore$(Configuration)</AssemblyName>
-		<AssemblyVersion>1.6.0.0</AssemblyVersion>
+		<AssemblyName>NiTiSCore$(Version)</AssemblyName>
+		<AssemblyVersion>2.0.1.0</AssemblyVersion>
 		<Authors>NickName73,NiTiS</Authors>
 		<Company>NiTiS</Company>
 		<Product>NiTiSCore</Product>
 		<Title>NiTiSCore</Title>
 		<Description>Core for NiTiS projects</Description>
-		<Version>1.6.0</Version>
+		<PackageDescription>Core for NiTiS projects</PackageDescription>
+		<Version>2.0.1</Version>
 		<Summary>Core for NiTiS projects</Summary>
 		<Configurations>Debug;R20;R31</Configurations>
-		<PackageIconUrl>https://github.com/NickName73/NiTiSCore/blob/main/iconLogo.png?raw=true</PackageIconUrl>
+		<PackageIconUrl>https://github.com/NickName73/NickName73/blob/main/Micros/nitis-core-icon-medium.png?raw=true</PackageIconUrl>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/NickName73/NiTiSCore</RepositoryUrl>
+		<RepositoryUrl>https://github.com/NiTiS-Dev/NiTiSCore</RepositoryUrl>
 		<Copyright>Copyright (c) 2021 NickName73</Copyright>
 		<SignAssembly>False</SignAssembly>
 		<AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
-		<PackageProjectUrl>https://www.nuget.org/packages/NiTiSCore</PackageProjectUrl>
-		<PackageIcon>iconLogo.png</PackageIcon>
+		<PackageProjectUrl>https://github.com/NiTiS-Dev/NiTiSCore</PackageProjectUrl>
+		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>NiTiS;NickName73;Core;NiTiSCore</PackageTags>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<ImplicitUsings>disable</ImplicitUsings>
@@ -35,14 +36,7 @@
 		<Optimize>true</Optimize>
 	</PropertyGroup>
 	<ItemGroup>
-	  <None Include="..\.editorconfig" Link=".editorconfig" />
 	  <None Include="LICENSE" Pack="true" PackagePath="" />
-		<None Include="iconLogo.png"></None>
-	</ItemGroup>
-	<ItemGroup>
-	  <None Update="iconLogo.png">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
+	  <None Include="icon.png" Pack="true" PackagePath="" />
 	</ItemGroup>
 </Project>

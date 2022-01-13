@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using NiTiS.Core.Attributes;
 using NiTiS.Core.Types;
 
 namespace NiTiS.Core.Additions
 {
+    [NiTiSCoreTypeInfo("1.0.0.0", "2.0.0.0")]
     public static class GridCreator
     {
         public static async void Create1DGridAsync(int sizeX, bool startFromZero, Action<Vector1DInt> op) => await Task.Run(() => Create1DGrid(sizeX, startFromZero, op));

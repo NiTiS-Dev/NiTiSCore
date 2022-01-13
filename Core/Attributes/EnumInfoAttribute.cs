@@ -4,6 +4,7 @@ using System.Text;
 
 namespace NiTiS.Core.Attributes
 {
+    [NiTiSCoreTypeInfo("1.5.0.0", "2.0.0.0")]
     public class EnumInfoAttribute : Attribute
     {
         public string Name { get; private set; } = "";

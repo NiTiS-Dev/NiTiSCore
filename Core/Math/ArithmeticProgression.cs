@@ -1,10 +1,12 @@
-﻿using System;
+﻿using NiTiS.Core.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace NiTiS.Core.Math
 {
     [DebuggerDisplay("Progression [{First}:{D}] {Get(1)},{Get(2)},{Get(3)}")]
+    [NiTiSCoreTypeInfo("1.4.0.0", "2.0.0.0")]
     public class ArithmeticProgression : IProgression
     {
         public double First { get; set; }
@@ -18,6 +20,10 @@ namespace NiTiS.Core.Math
         {
             return First + (D * (index - 1));
         }
+        public static double Get(int index, double first, double d)
+        {
+            return first + (d * (index - 1));
+        }
         public double this[int index]
         {
             get
@@ -28,6 +34,10 @@ namespace NiTiS.Core.Math
         public double Sum(int endIndex)
         {
             return First + D * (endIndex - 1);  
+        }
+        public static double Sum(int endIndex, double first, double d)
+        {
+            return first + d * (endIndex - 1);
         }
         public IEnumerable<double> SumArray(int endIndex)
         {
