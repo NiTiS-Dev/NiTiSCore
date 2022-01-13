@@ -2,15 +2,25 @@
 using NiTiS.Core.Enums;
 using System;
 using System.Diagnostics;
+#if NITIS_SERIALIZATION
 using System.Runtime.Serialization;
+#endif
 using static System.Math;
 
 namespace NiTiS.Core.Types
 {
+#if NITIS_SERIALIZATION
     [Serializable]
+#endif
     [DebuggerDisplay("2DFloat ({X}:{Y})")]
     [NiTiSCoreTypeInfo("1.0.0.0", "2.0.0.0")]
-    public struct Vector2D : IVector<float>, ISerializable, IEquatable<Vector2D>, IEquatable<Vector2DInt>
+    public struct Vector2D : 
+        IVector<float>,
+#if NITIS_SERIALIZATION
+        ISerializable,
+#endif
+        IEquatable<Vector2D>, 
+        IEquatable<Vector2DInt>
     {
         public float X;
         public float Y;
@@ -62,11 +72,18 @@ namespace NiTiS.Core.Types
             this /= (float)Length;
         }
         public override string ToString() => "{" + X + ":" + Y + "}";
+#if NITIS_SERIALIZATION
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("x", X);
             info.AddValue("y", Y);
         }
+        public Vector2D(SerializationInfo info, StreamingContext context)
+        {
+            X = info.GetSingle("x");
+            Y = info.GetSingle("y");
+        }
+#endif
 
         public bool Equals(Vector2D other)
         {
@@ -100,12 +117,6 @@ namespace NiTiS.Core.Types
                 return this.Equals(vecInt);
             }
             return base.Equals(obj);
-        }
-
-        public Vector2D(SerializationInfo info, StreamingContext context)
-        {
-            X = info.GetSingle("x");
-            Y = info.GetSingle("y");
         }
     }
 }

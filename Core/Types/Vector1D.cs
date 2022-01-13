@@ -2,15 +2,25 @@
 using NiTiS.Core.Enums;
 using System;
 using System.Diagnostics;
+#if NITIS_SERIALIZATION
 using System.Runtime.Serialization;
+#endif
 using static System.Math;
 
 namespace NiTiS.Core.Types
 {
+#if NITIS_SERIALIZATION
     [Serializable]
+#endif
     [DebuggerDisplay("1DFloat ({X})")]
     [NiTiSCoreTypeInfo("1.0.0.0", "2.0.0.0")]
-    public struct Vector1D : IVector<float>, ISerializable, IEquatable<Vector1D>, IEquatable<Vector1DInt>
+    public struct Vector1D : 
+        IVector<float>,
+#if NITIS_SERIALIZATION
+        ISerializable,
+#endif
+        IEquatable<Vector1D>, 
+        IEquatable<Vector1DInt>
     {
         public float X;
 
@@ -57,11 +67,16 @@ namespace NiTiS.Core.Types
         }
 
         public override string ToString() => "{" + X + "}";
-
+#if NITIS_SERIALIZATION
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("x", X);
         }
+        public Vector1D(SerializationInfo info, StreamingContext context)
+        {
+            X = info.GetSingle("x");
+        }
+#endif
         public bool Equals(Vector1DInt other)
         {
             if (other.X != X) { return false; }
@@ -90,11 +105,6 @@ namespace NiTiS.Core.Types
                 return obj.Equals(vecInt);
             }
             return base.Equals(obj);
-        }
-
-        public Vector1D(SerializationInfo info, StreamingContext context)
-        {
-            X = info.GetSingle("x");
         }
     }
 }

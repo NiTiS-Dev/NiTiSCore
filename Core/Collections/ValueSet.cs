@@ -16,10 +16,10 @@ namespace NiTiS.Core.Collections
             ValueSet valueSet = new ValueSet();
             if (text is null) { return valueSet; }
             int index = 0;
-            foreach(string line in text.Split('\n', StringSplitOptions.RemoveEmptyEntries))
+            foreach(string line in text.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 index++;
-                string[] items = line.Split(':', StringSplitOptions.RemoveEmptyEntries);
+                string[] items = line.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
                 if(items.Length >= 2)
                 {
                     valueSet.values[items[0].TrimWhiteSpaceFromStartAndEnd()] = items[1].TrimWhiteSpaceFromStartAndEnd();

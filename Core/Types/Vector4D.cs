@@ -2,15 +2,25 @@
 using NiTiS.Core.Enums;
 using System;
 using System.Diagnostics;
+#if NITIS_SERIALIZATION
 using System.Runtime.Serialization;
+#endif
 using static System.Math;
 
 namespace NiTiS.Core.Types
 {
+#if NITIS_SERIALIZATION
     [Serializable]
+#endif
     [DebuggerDisplay("4DFloat ({X}:{Y}:{Z}:{W})")]
     [NiTiSCoreTypeInfo("1.3.0.0", "2.0.0.0")]
-    public struct Vector4D : IVector<float>, ISerializable, IEquatable<Vector4D>, IEquatable<Vector4DInt>
+    public struct Vector4D : 
+        IVector<float>,
+#if NITIS_SERIALIZATION
+        ISerializable, 
+#endif
+        IEquatable<Vector4D>, 
+        IEquatable<Vector4DInt>
     {
         public float X;
         public float Y;
@@ -51,7 +61,7 @@ namespace NiTiS.Core.Types
         public static bool operator !=(Vector4D lhs, Vector4DInt rhs) => !lhs.Equals(rhs);
         public Vector4DInt VectorInt => new Vector4DInt((int)X, (int)Y, (int)X, (int)Z);
 
-        #region Transforms
+#region Transforms
         public static implicit operator Vector4DInt(Vector4D b) => new Vector4DInt((int)b.X, (int)b.Y, (int)b.Z, (int)b.W);
         public static implicit operator Vector3D(Vector4D b) => new Vector3D(b.X, b.Y, b.Z);
         public static implicit operator Vector3DInt(Vector4D b) => new Vector3DInt((int)b.X, (int)b.Y, (int)b.Z);
@@ -59,7 +69,7 @@ namespace NiTiS.Core.Types
         public static implicit operator Vector2DInt(Vector4D b) => new Vector2DInt((int)b.X, (int)b.Y);
         public static implicit operator Vector1D(Vector4D b) => new Vector1D(b.X);
         public static implicit operator Vector1DInt(Vector4D b) => new Vector1DInt((int)b.X);
-        #endregion
+#endregion
         public double LengthSquared => (X * X) + (Y * Y) + (Z * Z) + (W * W);
         public double Length => Sqrt(LengthSquared);
         public void Normalize()
@@ -67,6 +77,7 @@ namespace NiTiS.Core.Types
             this /= (float)Length;
         }
         public override string ToString() => "{" + X + ":" + Y + ":" + Z + ":" + W + "}";
+#if NITIS_SERIALIZATION
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("x", X);
@@ -74,7 +85,14 @@ namespace NiTiS.Core.Types
             info.AddValue("z", Z);
             info.AddValue("w", W);
         }
-
+        public Vector4D(SerializationInfo info, StreamingContext context)
+        {
+            X = info.GetSingle("x");
+            Y = info.GetSingle("y");
+            Z = info.GetSingle("z");
+            W = info.GetSingle("w");
+        }
+#endif
         public bool Equals(Vector4D other)
         {
             if (other.X != X) { return false; }
@@ -113,14 +131,6 @@ namespace NiTiS.Core.Types
                 return this.Equals(vecInt);
             }
             return base.Equals(obj);
-        }
-
-        public Vector4D(SerializationInfo info, StreamingContext context)
-        {
-            X = info.GetSingle("x");
-            Y = info.GetSingle("y");
-            Z = info.GetSingle("z");
-            W = info.GetSingle("w");
         }
     }
 }

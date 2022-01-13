@@ -2,15 +2,25 @@
 using NiTiS.Core.Enums;
 using System;
 using System.Diagnostics;
+#if NITIS_SERIALIZATION
 using System.Runtime.Serialization;
+#endif
 using static System.Math;
 
 namespace NiTiS.Core.Types
 {
+#if NITIS_SERIALIZATION
     [Serializable]
+#endif
     [DebuggerDisplay("3DFloat ({X}:{Y}:{Z})")]
     [NiTiSCoreTypeInfo("1.3.0.0", "2.0.0.0")]
-    public struct Vector3D : IVector<float>, ISerializable, IEquatable<Vector3D>, IEquatable<Vector3DInt>
+    public struct Vector3D : 
+        IVector<float>,
+#if NITIS_SERIALIZATION
+        ISerializable,
+#endif
+        IEquatable<Vector3D>, 
+        IEquatable<Vector3DInt>
     {
         public float X;
         public float Y;
@@ -64,12 +74,20 @@ namespace NiTiS.Core.Types
             this /= (float)Length;
         }
         public override string ToString() => "{" + X + ":" + Y + ":" + Z + "}";
+#if NITIS_SERIALIZATION
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("x", X);
             info.AddValue("y", Y);
             info.AddValue("z", Z);
         }
+        public Vector3D(SerializationInfo info, StreamingContext context)
+        {
+            X = info.GetSingle("x");
+            Y = info.GetSingle("y");
+            Z = info.GetSingle("z");
+        }
+#endif
         public bool Equals(Vector3DInt other)
         {
             if (other.X != X) { return false; }
@@ -105,12 +123,6 @@ namespace NiTiS.Core.Types
                 return this.Equals(vecInt);
             }
             return base.Equals(obj);
-        }
-        public Vector3D(SerializationInfo info, StreamingContext context)
-        {
-            X = info.GetSingle("x");
-            Y = info.GetSingle("y");
-            Z = info.GetSingle("z");
         }
     }
 }

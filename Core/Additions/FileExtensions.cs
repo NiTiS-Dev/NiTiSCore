@@ -1,4 +1,5 @@
-﻿using NiTiS.Core.Attributes;
+﻿#if NITIS_FILE_EXTENSIONS
+using NiTiS.Core.Attributes;
 using System;
 using System.IO;
 
@@ -65,3 +66,4 @@ namespace NiTiS.Core.Additions
         }
     }
 }
+#endif

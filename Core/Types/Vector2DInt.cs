@@ -2,15 +2,25 @@
 using NiTiS.Core.Enums;
 using System;
 using System.Diagnostics;
+#if NITIS_SERIALIZATION
 using System.Runtime.Serialization;
+#endif
 using static System.Math;
 
 namespace NiTiS.Core.Types
 {
+#if NITIS_SERIALIZATION
     [Serializable]
+#endif
     [DebuggerDisplay("2DInt ({X}:{Y})")]
     [NiTiSCoreTypeInfo("1.0.0.0", "2.0.0.0")]
-    public struct Vector2DInt : IVector<int>, ISerializable, IEquatable<Vector2DInt>, IEquatable<Vector2D>
+    public struct Vector2DInt : 
+        IVector<int>,
+#if NITIS_SERIALIZATION
+        ISerializable,
+#endif
+        IEquatable<Vector2DInt>, 
+        IEquatable<Vector2D>
     {
         public int X;
         public int Y;
@@ -60,11 +70,18 @@ namespace NiTiS.Core.Types
             this /= (int)Length;
         }
         public override string ToString() => "{" + X + ":" + Y + "}";
+#if NITIS_SERIALIZATION
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("x", X);
             info.AddValue("y", Y);
         }
+        public Vector2DInt(SerializationInfo info, StreamingContext context)
+        {
+            X = info.GetInt32("x");
+            Y = info.GetInt32("y");
+        }
+#endif
         public bool Equals(Vector2D other)
         {
             if (other.X != X) { return false; }
@@ -97,11 +114,6 @@ namespace NiTiS.Core.Types
                 return this.Equals(vecInt);
             }
             return base.Equals(obj);
-        }
-        public Vector2DInt(SerializationInfo info, StreamingContext context)
-        {
-            X = info.GetInt32("x");
-            Y = info.GetInt32("y");
         }
     }
 }

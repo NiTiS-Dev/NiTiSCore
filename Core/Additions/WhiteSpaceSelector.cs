@@ -14,7 +14,7 @@ namespace NiTiS.Core.Additions
         public string Convert(string value, bool invert = false)
         {
             string newValue = "";
-            value.ForEachElements(e =>
+            Additions.ForEachElements<char>(value, (e) =>
             {
                 if (Char.IsWhiteSpace(e))
                 {

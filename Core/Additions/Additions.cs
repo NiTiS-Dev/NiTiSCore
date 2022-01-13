@@ -1,5 +1,6 @@
 ﻿using NiTiS.Core.Attributes;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace NiTiS.Core.Additions
@@ -56,6 +57,16 @@ namespace NiTiS.Core.Additions
                 action(item);
             }
         }
+        public static void ForEachElements<T>(this IEnumerable enumerable, Action<T> action)
+        {
+            foreach (var item in enumerable)
+            {
+                if (item is T validItem)
+                {
+                    action(validItem);
+                }
+            }
+        }
         public static T[] ToArray<T>(this IEnumerable<T> enumerable)
         {
             List<T> list = new List<T>();
@@ -65,6 +76,7 @@ namespace NiTiS.Core.Additions
             }
             return list.ToArray();
         }
+#if NITIS_ENUM_INFO
         public static string GetEnumValueName(this Enum enam)
         {
             Type enumType = enam.GetType();
@@ -100,6 +112,7 @@ namespace NiTiS.Core.Additions
                 return "";
             }
         }
+#endif
         public static bool Invert(this bool value, bool invert = true)
         {
             return invert ? !value : value;
