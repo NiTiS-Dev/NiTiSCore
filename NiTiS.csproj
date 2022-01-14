@@ -1,22 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<PackageId>NiTiSCore</PackageId>
-		<TargetFrameworks>netcoreapp2.0;netcoreapp3.1</TargetFrameworks>
+		<TargetFrameworks>netcoreapp2.0;netcoreapp3.1;netstandard1.0;netstandard1.3;netstandard2.0;net20;net35;net47;net48</TargetFrameworks>
 		<LangVersion>7.3</LangVersion>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<AssemblyName>NiTiSCore$(Version)</AssemblyName>
-		<AssemblyVersion>2.0.1.0</AssemblyVersion>
+		<AssemblyVersion>2.0.2.0</AssemblyVersion>
 		<Authors>NickName73,NiTiS</Authors>
 		<Company>NiTiS</Company>
 		<Product>NiTiSCore</Product>
 		<Title>NiTiSCore</Title>
 		<Description>Core for NiTiS projects</Description>
 		<PackageDescription>Core for NiTiS projects</PackageDescription>
-		<Version>2.0.1</Version>
+		<Version>2.0.2</Version>
 		<Summary>Core for NiTiS projects</Summary>
 		<Configurations>Debug;Release</Configurations>
 		<PackageIconUrl>https://github.com/NickName73/NickName73/blob/main/Micros/nitis-core-icon-medium.png?raw=true</PackageIconUrl>
-		<PackageLicenseUrl>https://raw.githubusercontent.com/NiTiS-Dev/NiTiSCore/singleton/LICENSE</PackageLicenseUrl>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageLicenseExpression></PackageLicenseExpression>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/NiTiS-Dev/NiTiSCore</RepositoryUrl>
 		<Copyright>Copyright (c) 2021 NickName73</Copyright>
@@ -31,12 +32,10 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
-		<TargetFrameworks>netcoreapp2.0;netcoreapp3.1;netstandard1.0;netstandard1.3;netstandard2.0;net20;net35;net47;net48</TargetFrameworks>
 		<LangVersion>10.0</LangVersion>
 		<Optimize>true</Optimize>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-		<TargetFrameworks>netcoreapp3.1</TargetFrameworks>
 		<LangVersion>10.0</LangVersion>
 		<Optimize>false</Optimize>
 	</PropertyGroup>
@@ -75,7 +74,7 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-	  <None Include="LICENSE" Pack="true" PackagePath="" />
+	  <None Include="LICENSE.txt" Pack="true" PackagePath="" />
 	  <None Include="icon.png" Pack="true" PackagePath="" />
 	</ItemGroup>
 </Project>
