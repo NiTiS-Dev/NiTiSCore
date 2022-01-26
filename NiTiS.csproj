@@ -70,7 +70,7 @@
 		<DefineConstants>NITIS_SERIALIZATION;NITIS_ENUM_INFO;NITIS_FILE_EXTENSIONS;NITIS_EXTENSIONS;NITIS_TASKS</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(TargetFramework)'=='net48'">
-		<DefineConstants>NITIS_SERIALIZATION;NITIS_ENUM_INFO;NITIS_FILE_EXTENSIONS;NITIS_TASKS</DefineConstants>
+		<DefineConstants>NITIS_SERIALIZATION;NITIS_ENUM_INFO;NITIS_FILE_EXTENSIONS;NITIS_EXTENSIONS;NITIS_TASKS</DefineConstants>
 	</PropertyGroup>
 	
 	<ItemGroup>
