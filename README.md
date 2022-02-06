@@ -14,5 +14,5 @@
   <a href="https:\\nuget.org/packages/NiTiSCore" alt="Version">
     <img src="https://img.shields.io/nuget/v/NiTiSCore?label=release" /></a>
   <a href="https:\\nuget.org/packages/NiTiSCore" alt="Version">
-    <img src="https://img.shields.io/nuget/vpre/NiTiSCore?label=last version&color=%23ff8e4d" /></a>
+    <img src="https://img.shields.io/nuget/vpre/NiTiSCore?label=beta" /></a>
 </p>
