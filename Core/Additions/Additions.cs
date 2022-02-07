@@ -57,6 +57,15 @@ namespace NiTiS.Core.Additions
             }
             return list.ToArray();
         }
+        public static T[] ToArray<T>(this IEnumerable enumerable)
+        {
+            List<T> list = new List<T>();
+            foreach (T item in enumerable)
+            {
+                list.Add(item);
+            }
+            return list.ToArray();
+        }
 #if NITIS_ENUM_INFO
         public static string GetEnumValueName(this Enum enam)
         {

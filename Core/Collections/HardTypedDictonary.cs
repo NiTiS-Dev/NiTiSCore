@@ -19,11 +19,19 @@ namespace NiTiS.Core.Collections
         {
             dict.Clear();
         }
+        public int Count => dict.Count;
 
         public bool Exists<T>()
         {
             return dict.ContainsKey(typeof(T));
         }
+        public bool Exists<T>(T item)
+        {
+            return dict.ContainsKey(typeof(T));
+        }
+
+        internal Dictionary<Type, object> Dictonary => dict;
+
         public T Get<T>()
         {
             return (T)dict[typeof(T)];

@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<PackageId>NiTiSCore</PackageId>
-		<TargetFrameworks>netcoreapp2.0;netcoreapp3.1;netstandard1.0;netstandard1.3;netstandard2.0;net20;net35;net47;net48</TargetFrameworks>
+		<TargetFrameworks>netcoreapp2.0;netcoreapp3.1;netstandard1.3;netstandard2.0;net35;net47;net48</TargetFrameworks>
 		<LangVersion>7.3</LangVersion>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<AssemblyName>NiTiSCore$(Version)</AssemblyName>
-		<AssemblyVersion>2.0.2.0</AssemblyVersion>
+		<AssemblyVersion>2.0.3.0</AssemblyVersion>
 		<Authors>NickName73,NiTiS</Authors>
 		<Company>NiTiS</Company>
 		<Product>NiTiSCore</Product>
 		<Title>NiTiSCore</Title>
 		<Description>Core for NiTiS projects</Description>
 		<PackageDescription>Core for NiTiS projects</PackageDescription>
-		<Version>2.0.2</Version>
+		<Version>2.0.3</Version>
 		<Summary>Core for NiTiS projects</Summary>
 		<Configurations>Debug;Release</Configurations>
 		<PackageIconUrl>https://github.com/NickName73/NickName73/blob/main/Micros/nitis-core-icon-medium.png?raw=true</PackageIconUrl>
@@ -25,7 +25,7 @@
 		<AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
 		<PackageProjectUrl>https://github.com/NiTiS-Dev/NiTiSCore</PackageProjectUrl>
 		<PackageIcon>icon.png</PackageIcon>
-		<PackageTags>NiTiS;NickName73;Core;NiTiSCore</PackageTags>
+		<PackageTags>NiTiS;NickName73;Core;NiTiSCore;NiTiSDev</PackageTags>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<RootNamespace>NiTiS</RootNamespace>
@@ -47,9 +47,6 @@
 	<PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
 		<DefineConstants>NITIS_SERIALIZATION;NITIS_ENUM_INFO;NITIS_FILE_EXTENSIONS;NITIS_EXTENSIONS;NITIS_TASKS</DefineConstants>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
-		<DefineConstants>NITIS_EXTENSIONS;NITIS_TASKS</DefineConstants>
-	</PropertyGroup>
 
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp2.0'">
@@ -59,10 +56,6 @@
 		<DefineConstants>NITIS_SERIALIZATION;NITIS_ENUM_INFO;NITIS_FILE_EXTENSIONS;NITIS_EXTENSIONS;NITIS_TASKS</DefineConstants>
 	</PropertyGroup>
 
-	
-	<PropertyGroup Condition="'$(TargetFramework)'=='net20'">
-		<DefineConstants>NITIS_SERIALIZATION;NITIS_FILE_EXTENSIONS</DefineConstants>
-	</PropertyGroup>
 	<PropertyGroup Condition="'$(TargetFramework)'=='net35'">
 		<DefineConstants>NITIS_SERIALIZATION;NITIS_FILE_EXTENSIONS;NITIS_EXTENSIONS</DefineConstants>
 	</PropertyGroup>
@@ -70,7 +63,7 @@
 		<DefineConstants>NITIS_SERIALIZATION;NITIS_ENUM_INFO;NITIS_FILE_EXTENSIONS;NITIS_EXTENSIONS;NITIS_TASKS</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(TargetFramework)'=='net48'">
-		<DefineConstants>NITIS_SERIALIZATION;NITIS_ENUM_INFO;NITIS_FILE_EXTENSIONS;NITIS_TASKS</DefineConstants>
+		<DefineConstants>NITIS_SERIALIZATION;NITIS_ENUM_INFO;NITIS_FILE_EXTENSIONS;NITIS_EXTENSIONS;NITIS_TASKS</DefineConstants>
 	</PropertyGroup>
 	
 	<ItemGroup>
