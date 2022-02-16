@@ -1,4 +1,6 @@
-﻿namespace NiTiS.Core.Collections
+﻿using NiTiS.Core.Collections.Generic;
+
+namespace NiTiS.Core.Collections
 {
     public static class SingletonManager
     {

@@ -50,7 +50,7 @@ namespace NiTiS.Core.Additions
         }
         public static T[] ToArray<T>(this IEnumerable<T> enumerable)
         {
-            List<T> list = new List<T>();
+            List<T> list = new();
             foreach (T item in enumerable)
             {
                 list.Add(item);
@@ -59,7 +59,7 @@ namespace NiTiS.Core.Additions
         }
         public static T[] ToArray<T>(this IEnumerable enumerable)
         {
-            List<T> list = new List<T>();
+            List<T> list = new();
             foreach (T item in enumerable)
             {
                 list.Add(item);

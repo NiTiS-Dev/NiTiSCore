@@ -37,11 +37,20 @@ namespace NiTiS.Core.Math
         {
             return (first * (System.Math.Pow(q, endIndex) - 1)) / (q - 1);
         }
-        public IEnumerable<double> SumArray(int endIndex)
+        public IEnumerable<double> SumArray(int count)
         {
-            for (int i = 0; i < endIndex; ++i)
+            //Starts from 1 element
+            for (int i = 1; i <= count; ++i)
             {
                 yield return Get(i);
+            }
+        }
+        public IEnumerable<double> SumArray(int startIndex, int endIndex)
+        {
+            for(;startIndex <= endIndex;)
+            {
+                yield return Get(startIndex);
+                startIndex++;
             }
         }
         public IEnumerable<double> SumArray(Predicate<double> predicate)

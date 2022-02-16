@@ -2,15 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace NiTiS.Core.Collections
+namespace NiTiS.Core.Collections.Generic
 {
-    public class HardTypedDictonary : IEnumerable
+    public class HardTypedDictonary : HardTypedDictonary<object> { }
+    public class HardTypedDictonary<M> : IEnumerable
     {
-        private Dictionary<Type, object> dict = new Dictionary<Type, object>();
+        private Dictionary<Type, M> dict = new();
 
         public HardTypedDictonary() { }
 
-        public void Add<T>(T obj)
+        public void Add<T>(T obj) where T : M 
         {
             dict.Add(typeof(T), obj);
         }
@@ -20,19 +21,14 @@ namespace NiTiS.Core.Collections
             dict.Clear();
         }
         public int Count => dict.Count;
-
-        public bool Exists<T>()
-        {
-            return dict.ContainsKey(typeof(T));
-        }
         public bool Exists<T>(T item)
         {
             return dict.ContainsKey(typeof(T));
         }
 
-        internal Dictionary<Type, object> Dictonary => dict;
+        internal Dictionary<Type, M> Dictonary => dict;
 
-        public T Get<T>()
+        public T Get<T>() where T : M
         {
             return (T)dict[typeof(T)];
         }
@@ -40,6 +36,13 @@ namespace NiTiS.Core.Collections
         public IEnumerator GetEnumerator()
         {
             return dict.GetEnumerator();
+        }
+        public IEnumerator<M> GetEnumeratorAsList()
+        {
+            foreach (var item in dict)
+            {
+                yield return item.Value;
+            }
         }
 
         public bool Remove(Type item)

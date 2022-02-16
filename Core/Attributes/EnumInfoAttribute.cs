@@ -1,7 +1,5 @@
 ﻿#if NITIS_ENUM_INFO
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NiTiS.Core.Attributes
 {

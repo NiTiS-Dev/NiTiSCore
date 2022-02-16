@@ -9,10 +9,12 @@ namespace NiTiS.Core.Math
     }
     public interface IProgression<T>
     {
-        T First { get; set; }
-        T Get(int index);
-        T Sum(int endIndex);
-        IEnumerable<T> SumArray(int endIndex);
-        IEnumerable<T> SumArray(Predicate<T> predicate);
+        public T First { get; set; }
+        public T Get(int index);
+        public T Sum(int endIndex);
+        public IEnumerable<T> SumArray(int count);
+
+        public IEnumerable<T> SumArray(int startIndex, int endIndex); 
+        public IEnumerable<T> SumArray(Predicate<T> predicate);
     }
 }
