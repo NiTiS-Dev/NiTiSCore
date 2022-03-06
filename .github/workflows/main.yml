@@ -30,12 +30,13 @@ jobs:
         run: dotnet test --configuration Release --no-build
       - name: Pack
         run: dotnet pack --configuration Release --output .
-      - name: PushGIT
-        run: dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: PushNUGET
         run: dotnet nuget push *.nupkg --source https://api.nuget.org --api-key ${GITHUB_TOKEN}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: PushGIT
+        run: dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
           
