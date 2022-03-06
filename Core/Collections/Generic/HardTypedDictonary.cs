@@ -10,8 +10,15 @@ namespace NiTiS.Core.Collections.Generic
         private Dictionary<Type, M> dict = new();
 
         public HardTypedDictonary() { }
+        public HardTypedDictonary(IEnumerable<M> items)
+        {
+            foreach (var item in items)
+            {
+                dict.Add(item.GetType(), item);
+            }
+        }
 
-        public void Add<T>(T obj) where T : M 
+        public void Add<T>(T obj) where T : M
         {
             dict.Add(typeof(T), obj);
         }
@@ -43,6 +50,10 @@ namespace NiTiS.Core.Collections.Generic
             {
                 yield return item.Value;
             }
+        }
+        public IEnumerator<M> GetEnumeratorFromValues()
+        {
+            return dict.Values.GetEnumerator();
         }
 
         public bool Remove(Type item)

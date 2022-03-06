@@ -1,39 +1,42 @@
 ﻿#if NITIS_REFLECTION
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Reflection;
 using System.Linq;
+using System.Reflection;
 
 namespace NiTiS.Core.Reflection;
 
-public sealed class InstanceEditor<EDIT>
+public sealed class InstanceEditor
 {
     private readonly Type editType;
-    public EDIT Instance { get; set; }
-    public InstanceEditor(EDIT instance = default)
+    public object Instance { get; set; }
+    public BindingFlags Flags { get; set; } =
+            BindingFlags.Instance |
+            BindingFlags.Public |
+            BindingFlags.NonPublic |
+            BindingFlags.Static;
+    public InstanceEditor(object instance = default)
     {
         this.Instance = instance;
-        editType = typeof(EDIT);
+        editType = instance.GetType();
     }
-    public IEnumerable<object> GetVariableValueEnumerator()
+    public IEnumerable<object> GetVariableValueEnumerable()
     {
-        return editType.GetFields(
-            BindingFlags.Instance |
-            BindingFlags.Public |
-            BindingFlags.NonPublic |
-            BindingFlags.Static
-            ).Select(s => s.GetValue(Instance));
+        return editType.GetFields(Flags).Select(s => s.GetValue(Instance));
     }
-    public IEnumerable<object> GetVariableEnumerator()
+    public IEnumerable<FieldInfo> GetVariableEnumerable()
     {
-        return editType.GetFields(
-            BindingFlags.Instance |
-            BindingFlags.Public |
-            BindingFlags.NonPublic |
-            BindingFlags.Static
-            );
+        return editType.GetFields(Flags);
+    }
+    public IEnumerable<PropertyInfo> GetProperityEnumerable()
+    {
+        return editType.GetProperties(Flags);
+    }
+    public IEnumerable<object> GetProperityValueEnumerable()
+    {
+        return editType.GetProperties(Flags).Where(s => s.CanRead).Select(s => s.GetValue(Instance));
     }
     public bool IsEnum => editType.IsEnum;
+    public Array EnumValues => editType.GetEnumValues();
 }
 #endif

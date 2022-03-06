@@ -14,7 +14,7 @@ namespace NiTiS.Core.Math
         public T Sum(int endIndex);
         public IEnumerable<T> SumArray(int count);
 
-        public IEnumerable<T> SumArray(int startIndex, int endIndex); 
+        public IEnumerable<T> SumArray(int startIndex, int endIndex);
         public IEnumerable<T> SumArray(Predicate<T> predicate);
     }
 }

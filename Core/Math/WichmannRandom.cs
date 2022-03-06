@@ -8,7 +8,7 @@ public sealed class WichmannRandom
     private double s1, s2, s3;
     public WichmannRandom(ushort seed)
     {
-        if(seed > 30000)
+        if (seed > 30000)
         {
             throw new ArgumentOutOfRangeException(nameof(seed));
         }

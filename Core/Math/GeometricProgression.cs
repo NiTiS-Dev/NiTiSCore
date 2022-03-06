@@ -47,7 +47,7 @@ namespace NiTiS.Core.Math
         }
         public IEnumerable<double> SumArray(int startIndex, int endIndex)
         {
-            for(;startIndex <= endIndex;)
+            for (; startIndex <= endIndex;)
             {
                 yield return Get(startIndex);
                 startIndex++;

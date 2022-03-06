@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace NiTiS.Core.Data
 {
@@ -11,7 +10,7 @@ namespace NiTiS.Core.Data
         public static BinaryDataStorage CreateForRead(byte[] bytes)
         {
             BinaryDataStorage storage = new BinaryDataStorage();
-            foreach(byte b in bytes)
+            foreach (byte b in bytes)
             {
                 storage.bytes.Enqueue(b);
             }
@@ -99,7 +98,7 @@ namespace NiTiS.Core.Data
         public string ReadString(int size)
         {
             string text = "";
-            for(int i = 0; i < size; i++)
+            for (int i = 0; i < size; i++)
             {
                 text += Convert.ToChar(bytes.Dequeue());
             }
@@ -140,7 +139,7 @@ namespace NiTiS.Core.Data
 
         public void WriteBool(bool value)
         {
-            bytes.Enqueue( Convert.ToByte(value) );
+            bytes.Enqueue(Convert.ToByte(value));
         }
 
         public void WriteByte(byte value)
@@ -150,14 +149,14 @@ namespace NiTiS.Core.Data
 
         public void WriteChar(char value)
         {
-            bytes.Enqueue( Convert.ToByte(value) );
+            bytes.Enqueue(Convert.ToByte(value));
         }
 
         public void WriteDouble(double value)
         {
-            foreach(byte bt in BitConverter.GetBytes(value))
+            foreach (byte bt in BitConverter.GetBytes(value))
             {
-                bytes.Enqueue( bt );
+                bytes.Enqueue(bt);
             }
         }
 
@@ -200,7 +199,7 @@ namespace NiTiS.Core.Data
 
         public void WriteString(string value)
         {
-            foreach(char c in value)
+            foreach (char c in value)
             {
                 bytes.Enqueue(Convert.ToByte(c));
             }
