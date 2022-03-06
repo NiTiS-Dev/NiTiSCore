@@ -23,11 +23,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
-      - name: publish on version change
-        id: publish_nuget
-        uses: rohith/publish-nuget@v2
-        
+
       - name: Build
         run: dotnet build --configuration Release
       - name: Test
