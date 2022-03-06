@@ -23,8 +23,6 @@
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/NiTiS-Dev/NiTiSCore</RepositoryUrl>
 		<Copyright>Copyright (c) 2021-2022 NickName73</Copyright>
-		<SignAssembly>True</SignAssembly>
-		<AssemblyOriginatorKeyFile>NiTiSCore</AssemblyOriginatorKeyFile>
 		<PackageProjectUrl>https://github.com/NiTiS-Dev/NiTiSCore</PackageProjectUrl>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>NiTiS;NickName73;Core;NiTiSCore;NiTiSDev</PackageTags>
