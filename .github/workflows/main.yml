@@ -4,10 +4,10 @@ name: NugetPublish
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the singleton branch
-  push:
-    branches: [ singleton ]
-  pull_request:
-    branches: [ singleton ]
+  #push:
+  #  branches: [ singleton ]
+  #pull_request:
+  #  branches: [ singleton ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -29,8 +29,8 @@ jobs:
       - name: Test
         run: dotnet test --configuration Release --no-build
       - name: Pack
-        run: dotnet pack --configuration Release
+        run: dotnet pack --configuration Release --output .
       - name: Push
-        run: dotnet nuget push NuGet.Workflow.${VERSION}.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN}
+        run: dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
