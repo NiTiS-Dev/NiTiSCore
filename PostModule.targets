@@ -8,7 +8,9 @@
 		<RootNamespace Condition="$(PP_CustomNamespace)">$(PP_Name)</RootNamespace>
 		<PackageId Condition="$(PP_CustomID)=='false'">$(PP_Name)</PackageId>
 		<PackageId Condition="$(PP_CustomID)=='true'">$(PackageId)</PackageId>
+		<PackageIdPrefix></PackageIdPrefix>
 		<PackageVersion>$(PP_Version)</PackageVersion>
+		<PackageDescription>$(Description)</PackageDescription>
 		<Summary>$(Description)</Summary>
 	</PropertyGroup>
 </Project>
