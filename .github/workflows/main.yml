@@ -33,6 +33,7 @@ jobs:
           dotnet pack -c Release -o ../../.build/
       - name: Pack
         run: |
+          ls
           cd ..
           dotnet pack NiTiS.IO/ -c Release -o ../.build/
           dotnet pack NiTiS.Collections/ -c Release -o ../.build/
