@@ -5,6 +5,9 @@ name: NugetPublish
 on:
   push:
     branches: [ singleton ]
+    paths:
+    - '**.cs'
+    - '**.csproj'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
