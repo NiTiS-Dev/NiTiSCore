@@ -3,19 +3,19 @@
 		<Creator>NiTiS-Dev</Creator>
 		<Creators>$(Creator), NickName73</Creators>
 		<Core_Name>NiTiS.Core</Core_Name>
-		<Core_Version>2.0.5</Core_Version>
+		<Core_Version>2.0.5.1</Core_Version>
 		<IO_Name>NiTiS.IO</IO_Name>
-		<IO_Version>1.0.0</IO_Version>
+		<IO_Version>1.0.1</IO_Version>
 		<Collections_Name>NiTiS.Collections</Collections_Name>
-		<Collections_Version>1.0.0</Collections_Version>
+		<Collections_Version>1.0.1</Collections_Version>
 		<Math_Name>NiTiS.Math</Math_Name>
-		<Math_Version>1.0.0</Math_Version>
+		<Math_Version>1.0.1</Math_Version>
 		<Interaction_Name>NiTiS.Interaction</Interaction_Name>
-		<Interaction_Version>1.0.0</Interaction_Version>
+		<Interaction_Version>1.0.1</Interaction_Version>
 		<Reflection_Name>NiTiS.Reflection</Reflection_Name>
-		<Reflection_Version>1.0.0</Reflection_Version>
+		<Reflection_Version>1.0.1</Reflection_Version>
 		<Additions_Name>NiTiS.Additions</Additions_Name>
-		<Additions_Version>2.0.0</Additions_Version>
+		<Additions_Version>2.0.1</Additions_Version>
 		
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
@@ -30,6 +30,10 @@
 		<PackageProjectUrl>https://github.com/NiTiS-Dev/NiTiSCore</PackageProjectUrl>
 		<PackageLicenseUrl>http://opensource.org/licenses/MIT</PackageLicenseUrl>
 		<PackageIconUrl>https://github.com/NiTiS-Dev/NiTiSCore/raw/singleton/icon.png</PackageIconUrl>
+		<PackageReadmeUrl>https://raw.githubusercontent.com/NiTiS-Dev/NiTiSCore/singleton/nuget.md</PackageReadmeUrl>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<IncludeSymbols>true</IncludeSymbols>
+		<PackageType>snupkg</PackageType>
 		<PackageTags>NiTiS;NickName73;Core;NiTiSCore;NiTiSDev</PackageTags>
 		<Copyright>Copyright (c) 2022 $(Creator)</Copyright>
 
