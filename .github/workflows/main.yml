@@ -3,11 +3,10 @@
 name: NugetPublish
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the singleton branch
-  #push:
-  #  branches: [ singleton ]
-  #pull_request:
-  #  branches: [ singleton ]
+  push:
+    branches: [ singleton ]
+  pull_request:
+    branches: [ singleton ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -44,26 +43,26 @@ jobs:
       - name: PushNUGET
         run: |
           cd .build/
-          dotnet nuget push NiTiS.Core/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.IO/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.Collections/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.Interaction/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.Math/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.Reflection/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.Additions/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Core/*.snupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.IO/*.snupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Collections/*.snupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Interaction/*.snupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Math/*.snupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Reflection/*.snupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Additions/*.snupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
         env:
           NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
           
       - name: PushGIT
         run: |
           cd .build/
-          dotnet nuget push NiTiS.Core/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.IO/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.Collections/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.Interaction/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.Math/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.Reflection/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.Additions/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Core/*.snupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.IO/*.snupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Collections/*.snupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Interaction/*.snupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Math/*.snupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Reflection/*.snupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Additions/*.snupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
