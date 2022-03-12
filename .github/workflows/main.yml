@@ -43,6 +43,9 @@ jobs:
       
       - name: PushNUGET
         run: |
+          ls
+          cd .build/
+          ls
           dotnet nuget push NiTiS.Core/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
           dotnet nuget push NiTiS.IO/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
           dotnet nuget push NiTiS.Collections/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
