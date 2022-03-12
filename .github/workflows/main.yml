@@ -26,7 +26,7 @@ jobs:
 
       - name: Build
         run: |
-          .\buildcore.cmd
+          ./buildcore.cmd
           cd .build/
       
       - name: PushNUGET
