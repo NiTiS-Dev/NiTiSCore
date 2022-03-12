@@ -1,0 +1,14 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<AssemblyName>$(PP_Name)</AssemblyName>
+		<AssemblyTitle>$(PP_Name)</AssemblyTitle>
+		<Version>$(PP_Version)</Version>
+		<AssemblyVersion>$(PP_Version)</AssemblyVersion>
+		<Title>$(PP_Name)</Title>
+		<RootNamespace Condition="$(PP_CustomNamespace)">$(PP_Name)</RootNamespace>
+		<PackageId Condition="$(PP_CustomID)=='false'">$(PP_Name)</PackageId>
+		<PackageId Condition="$(PP_CustomID)=='true'">$(PackageId)</PackageId>
+		<PackageVersion>$(PP_Version)</PackageVersion>
+		<Summary>$(Description)</Summary>
+	</PropertyGroup>
+</Project>

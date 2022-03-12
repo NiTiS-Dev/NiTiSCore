@@ -11,7 +11,7 @@ namespace NiTiS.Core.Additions
         {
             return text.TrimEnd(' ').TrimStart(' ');
         }
-        public static string FromArrayToString(this IEnumerable<string> enumerable)
+        public static string FromArrayToString(this IEnumerable<object> enumerable)
         {
             string text = "";
             foreach (var item in enumerable)

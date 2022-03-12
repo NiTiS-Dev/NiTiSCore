@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="../../ModuleVersions.targets" />
+	<PropertyGroup>
+		<PP_CustomNamespace>true</PP_CustomNamespace>
+		<PP_CustomID>true</PP_CustomID>
+		<PP_Name>$(Core_Name)</PP_Name>
+		<PP_Version>$(Core_Version)</PP_Version>
+		<Description>The main NiTiS library</Description>
+		
+		<RootNamespace>NiTiS</RootNamespace>
+		<PackageId>NiTiSCore</PackageId>
+	</PropertyGroup>
+	<Import Project="../../PostModule.targets"/>
+	<ItemGroup>
+		<ProjectReference Include="../NiTiS.IO/NiTiS.IO.csproj" />
+		<ProjectReference Include="../NiTiS.Math/NiTiS.Math.csproj" />
+		<ProjectReference Include="../NiTiS.Collections/NiTiS.Collections.csproj" />
+		<ProjectReference Include="../NiTiS.Interaction/NiTiS.Interaction.csproj" />
+		<ProjectReference Include="../NiTiS.Additions/NiTiS.Additions.csproj" />
+		<ProjectReference Include="../NiTiS.Reflection/NiTiS.Reflection.csproj" />
+	</ItemGroup>
+</Project>
