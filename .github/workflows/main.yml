@@ -29,6 +29,7 @@ jobs:
           cd Core
           cd NiTiS
           dotnet build -c Release
+          dotnet build Core/NiTiS.PreviewFunctions/ -c Release
           dotnet pack -c Release -o ../../.build/NiTiS.Core/
       - name: Pack
         run: |
