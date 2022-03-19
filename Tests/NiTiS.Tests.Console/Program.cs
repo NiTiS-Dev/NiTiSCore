@@ -9,6 +9,7 @@ namespace NiTiS.Tests.Console
         static void Main(string[] args)
         {
             int[] numbers = { 1, 2, 3 };
+            
 
             SC.WriteLine(Strings.FromArray(numbers));
         }

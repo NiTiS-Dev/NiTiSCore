@@ -3,17 +3,17 @@
 		<Creator>NiTiS-Dev</Creator>
 		<Creators>$(Creator), NickName73</Creators>
 		<Core_Name>NiTiS.Core</Core_Name>
-		<Core_Version>2.0.5.3</Core_Version>
+		<Core_Version>2.0.5.4</Core_Version>
 		<IO_Name>NiTiS.IO</IO_Name>
 		<IO_Version>1.0.3</IO_Version>
 		<Collections_Name>NiTiS.Collections</Collections_Name>
-		<Collections_Version>1.0.3</Collections_Version>
+		<Collections_Version>1.0.4</Collections_Version>
 		<Math_Name>NiTiS.Math</Math_Name>
 		<Math_Version>1.0.1</Math_Version>
 		<Interaction_Name>NiTiS.Interaction</Interaction_Name>
 		<Interaction_Version>1.0.1</Interaction_Version>
 		<Reflection_Name>NiTiS.Reflection</Reflection_Name>
-		<Reflection_Version>1.0.1</Reflection_Version>
+		<Reflection_Version>1.0.2</Reflection_Version>
 		<Additions_Name>NiTiS.Additions</Additions_Name>
 		<Additions_Version>2.0.2</Additions_Version>
 		

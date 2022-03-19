@@ -1,6 +1,6 @@
 ﻿using NiTiS.Collections.Generic;
 
-namespace NiTiS.Core.Collections
+namespace NiTiS.Collections
 {
     public static class SingletonManager
     {

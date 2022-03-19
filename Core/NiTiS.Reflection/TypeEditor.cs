@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace NiTiS.Core.Reflection;
+namespace NiTiS.Reflection;
 
 public class TypeEditor<T>
 {
