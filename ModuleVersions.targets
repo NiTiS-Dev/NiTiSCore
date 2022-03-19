@@ -33,7 +33,7 @@
 		<PackageLicenseUrl>http://opensource.org/licenses/MIT</PackageLicenseUrl>
 		<PackageIconUrl>https://github.com/NiTiS-Dev/NiTiSCore/raw/singleton/icon.png</PackageIconUrl>
 		<PackageReadmeUrl>https://raw.githubusercontent.com/NiTiS-Dev/NiTiSCore/singleton/nuget.md</PackageReadmeUrl>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
 		<IncludeSymbols>true</IncludeSymbols>
 		<PackageType>snupkg</PackageType>
 		<PackageTags>NiTiS;NickName73;Core;NiTiSCore;NiTiSDev</PackageTags>
