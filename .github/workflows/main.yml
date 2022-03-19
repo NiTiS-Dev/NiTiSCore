@@ -39,7 +39,6 @@ jobs:
           dotnet pack NiTiS.Math/ -c Release -o ../.build/NiTiS.Math/
           dotnet pack NiTiS.Reflection/ -c Release -o ../.build/NiTiS.Reflection/
           dotnet pack NiTiS.Additions/ -c Release -o ../.build/NiTiS.Additions/
-          dotnet pack NiTiS.PreviewFunctions/ -c Release -o ../.build/NiTiS.PreviewFunctions/
           cd ../.build/
       
       - name: PushNUGET
