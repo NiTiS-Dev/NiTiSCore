@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<PP_Name>$(Reflection_Name)</PP_Name>
 		<PP_Version>$(Reflection_Version)</PP_Version>
-		<Description>The NiTiS library including math</Description>
+		<Description>The NiTiS library required for reflection</Description>
 	</PropertyGroup>
 	<Import Project="../../PostModule.targets"/>
 	<ItemGroup>
