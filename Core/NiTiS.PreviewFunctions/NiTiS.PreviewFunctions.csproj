@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="../../ModuleVersions.targets"/>
+	<PropertyGroup>
+		<PP_Name>$(Preview_Name)</PP_Name>
+		<PP_Version>$(Preview_Version)</PP_Version>
+		<Description>The NiTiS library with preview functions, classes, etc</Description>
+		<LangVersion>preview</LangVersion>
+		<EnablePreviewFeatures>True</EnablePreviewFeatures>
+	</PropertyGroup>
+	<Import Project="../../PostModule.targets"/>
+	<ItemGroup>
+	</ItemGroup>
+</Project>

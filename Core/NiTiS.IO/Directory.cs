@@ -14,13 +14,13 @@ public sealed class Directory : IStorageElement
     /// </summary>
     /// <param name="path">Path to some directory</param>
     /// <exception cref="ArgumentNullException"></exception>
-    public Directory(string path)
+    public Directory(params string[] path)
     {
         if (path is null)
         {
             throw new ArgumentNullException(nameof(path));
         }
-        this.path = path;
+        this.path = SPath.Combine(path);
     }
     public string Path => path;
     public string Name => SPath.GetFileName(path);

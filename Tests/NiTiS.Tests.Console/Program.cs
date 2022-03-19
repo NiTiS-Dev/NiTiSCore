@@ -1,5 +1,6 @@
 ﻿using SC = System.Console;
 using NiTiS.IO;
+using NiTiS.Additions;
 
 namespace NiTiS.Tests.Console
 {
@@ -7,12 +8,9 @@ namespace NiTiS.Tests.Console
     {
         static void Main(string[] args)
         {
-            File file = new(@"C:/Desktop/main.nit");
-            SC.WriteLine(file.Parent);
-            Directory dir = new(@"C:/Desktop/Folder");
-            dir.Create();
-            File f = new(dir, "item.int");
-            f.Create();
+            int[] numbers = { 1, 2, 3 };
+
+            SC.WriteLine(Strings.FromArray(numbers));
         }
     }
 }

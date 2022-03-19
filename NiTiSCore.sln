@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiS.Math", "Core\NiTiS.Ma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiS.Interaction", "Core\NiTiS.Interaction\NiTiS.Interaction.csproj", "{76D562A5-007E-430C-AE28-C035AB33A48F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiTiS.Reflection", "Core\NiTiS.Reflection\NiTiS.Reflection.csproj", "{4AFE4FC9-4345-48C9-B7AB-9E841245ACDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiS.Reflection", "Core\NiTiS.Reflection\NiTiS.Reflection.csproj", "{4AFE4FC9-4345-48C9-B7AB-9E841245ACDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiTiS.Additions", "Core\NiTiS.Additions\NiTiS.Additions.csproj", "{38B61F33-2804-476E-9270-E45F22ACA162}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiS.Additions", "Core\NiTiS.Additions\NiTiS.Additions.csproj", "{38B61F33-2804-476E-9270-E45F22ACA162}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiS.PreviewFunctions", "Core\NiTiS.PreviewFunctions\NiTiS.PreviewFunctions.csproj", "{314E5D09-AF6C-4F78-B677-10F4AAF85DED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{38B61F33-2804-476E-9270-E45F22ACA162}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38B61F33-2804-476E-9270-E45F22ACA162}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38B61F33-2804-476E-9270-E45F22ACA162}.Release|Any CPU.Build.0 = Release|Any CPU
+		{314E5D09-AF6C-4F78-B677-10F4AAF85DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{314E5D09-AF6C-4F78-B677-10F4AAF85DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{314E5D09-AF6C-4F78-B677-10F4AAF85DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{314E5D09-AF6C-4F78-B677-10F4AAF85DED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
