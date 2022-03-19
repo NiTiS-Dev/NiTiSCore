@@ -19,19 +19,21 @@ public class SmartDictonary<TKey, TValue> : Dictionary<TKey, TValue>
     {
         this.keyGetter = keyGetter;
     }
-    public SmartDictonary(KeyGetter keyGetter, IEnumerable<KeyValuePair<TKey, TValue>> collection) : base(collection)
-    {
-        this.keyGetter = keyGetter;
-    }
-    public SmartDictonary(KeyGetter keyGetter, IEnumerable<KeyValuePair<TKey, TValue>> collection, IEqualityComparer<TKey>? comparer) : base(collection, comparer)
-    {
-        this.keyGetter = keyGetter;
-    }
     public SmartDictonary(KeyGetter keyGetter, int capacity) : base(capacity)
     {
         this.keyGetter = keyGetter;
     }
     public SmartDictonary(KeyGetter keyGetter, int capacity, IEqualityComparer<TKey>? comparer) : base(capacity, comparer)
+    {
+        this.keyGetter = keyGetter;
+    }
+
+#if NITIS_MORE_CONSTRUCTOR_SMARTDICTONARY
+    public SmartDictonary(KeyGetter keyGetter, IEnumerable<KeyValuePair<TKey, TValue>> collection) : base(collection)
+    {
+        this.keyGetter = keyGetter;
+    }
+    public SmartDictonary(KeyGetter keyGetter, IEnumerable<KeyValuePair<TKey, TValue>> collection, IEqualityComparer<TKey>? comparer) : base(collection, comparer)
     {
         this.keyGetter = keyGetter;
     }
@@ -43,6 +45,7 @@ public class SmartDictonary<TKey, TValue> : Dictionary<TKey, TValue>
     {
         this.keyGetter = keyGetter;
     }
+#endif
     public void Add(TValue value)
     {
 

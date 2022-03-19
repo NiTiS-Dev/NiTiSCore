@@ -30,27 +30,15 @@ public sealed class Directory : IStorageElement
     public DateTime LastAccessTimeUTC { get => SDir.GetLastAccessTimeUtc(path); set => SDir.SetLastAccessTime(path, value); }
     public bool Exists => SDir.Exists(path);
     /// <summary>
-    /// Entry to directory by name (works like cd command)
-    /// </summary>
-    /// <param name="folder"></param>
-    public void Enter(string folder)
-    {
-        path = SPath.Combine(path, folder);
-    }
-    /// <summary>
-    /// Exit from directory
-    /// </summary>
-    /// <param name="level">Folder exit depth</param>
-    public void Exit(int level = 1)
-    {
-        path = SPath.Combine( Separate().SkipLast(level).ToArray());
-    }
-    /// <summary>
     /// Returns path separated by folders
     /// </summary>
     public string[] Separate()
     {
-        return path.Split(SPath.VolumeSeparatorChar, StringSplitOptions.None);
+#if NET48
+        return path.Split(new char[] { SPath.DirectorySeparatorChar }, StringSplitOptions.None);
+#else
+        return path.Split(SPath.DirectorySeparatorChar, StringSplitOptions.None);
+#endif
     }
     /// <summary>
     /// Get other folders from this directory

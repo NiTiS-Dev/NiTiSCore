@@ -3,11 +3,11 @@
 		<Creator>NiTiS-Dev</Creator>
 		<Creators>$(Creator), NickName73</Creators>
 		<Core_Name>NiTiS.Core</Core_Name>
-		<Core_Version>2.0.5.2</Core_Version>
+		<Core_Version>2.0.5.3</Core_Version>
 		<IO_Name>NiTiS.IO</IO_Name>
-		<IO_Version>1.0.2</IO_Version>
+		<IO_Version>1.0.3</IO_Version>
 		<Collections_Name>NiTiS.Collections</Collections_Name>
-		<Collections_Version>1.0.2</Collections_Version>
+		<Collections_Version>1.0.3</Collections_Version>
 		<Math_Name>NiTiS.Math</Math_Name>
 		<Math_Version>1.0.1</Math_Version>
 		<Interaction_Name>NiTiS.Interaction</Interaction_Name>
@@ -15,14 +15,14 @@
 		<Reflection_Name>NiTiS.Reflection</Reflection_Name>
 		<Reflection_Version>1.0.1</Reflection_Version>
 		<Additions_Name>NiTiS.Additions</Additions_Name>
-		<Additions_Version>2.0.1</Additions_Version>
-		<Preview_Name>NiTiS.PreviewFunctions</Preview_Name>
-		<Preview_Name_Version>1.0.0</Preview_Name_Version>
+		<Additions_Version>2.0.2</Additions_Version>
 		
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
+		<NoWarn>NU5125;NU5048</NoWarn>
+
+		<TargetFrameworks>net6.0;netstandard2.1;netcoreapp3.1;net5.0;net48</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
-		<TargetFrameworks>net6.0;netstandard2.1;net5.0</TargetFrameworks>
 		<Nullable>annotations</Nullable>
 		<Authors>$(Creators)</Authors>
 		<Company>$(Creator)</Company>
@@ -42,5 +42,20 @@
 		<PP_CustomNamespace>false</PP_CustomNamespace>
 		<PP_CustomID>false</PP_CustomID>
 		
+	</PropertyGroup>
+	<PropertyGroup Condition="$(TargetFramework) == 'net48'">
+		<DefineConstants></DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="$(TargetFramework) == 'net6.0'">
+		<DefineConstants>NITIS_IO_ASYNC;NITIS_MORE_CONSTRUCTOR_SMARTDICTONARY</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="$(TargetFramework) == 'net5.0'">
+		<DefineConstants>NITIS_IO_ASYNC;NITIS_MORE_CONSTRUCTOR_SMARTDICTONARY</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="$(TargetFramework) == 'netcoreapp3.1'">
+		<DefineConstants>NITIS_IO_ASYNC;NITIS_MORE_CONSTRUCTOR_SMARTDICTONARY</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="$(TargetFramework) == 'netstandard2.1'">
+		<DefineConstants>NITIS_IO_ASYNC;NITIS_MORE_CONSTRUCTOR_SMARTDICTONARY</DefineConstants>
 	</PropertyGroup>
 </Project>

@@ -23,15 +23,15 @@ public static class Strings
     /// Creates string using some array
     /// </summary>
     /// <returns>For array {0, 1, 2 ,3} returns "[0, 1, 2, 3]"</returns>
-    public static string FromArray(IEnumerable enumarable, string start = "[", string end = "]", string seperator = ", ")
+    public static string FromArray(IEnumerable enumarable, string start = "[", string end = "]", string seperator = ", ", string nullName = "null")
     {
         string text = start;
         System.Collections.Generic.List<string> list = new();
-        int max = list.Count;
         foreach (var item in enumarable)
         {
-            list.Add(item.ToString());
+            list.Add(item?.ToString() ?? nullName);
         }
+        int max = list.Count;
         for (int i = 0; i < max; i++)
         {
             text += list[i] + ((max -1 == i)? String.Empty : seperator);

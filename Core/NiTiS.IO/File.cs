@@ -179,6 +179,93 @@ public sealed class File : IStorageElement
         SFile.Copy(this.Path, copyTo.Path, overwrite);
     }
     /// <summary>
+    /// Move file to other space
+    /// </summary>
+    /// <param name="path">The path to move</param>
+    /// <param name="overwrite">Whether to overwrite the file (if it exists)</param>
+    public void MoveTo(string path, bool overwrite = true) => MoveTo(new File(path), overwrite);
+    /// <summary>
+    /// Move file to other space
+    /// </summary>
+    /// <param name="moveTo">Position to move</param>
+    /// <param name="overwrite">Whether to overwrite the file (if it exists)</param>
+    public void MoveTo(File moveTo, bool overwrite = true)
+    {
+        CopyTo(moveTo, overwrite);
+        Delete();
+    }
+    /// <summary>
+    /// Create backup file from existing file
+    /// </summary>
+    /// <param name="path">Path to backup file</param>
+    /// <param name="copy">Make copy or just create new file</param>
+    public File CreateBackupFile(string? path = null, bool copy = true)
+    {
+        (this as IStorageElement).ThrowIfNotExists();
+        path ??= this.path + ".bac";
+        File bac = new(path);
+        if (copy)
+        {
+            using System.IO.FileStream stream = SFile.Create(bac.Path);
+            byte[] arr = SFile.ReadAllBytes(this.Path);
+            stream.Write(arr, 0, arr.Length);
+        }
+        return bac;
+    }
+    /// <summary>
+    /// Read a file as byte array
+    /// </summary>
+    public byte[] ReadBytes()
+    {
+        (this as IStorageElement).ThrowIfNotExists();
+        return SFile.ReadAllBytes(path);
+    }
+    /// <summary>
+    /// Read a file as string
+    /// </summary>
+    public string ReadText()
+    {
+        (this as IStorageElement).ThrowIfNotExists();
+        return SFile.ReadAllText(path);
+    }
+    /// <summary>
+    /// Write byte array to file
+    /// </summary>
+    public void WriteBytes(byte[] bytes)
+    {
+        (this as IStorageElement).ThrowIfNotExists();
+        SFile.WriteAllBytes(path, bytes);
+    }
+    /// <summary>
+    /// Write string to file
+    /// </summary>
+    public void WriteText(string value)
+    {
+        (this as IStorageElement).ThrowIfNotExists();
+        SFile.WriteAllText(path, value);
+    }
+    /// <summary>
+    /// Swap files values
+    /// </summary>
+    /// <param name="destinationFile">File for replace</param>
+    /// <param name="destinationBackupFile">Backup for destination file</param>
+    public void Replace(File destinationFile, File? destinationBackupFile)
+    {
+        this.ThrowIfNotExists();
+        destinationFile.ThrowIfNotExists();
+        destinationBackupFile ??= destinationFile.CreateBackupFile();
+        destinationFile.CopyTo(destinationBackupFile);
+        this.CopyTo(destinationFile);
+        destinationBackupFile.CopyTo(this);
+        destinationBackupFile.Delete();
+    }
+    /// <summary>
+    /// Delete current file from storage
+    /// </summary>
+    public void Delete() => SFile.Delete(path);
+
+#if NITIS_IO_ASYNC
+    /// <summary>
     /// Copies data from a file to another file asynchronously
     /// (if the file does not exist, it will create a new one)
     /// </summary>
@@ -209,22 +296,6 @@ public sealed class File : IStorageElement
         await to.WriteAsync(arr);
     }
     /// <summary>
-    /// Move file to other space
-    /// </summary>
-    /// <param name="path">The path to move</param>
-    /// <param name="overwrite">Whether to overwrite the file (if it exists)</param>
-    public void MoveTo(string path, bool overwrite = true) => MoveTo(new File(path), overwrite);
-    /// <summary>
-    /// Move file to other space
-    /// </summary>
-    /// <param name="moveTo">Position to move</param>
-    /// <param name="overwrite">Whether to overwrite the file (if it exists)</param>
-    public void MoveTo(File moveTo, bool overwrite = true)
-    {
-        CopyTo(moveTo, overwrite);
-        Delete();
-    }
-    /// <summary>
     /// Move file to other space asynchronously
     /// </summary>
     /// <param name="path">The path to move</param>
@@ -241,24 +312,6 @@ public sealed class File : IStorageElement
         await DeleteAsync();
     }
     /// <summary>
-    /// Create backup file from existing file
-    /// </summary>
-    /// <param name="path">Path to backup file</param>
-    /// <param name="copy">Make copy or just create new file</param>
-    public File CreateBackupFile(string? path = null, bool copy = true)
-    {
-        (this as IStorageElement).ThrowIfNotExists();
-        path ??= this.path + ".bac";
-        File bac = new(path);
-        if (copy)
-        {
-            using System.IO.FileStream stream = SFile.Create(bac.Path);
-            byte[] arr = SFile.ReadAllBytes(this.Path);
-            stream.Write(arr, 0, arr.Length);
-        }
-        return bac;
-    }
-    /// <summary>
     /// Create backup file from existing file asynchronously
     /// </summary>
     /// <param name="path">Path to backup file</param>
@@ -273,28 +326,12 @@ public sealed class File : IStorageElement
         return bac;
     }
     /// <summary>
-    /// Read a file as byte array
-    /// </summary>
-    public byte[] ReadBytes()
-    {
-        (this as IStorageElement).ThrowIfNotExists();
-        return SFile.ReadAllBytes(path);
-    }
-    /// <summary>
     /// Read a file as byte array asynchronously
     /// </summary>
     public Task<byte[]> ReadBytesAsync(CancellationToken cancellationToken = default)
     {
         (this as IStorageElement).ThrowIfNotExists();
         return SFile.ReadAllBytesAsync(path, cancellationToken);
-    }
-    /// <summary>
-    /// Read a file as string
-    /// </summary>
-    public string ReadText()
-    {
-        (this as IStorageElement).ThrowIfNotExists();
-        return SFile.ReadAllText(path);
     }
     /// <summary>
     /// Read a file as string asynchronously
@@ -305,14 +342,6 @@ public sealed class File : IStorageElement
         return SFile.ReadAllTextAsync(path, cancellationToken);
     }
     /// <summary>
-    /// Write byte array to file
-    /// </summary>
-    public void WriteBytes(byte[] bytes)
-    {
-        (this as IStorageElement).ThrowIfNotExists();
-        SFile.WriteAllBytes(path, bytes);
-    }
-    /// <summary>
     /// Write byte array to file asynchronously
     /// </summary>
     public Task WriteBytesAsync(byte[] bytes, CancellationToken cancellationToken = default)
@@ -321,35 +350,12 @@ public sealed class File : IStorageElement
         return SFile.WriteAllBytesAsync(path, bytes, cancellationToken);
     }
     /// <summary>
-    /// Write string to file
-    /// </summary>
-    public void WriteText(string value)
-    {
-        (this as IStorageElement).ThrowIfNotExists();
-        SFile.WriteAllText(path, value);
-    }
-    /// <summary>
     /// Write string to file asynchronously
     /// </summary>
     public Task WriteTextAsync(string value, CancellationToken cancellationToken = default)
     {
         (this as IStorageElement).ThrowIfNotExists();
         return SFile.WriteAllTextAsync(path, value, cancellationToken);
-    }
-    /// <summary>
-    /// Swap files values
-    /// </summary>
-    /// <param name="destinationFile">File for replace</param>
-    /// <param name="destinationBackupFile">Backup for destination file</param>
-    public void Replace(File destinationFile, File? destinationBackupFile)
-    {
-        this.ThrowIfNotExists();
-        destinationFile.ThrowIfNotExists();
-        destinationBackupFile ??= destinationFile.CreateBackupFile();
-        destinationFile.CopyTo(destinationBackupFile);
-        this.CopyTo(destinationFile);
-        destinationBackupFile.CopyTo(this);
-        destinationBackupFile.Delete();
     }
     /// <summary>
     /// Swap files values asynchronously
@@ -367,14 +373,10 @@ public sealed class File : IStorageElement
         await destinationBackupFile.DeleteAsync();
     }
     /// <summary>
-    /// Delete current file from storage
-    /// </summary>
-    public void Delete() => SFile.Delete(path);
-    /// <summary>
     /// Delete current file from storage asynchronously
     /// </summary>
     public async Task DeleteAsync() => await Task.Run( () => SFile.Delete(path));
-
+#endif
     public void ThrowIfNotExists()
     {
         if (!Exists) throw new StorageElementNotExistsExeption(this);
