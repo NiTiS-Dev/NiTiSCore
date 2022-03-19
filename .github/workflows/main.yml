@@ -29,7 +29,6 @@ jobs:
           cd Core
           cd NiTiS
           dotnet build -c Release
-          dotnet build ../NiTiS.PreviewFunctions/NiTiS.PreviewFunctions.csproj -c Release
           dotnet pack -c Release -o ../../.build/NiTiS.Core/
       - name: Pack
         run: |
@@ -53,7 +52,6 @@ jobs:
           dotnet nuget push NiTiS.Math/*.symbols.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
           dotnet nuget push NiTiS.Reflection/*.symbols.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
           dotnet nuget push NiTiS.Additions/*.symbols.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.PreviewFunctions/*.symbols.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
         env:
           NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
           
@@ -67,7 +65,6 @@ jobs:
           dotnet nuget push NiTiS.Math/*.symbols.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
           dotnet nuget push NiTiS.Reflection/*.symbols.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
           dotnet nuget push NiTiS.Additions/*.symbols.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.PreviewFunctions/*.symbols.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
