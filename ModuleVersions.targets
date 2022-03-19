@@ -30,7 +30,7 @@
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/NiTiS-Dev/NiTiSCore</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/NiTiS-Dev/NiTiSCore</PackageProjectUrl>
-		<PackageLicenseUrl>http://opensource.org/licenses/MIT</PackageLicenseUrl>
+		<PackageLicenseUrl>https://raw.githubusercontent.com/NiTiS-Dev/NiTiSCore/singleton/LICENSE.txt</PackageLicenseUrl>
 		<PackageIconUrl>https://github.com/NiTiS-Dev/NiTiSCore/raw/singleton/icon.png</PackageIconUrl>
 		<PackageReadmeUrl>https://raw.githubusercontent.com/NiTiS-Dev/NiTiSCore/singleton/nuget.md</PackageReadmeUrl>
 		<GenerateDocumentationFile>false</GenerateDocumentationFile>
