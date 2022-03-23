@@ -1,0 +1,17 @@
+﻿using System.Reflection;
+
+namespace NiTiS.Core;
+
+public static class NiTiSCoreLib
+{
+    public static readonly Assembly[] BasicLibs =
+    {
+        Assembly.GetAssembly(typeof(NiTiSCoreLib)),
+        Assembly.GetAssembly(typeof(Additions.EnumInfo)),
+        Assembly.GetAssembly(typeof(Collections.SingletonManager)),
+        Assembly.GetAssembly(typeof(Interaction.Result)),
+        Assembly.GetAssembly(typeof(IO.File)),
+        Assembly.GetAssembly(typeof(Math.Axis)),
+        Assembly.GetAssembly(typeof(Reflection.InstanceEditor))
+    };
+}

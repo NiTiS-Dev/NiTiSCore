@@ -1,6 +1,6 @@
 ﻿using SC = System.Console;
-using NiTiS.IO;
-using NiTiS.Additions;
+using NiTiS.Core;
+using System.Runtime.InteropServices;
 
 namespace NiTiS.Tests.Console
 {
@@ -8,10 +8,12 @@ namespace NiTiS.Tests.Console
     {
         static void Main(string[] args)
         {
-            int[] numbers = { 1, 2, 3 };
-            
-
-            SC.WriteLine(Strings.FromArray(numbers));
+            foreach(var asm in NiTiSCoreLib.BasicLibs)
+            {
+                object[] attribs = asm.GetCustomAttributes(typeof(GuidAttribute), true);
+                var guidAttr = (GuidAttribute)attribs[0];
+                SC.WriteLine(guidAttr.Value);
+            }
         }
     }
 }
