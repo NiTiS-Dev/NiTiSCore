@@ -73,7 +73,7 @@ public sealed class Directory : IStorageElement
     }
     public void ThrowIfNotExists()
     {
-        if (SDir.Exists(path)) throw new StorageElementNotExistsExeption(this);
+        if (!Exists) throw new StorageElementNotExistsExeption(this);
     }
 
     public static Directory GetCurrentDirectory() => new Directory(SDir.GetCurrentDirectory());
