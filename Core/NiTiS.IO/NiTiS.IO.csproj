@@ -9,5 +9,6 @@
 	</PropertyGroup>
 	<Import Project="../../PostModule.targets" />
 	<ItemGroup>
+		<ProjectReference Include="../NiTiS.Additions/NiTiS.Additions.csproj" />
 	</ItemGroup>
 </Project>

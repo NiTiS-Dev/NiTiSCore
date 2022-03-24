@@ -8,7 +8,7 @@ namespace NiTiS.IO;
 [System.Diagnostics.DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 public sealed class Directory : IStorageElement
 {
-    private string path;
+    internal string path;
     /// <summary>
     /// Directory single constructor
     /// </summary>
@@ -24,11 +24,34 @@ public sealed class Directory : IStorageElement
     }
     public string Path => path;
     public string Name => SPath.GetFileName(path);
+    /// <summary>
+    /// Directory where located this directory
+    /// </summary>
+    public Directory Parent => new(SDir.GetParent(path).FullName);
     public DateTime CreationTime { get => SDir.GetCreationTime(path); set => SDir.SetCreationTime(path, value); }
     public DateTime LastAccessTime { get => SDir.GetLastAccessTime(path); set => SDir.SetLastAccessTime(path, value); }
     public DateTime CreationTimeUTC { get => SDir.GetLastWriteTimeUtc(path); set => SDir.SetCreationTimeUtc(path, value); }
     public DateTime LastAccessTimeUTC { get => SDir.GetLastAccessTimeUtc(path); set => SDir.SetLastAccessTime(path, value); }
     public bool Exists => SDir.Exists(path);
+    /// <summary>
+    /// Renaming the directory (or moving it)
+    /// </summary>
+    /// <param name="newName">New name; for example <c>image2.png</c></param>
+    /// <param name="replace">Is it worth moving the file?</param>
+    public void Rename(string newName, bool replace = false)
+    {
+        if (replace)
+        {
+            ThrowIfNotExists();
+            string newPath = IO.Path.Combine(Parent.path, newName);
+            SDir.Move(path, newPath);
+            this.path = newPath;
+        }
+        else
+        {
+            this.path = IO.Path.Combine(Parent.Path, newName);
+        }
+    }
     /// <summary>
     /// Returns path separated by folders
     /// </summary>

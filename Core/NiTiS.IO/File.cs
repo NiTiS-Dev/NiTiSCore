@@ -1,4 +1,6 @@
-﻿namespace NiTiS.IO;
+﻿using NiTiS.Additions;
+
+namespace NiTiS.IO;
 
 /// <summary>
 /// Provides methods for action with existing file
@@ -6,19 +8,19 @@
 [System.Diagnostics.DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 public sealed class File : IStorageElement
 {
-    private string path;
+    internal string path;
     /// <summary>
     /// File constructor
     /// </summary>
     /// <param name="path">Path to some file</param>
     /// <exception cref="ArgumentNullException"></exception>
-    public File(string path)
+    public File(params string[] path)
     {
         if (path is null)
         {
             throw new ArgumentNullException(nameof(path));
         }
-        this.path = path;
+        this.path = IO.Path.Combine(path);
     }
     /// <summary>
     /// File constructor
@@ -58,10 +60,31 @@ public sealed class File : IStorageElement
     public DateTime LastAccessTimeUTC { get => SDir.GetLastAccessTimeUtc(path); set => SDir.SetLastAccessTime(path, value); }
     public bool Exists => SFile.Exists(path);
     /// <summary>
+    /// Renaming the file (or moving it)
+    /// </summary>
+    /// <param name="newName">New name; for example <c>image2.png</c></param>
+    /// <param name="replace">Is it worth moving the file?</param>
+    public void Rename(string newName, bool replace = false)
+    {
+        if (replace)
+        {
+            ThrowIfNotExists();
+            Replace(new(Parent.Path, newName), CreateBackupFile(copy:replace));
+        }
+        else
+        {
+            this.path = IO.Path.Combine(Parent.Path, newName);
+        }
+    }
+    /// <summary>
     /// Create file if not exists
     /// </summary>
-    public void Create()
+    public void Create(bool createSubDirectory = false)
     {
+        if (createSubDirectory && Parent.Exists)
+        {
+            Parent.Create();
+        }
         if (Exists) return;
         SFile.Create(path).Dispose(); 
     }
@@ -258,6 +281,7 @@ public sealed class File : IStorageElement
         this.CopyTo(destinationFile);
         destinationBackupFile.CopyTo(this);
         destinationBackupFile.Delete();
+        this.path = destinationBackupFile.path;
     }
     /// <summary>
     /// Delete current file from storage

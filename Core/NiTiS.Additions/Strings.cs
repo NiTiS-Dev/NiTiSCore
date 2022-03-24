@@ -38,4 +38,10 @@ public static class Strings
         }
         return text + end;
     }
+    public static string ReplaceSelf(this string self, string from, string to)
+    {
+        if (from is null) throw new ArgumentNullException(nameof(from));
+        if (to is null) throw new ArgumentNullException(nameof(to));
+        return self.Replace(from, to);
+    }
 }
