@@ -5,7 +5,5 @@
 		<PP_Version>$(Reflection_Version)</PP_Version>
 		<Description>The NiTiS library required for reflection</Description>
 	</PropertyGroup>
-	<Import Project="../../PostModule.targets"/>
-	<ItemGroup>
-	</ItemGroup>
+	<Import Project="../../PostModule.targets" />
 </Project>

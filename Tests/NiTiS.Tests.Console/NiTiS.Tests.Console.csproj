@@ -2,8 +2,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;netstandard2.1;netcoreapp3.1;net5.0;net48</TargetFrameworks>
 		<OutputType>Exe</OutputType>
+		<LangVersion>10</LangVersion>
+		<NoWarn>NU5125;NU5048</NoWarn>
 	</PropertyGroup>
-	<ItemGroup>
-		<ProjectReference Include="../../Core/NiTiS/NiTiS.csproj"></ProjectReference>
-	</ItemGroup>
 </Project>
