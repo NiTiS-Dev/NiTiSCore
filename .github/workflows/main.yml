@@ -33,6 +33,7 @@ jobs:
       - name: Pack
         run: |
           cd Core/
+          ls
           dotnet pack NiTiS.IO/ -c Release -o ../.build/NiTiS.IO/
           dotnet pack NiTiS.Collections/ -c Release -o ../.build/NiTiS.Collections/
           dotnet pack NiTiS.Interaction/ -c Release -o ../.build/NiTiS.Interaction/
@@ -44,6 +45,7 @@ jobs:
       - name: PushNUGET
         run: |
           cd .build/
+          ls
           dotnet nuget push NiTiS.Core/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
           dotnet nuget push NiTiS.IO/*.nupkg--source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
           dotnet nuget push NiTiS.Collections/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN} --skip-duplicate
