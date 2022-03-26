@@ -14,12 +14,12 @@ public sealed class InstanceEditor
             BindingFlags.Public |
             BindingFlags.NonPublic |
             BindingFlags.Static;
-    public InstanceEditor(object instance = default)
+    public InstanceEditor(object? instance = default)
     {
-        this.Instance = instance;
-        editType = instance.GetType();
+        this.Instance = instance!;
+        editType = instance!.GetType();
     }
-    public IEnumerable<object> GetVariableValueEnumerable()
+    public IEnumerable<object?> GetVariableValueEnumerable()
     {
         return editType.GetFields(Flags).Select(s => s.GetValue(Instance));
     }
@@ -31,7 +31,7 @@ public sealed class InstanceEditor
     {
         return editType.GetProperties(Flags);
     }
-    public IEnumerable<object> GetProperityValueEnumerable()
+    public IEnumerable<object?> GetProperityValueEnumerable()
     {
         return editType.GetProperties(Flags).Where(s => s.CanRead).Select(s => s.GetValue(Instance));
     }

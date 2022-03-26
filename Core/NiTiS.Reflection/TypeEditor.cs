@@ -20,8 +20,8 @@ public class TypeEditor
     {
         return Type.GetConstructor(SType.EmptyTypes);
     }
-    public object CreateInstanceThrowFreeConstructor() => GetFreeConstructor()?.Invoke(null);
-    public CAST CreateInstanceThrowFreeConstructor<CAST>() => (CAST)GetFreeConstructor()?.Invoke(null);
+    public object? CreateInstanceThrowFreeConstructor() => GetFreeConstructor()?.Invoke(null);
+    public CAST? CreateInstanceThrowFreeConstructor<CAST>() => (CAST?)GetFreeConstructor()?.Invoke(null);
     public MethodInfo? GetMethod(string name) => Type.GetMethod(name, Flags);
     public MethodInfo[] GetMethods() => Type.GetMethods(Flags);
 }

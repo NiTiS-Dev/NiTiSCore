@@ -101,8 +101,9 @@ public struct Vector3D :
         hashCode = hashCode * -1521134295 + Z.GetHashCode();
         return hashCode;
     }
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
+        if (obj is null) return false;
         if (obj is Vector3DInt vec)
         {
             return this.Equals(vec);

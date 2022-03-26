@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace NiTiS.Collections;
-public class EnumCollection<ET> : IEnumerable where ET : struct, Enum
+public class EnumCollection<ET> : IEnumerable<ET> where ET : struct, Enum
 {
     protected List<ET> list = new List<ET>();
     public static EnumCollection<Enu> Of<Enu>(params Enu[] enums) where Enu : struct, Enum
@@ -14,11 +14,11 @@ public class EnumCollection<ET> : IEnumerable where ET : struct, Enum
     }
     public static EnumCollection<Enu> Of<Enu>() where Enu : struct, Enum
     {
-        var values = Enum.GetValues(typeof(Enu));
+        Enu[] values = (Enu[])Enum.GetValues(typeof(Enu));
         return new EnumCollection<Enu>(values);
     }
     private EnumCollection() { }
-    private EnumCollection(Array array)
+    private EnumCollection(ET[] array)
     {
         if (array is null) return;
         foreach (ET enu in array)
@@ -26,8 +26,13 @@ public class EnumCollection<ET> : IEnumerable where ET : struct, Enum
             list.Add(enu);
         }
     }
-    public IEnumerator GetEnumerator()
+    IEnumerator IEnumerable.GetEnumerator()
     {
         return list.GetEnumerator();
+    }
+
+    public IEnumerator<ET> GetEnumerator()
+    {
+        throw new NotImplementedException();
     }
 }

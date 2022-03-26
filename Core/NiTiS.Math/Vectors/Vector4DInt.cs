@@ -109,8 +109,9 @@ public struct Vector4DInt :
         hashCode = hashCode * -1521134295 + W.GetHashCode();
         return hashCode;
     }
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
+        if (obj is null) return false;
         if (obj is Vector4DInt vec)
         {
             return this.Equals(vec);

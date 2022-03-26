@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace NiTiS.Collections.Generic;
 
-public class SmartDictonary<TKey, TValue> : Dictionary<TKey, TValue>
+public class SmartDictonary<TKey, TValue> : Dictionary<TKey, TValue> where TKey : notnull
 {
     public delegate TKey KeyGetter(TValue key);
     private readonly KeyGetter keyGetter;

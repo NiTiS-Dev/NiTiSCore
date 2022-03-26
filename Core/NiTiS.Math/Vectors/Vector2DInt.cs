@@ -92,8 +92,9 @@ public struct Vector2DInt :
         hashCode = hashCode * -1521134295 + Y.GetHashCode();
         return hashCode;
     }
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
+        if (obj is null) return false;
         if (obj is Vector2DInt vec)
         {
             return this.Equals(vec);

@@ -13,4 +13,9 @@
 		<PackageDescription>$(Description)</PackageDescription>
 		<Summary>$(Description)</Summary>
 	</PropertyGroup>
+	<ItemGroup Condition="$(Configuration)=='Release'">
+		<Compile Remove="**/*.test.cs" />
+		<Compile Remove="**/*.debug.cs" />
+		<Compile Remove="**/*.tool.cs" />
+	</ItemGroup>
 </Project>

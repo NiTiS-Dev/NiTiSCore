@@ -3,7 +3,7 @@
 public class OperationResult<T>
 {
     private Result result;
-    private T item;
+    private T? item;
     public void SendResult(T item, Result result)
     {
         this.result = result;
@@ -37,6 +37,6 @@ public class OperationResult<T>
     {
         result = Result.Error;
     }
-    public T Item => item;
+    public T? Item => item;
     public Result Result => result;
 }

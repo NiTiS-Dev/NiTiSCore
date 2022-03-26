@@ -25,7 +25,7 @@ public static class VectorMath
     {
         foreach (Axis i in axis)
         {
-            if (!left.GetValueByDimension(i).Equals(right.GetValueByDimension(i)))
+            if (!left.GetValueByDimension(i)!.Equals(right.GetValueByDimension(i)))
                 return false;
         }
         return true;
@@ -34,7 +34,7 @@ public static class VectorMath
     {
         foreach (Axis i in axis)
         {
-            if (!left.GetValueByDimension(i).Equals(right.GetValueByDimension(i)))
+            if (!left.GetValueByDimension(i)!.Equals(right.GetValueByDimension(i)))
                 return false;
         }
         return true;

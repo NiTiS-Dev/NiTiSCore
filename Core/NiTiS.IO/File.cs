@@ -53,7 +53,23 @@ public sealed class File : IStorageElement
     /// <summary>
     /// Directory where located this file
     /// </summary>
-    public Directory Parent => new(SDir.GetParent(path).FullName);
+    /// <exception cref="RootFolderNotFoundException"></exception>
+    public Directory Parent
+    {
+        get
+        {
+            System.IO.DirectoryInfo? info = null;
+            try
+            {
+                info = SDir.GetParent(path);
+            } catch (System.IO.DirectoryNotFoundException) { }
+            if (info is null)
+            {
+                throw new RootFolderNotFoundException(this);
+            }
+            return new(info.FullName);
+        }
+    }
     public DateTime CreationTime { get => SDir.GetCreationTime(path); set => SDir.SetCreationTime(path, value); }
     public DateTime LastAccessTime { get => SDir.GetLastAccessTime(path); set => SDir.SetLastAccessTime(path, value); }
     public DateTime CreationTimeUTC { get => SDir.GetLastWriteTimeUtc(path); set => SDir.SetCreationTimeUtc(path, value); }

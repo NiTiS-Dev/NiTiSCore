@@ -98,8 +98,9 @@ public struct RangedInt : IRangedVar<int>, IEquatable<RangedInt>, IEquatable<int
         return $"{min}~{value}~{max}";
     }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
+        if (obj is null) return false;
         return obj is RangedInt @int && Equals(@int);
     }
 

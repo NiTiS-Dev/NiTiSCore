@@ -6,6 +6,7 @@ public static class NiTiSCoreLib
 {
     public static readonly Assembly[] BasicLibs =
     {
+#nullable disable
         Assembly.GetAssembly(typeof(NiTiSCoreLib)),
         Assembly.GetAssembly(typeof(Additions.EnumInfo)),
         Assembly.GetAssembly(typeof(Collections.SingletonManager)),
@@ -13,5 +14,6 @@ public static class NiTiSCoreLib
         Assembly.GetAssembly(typeof(IO.File)),
         Assembly.GetAssembly(typeof(Math.Axis)),
         Assembly.GetAssembly(typeof(Reflection.InstanceEditor))
+#nullable restore
     };
 }

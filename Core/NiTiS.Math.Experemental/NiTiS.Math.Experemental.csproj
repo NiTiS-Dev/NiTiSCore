@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="../../ModuleVersions.targets" />
+	<PropertyGroup>
+		<PP_Name>$(Math_Name).Experemental</PP_Name>
+		<PP_Version>$(Math_Version)</PP_Version>
+		<Description>The NiTiS library including math</Description>
+		<LangVersion>preview</LangVersion>
+		<TargetFrameworks>net6.0</TargetFrameworks>
+	</PropertyGroup>
+	<Import Project="../../PostModule.targets" />
+</Project>

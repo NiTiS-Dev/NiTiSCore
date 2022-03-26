@@ -4,14 +4,21 @@ namespace NiTiS.Collections
 {
     public static class SingletonManager
     {
-        private static volatile HardTypedDictonary dictonary = new HardTypedDictonary();
-        public static T GetInstance<T>()
+        private static volatile HardTypedDictonary? volatileDict;
+        private static HardTypedDictonary? localDict;
+        public static T GetInstance<T>(ManagerLocal local = ManagerLocal.Volatile) where T : notnull
         {
-            return dictonary.Get<T>();
+            return (local == ManagerLocal.Locale ?
+                (localDict ??= new()) :
+                (volatileDict ??= new()))
+                .Get<T>();
         }
-        public static void AddInstance<T>(T instance)
+        public static void AddInstance<T>(T instance, ManagerLocal local = ManagerLocal.Volatile) where T : notnull
         {
-            dictonary.Add(instance);
+            (local == ManagerLocal.Locale ? 
+                (localDict ??= new()) : 
+                (volatileDict ??= new()))
+                .Add(instance);
         }
     }
 }

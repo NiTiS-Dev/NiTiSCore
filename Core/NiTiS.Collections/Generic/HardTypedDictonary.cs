@@ -7,13 +7,17 @@ namespace NiTiS.Collections.Generic;
 public class HardTypedDictonary : HardTypedDictonary<object> { }
 public class HardTypedDictonary<M> : IEnumerable
 {
-    private Dictionary<Type, M> dict = new();
+    private readonly Dictionary<Type, M> dict = new();
 
     public HardTypedDictonary() { }
     public HardTypedDictonary(IEnumerable<M> items)
     {
         foreach (var item in items)
         {
+            if (item is null)
+            {
+                continue;
+            }
             dict.Add(item.GetType(), item);
         }
     }
@@ -35,9 +39,9 @@ public class HardTypedDictonary<M> : IEnumerable
 
     internal Dictionary<Type, M> Dictonary => dict;
 
-    public T Get<T>() where T : M
+    public T? Get<T>() where T : M
     {
-        return (T)dict[typeof(T)];
+        return (T?)dict[typeof(T)];
     }
 
     public IEnumerator GetEnumerator()
