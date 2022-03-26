@@ -8,123 +8,116 @@ namespace NiTiS.IO;
 [System.Diagnostics.DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 public sealed class Directory : IStorageElement
 {
-    internal string path;
-    /// <summary>
-    /// Directory single constructor
-    /// </summary>
-    /// <param name="path">Path to some directory</param>
-    /// <exception cref="ArgumentNullException"></exception>
-    public Directory(params string[] path)
-    {
-        if (path is null)
-        {
-            throw new ArgumentNullException(nameof(path));
-        }
-        this.path = SPath.Combine(path);
-    }
-    public string Path => path;
-    public string Name => SPath.GetFileName(path);
-    /// <summary>
-    /// Directory where located this directory
-    /// </summary>
-    /// <exception cref="NiTiS.IO.RootFolderNotFoundException"></exception>
-    public Directory Parent
-    {
-        get
-        {
-            System.IO.DirectoryInfo? info = null;
-            try
-            {
-                info = SDir.GetParent(path);
-            }
-            catch (System.IO.DirectoryNotFoundException) { }
-            if (info is null)
-            {
-                throw new RootFolderNotFoundException(this);
-            }
-            return new(info.FullName);
-        }
-    }
-    public DateTime CreationTime { get => SDir.GetCreationTime(path); set => SDir.SetCreationTime(path, value); }
-    public DateTime LastAccessTime { get => SDir.GetLastAccessTime(path); set => SDir.SetLastAccessTime(path, value); }
-    public DateTime CreationTimeUTC { get => SDir.GetLastWriteTimeUtc(path); set => SDir.SetCreationTimeUtc(path, value); }
-    public DateTime LastAccessTimeUTC { get => SDir.GetLastAccessTimeUtc(path); set => SDir.SetLastAccessTime(path, value); }
-    public bool Exists => SDir.Exists(path);
-    /// <summary>
-    /// Renaming the directory (or moving it)
-    /// </summary>
-    /// <param name="newName">New name; for example <c>image2.png</c></param>
-    /// <param name="replace">Is it worth moving the file?</param>
-    public void Rename(string newName, bool replace = false)
-    {
-        if (replace)
-        {
-            ThrowIfNotExists();
-            string newPath = IO.Path.Combine(Parent.path, newName);
-            SDir.Move(path, newPath);
-            this.path = newPath;
-        }
-        else
-        {
-            this.path = IO.Path.Combine(Parent.Path, newName);
-        }
-    }
-    /// <summary>
-    /// Returns path separated by folders
-    /// </summary>
-    public string[] Separate()
-    {
+	internal String path;
+	/// <summary>
+	/// Directory single constructor
+	/// </summary>
+	/// <param name="path">Path to some directory</param>
+	/// <exception cref="ArgumentNullException"></exception>
+	public Directory(params String[] path)
+	{
+		if (path is null)
+		{
+			throw new ArgumentNullException(nameof(path));
+		}
+		this.path = SPath.Combine(path);
+	}
+	public String Path => this.path;
+	public String Name => SPath.GetFileName(this.path);
+	/// <summary>
+	/// Directory where located this directory
+	/// </summary>
+	/// <exception cref="NiTiS.IO.RootFolderNotFoundException"></exception>
+	public Directory Parent
+	{
+		get
+		{
+			System.IO.DirectoryInfo? info = null;
+			try
+			{
+				info = SDir.GetParent(this.path);
+			}
+			catch (System.IO.DirectoryNotFoundException) { }
+			return info is null ? throw new RootFolderNotFoundException(this) : (new(info.FullName));
+		}
+	}
+	public DateTime CreationTime { get => SDir.GetCreationTime(this.path); set => SDir.SetCreationTime(this.path, value); }
+	public DateTime LastAccessTime { get => SDir.GetLastAccessTime(this.path); set => SDir.SetLastAccessTime(this.path, value); }
+	public DateTime CreationTimeUTC { get => SDir.GetLastWriteTimeUtc(this.path); set => SDir.SetCreationTimeUtc(this.path, value); }
+	public DateTime LastAccessTimeUTC { get => SDir.GetLastAccessTimeUtc(this.path); set => SDir.SetLastAccessTime(this.path, value); }
+	public bool Exists => SDir.Exists(path);
+	/// <summary>
+	/// Renaming the directory (or moving it)
+	/// </summary>
+	/// <param name="newName">New name; for example <c>image2.png</c></param>
+	/// <param name="replace">Is it worth moving the file?</param>
+	public void Rename(String newName, Boolean replace = false)
+	{
+		if (replace)
+		{
+			ThrowIfNotExists();
+			String newPath = IO.Path.Combine(Parent.path, newName);
+			SDir.Move(this.path, newPath);
+			this.path = newPath;
+		}
+		else
+		{
+			this.path = IO.Path.Combine(Parent.Path, newName);
+		}
+	}
+	/// <summary>
+	/// Returns path separated by folders
+	/// </summary>
+	public String[] Separate()
+	{
 #if NET48
-        return path.Split(new char[] { SPath.DirectorySeparatorChar }, StringSplitOptions.None);
+		return path.Split(new char[] { SPath.DirectorySeparatorChar }, StringSplitOptions.None);
 #else
-        return path.Split(SPath.DirectorySeparatorChar, StringSplitOptions.None);
+		return this.path.Split(SPath.DirectorySeparatorChar, StringSplitOptions.None);
 #endif
-    }
-    /// <summary>
-    /// Get other folders from this directory
-    /// </summary>
-    /// <param name="selfInclude">Include this directory</param>
-    /// <returns></returns>
-    public Directory[] GetNearbyDirectories(bool selfInclude = false)
-    {
-        return SDir.GetDirectories(SDir.GetDirectoryRoot(path)).Where(s => selfInclude || s != path).Select(s => new Directory(s)).ToArray();
-    }
-    /// <summary>
-    /// Get internal files
-    /// </summary>
-    public File[] GetFiles()
-    {
-        return SDir.GetFiles(path).Select(s => new File(s)).ToArray();
-    }
-    /// <summary>
-    /// Create dictonary if not exists
-    /// </summary>
-    public void Create()
-    {
-        if (Exists) return;
-        SDir.CreateDirectory(path);
-    }
-    /// <summary>
-    /// Get internal directories
-    /// </summary>
-    public Directory[] GetDirectories()
-    {
-        return SDir.GetDirectories(path).Select(s => new Directory(s)).ToArray();
-    }
-    public void ThrowIfNotExists()
-    {
-        if (!Exists) throw new StorageElementNotExistsExeption(this);
-    }
+	}
+	/// <summary>
+	/// Get other folders from this directory
+	/// </summary>
+	/// <param name="selfInclude">Include this directory</param>
+	/// <returns></returns>
+	public Directory[] GetNearbyDirectories(bool selfInclude = false)
+	{
+		return SDir.GetDirectories(SDir.GetDirectoryRoot(this.path)).Where(s => selfInclude || s != this.path).Select(s => new Directory(s)).ToArray();
+	}
+	/// <summary>
+	/// Get internal files
+	/// </summary>
+	public File[] GetFiles()
+	{
+		return SDir.GetFiles(this.path).Select(s => new File(s)).ToArray();
+	}
+	/// <summary>
+	/// Create dictonary if not exists
+	/// </summary>
+	public void Create()
+	{
+		if (Exists) return;
+		SDir.CreateDirectory(this.path);
+	}
+	/// <summary>
+	/// Get internal directories
+	/// </summary>
+	public Directory[] GetDirectories()
+	{
+		return SDir.GetDirectories(this.path).Select(s => new Directory(s)).ToArray();
+	}
+	public void ThrowIfNotExists()
+	{
+		if (!Exists) throw new StorageElementNotExistsExeption(this);
+	}
 
-    public static Directory GetCurrentDirectory() => new Directory(SDir.GetCurrentDirectory());
-    public static Directory GetEnviromentDirectory(Environment.SpecialFolder folder) => new Directory(Environment.GetFolderPath(folder));
+	public static Directory GetCurrentDirectory() => new Directory(SDir.GetCurrentDirectory());
+	public static Directory GetEnviromentDirectory(Environment.SpecialFolder folder) => new Directory(Environment.GetFolderPath(folder));
 
-    public override string ToString()
-    {
-        return $"\"{path}\" [{(Exists ? "E" : "NE")}]";
-    }
-    private string GetDebuggerDisplay()
-    {
-        return ToString();
-    }
+	public override string ToString()
+	{
+		return $"\"{this.path}\" [{(Exists ? "E" : "NE")}]";
+	}
+	private string GetDebuggerDisplay() => ToString();
 }

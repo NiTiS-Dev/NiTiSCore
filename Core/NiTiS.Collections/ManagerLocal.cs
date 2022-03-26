@@ -2,6 +2,6 @@
 
 public enum ManagerLocal : byte
 {
-    Locale = 0,
-    Volatile = 1
+	Locale = 0,
+	Volatile = 1
 }

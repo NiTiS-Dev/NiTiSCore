@@ -10,7 +10,7 @@
 		<RootNamespace>NiTiS</RootNamespace>
 		<PackageId>NiTiSCore</PackageId>
 	</PropertyGroup>
-	<Import Project="../../PostModule.targets"/>
+	<Import Project="../../PostModule.targets" />
 	<ItemGroup>
 		<ProjectReference Include="../NiTiS.IO/NiTiS.IO.csproj" />
 		<ProjectReference Include="../NiTiS.Math/NiTiS.Math.csproj" />

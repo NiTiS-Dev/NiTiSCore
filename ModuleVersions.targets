@@ -24,6 +24,9 @@
 		<!-- Other Parameters -->
 		
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>embedded</DebugType>
 
 		<NoWarn>NU5125;NU5048;CS1591</NoWarn>
 
