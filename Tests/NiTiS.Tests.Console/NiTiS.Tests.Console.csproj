@@ -10,7 +10,6 @@
 	  <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Core\NiTiS.Math.Experemental\NiTiS.Math.Experemental.csproj" />
 	  <ProjectReference Include="..\..\Core\NiTiS.Math\NiTiS.Math.csproj" />
 	</ItemGroup>
 </Project>

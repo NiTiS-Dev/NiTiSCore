@@ -6,19 +6,19 @@
 		<Creator>NiTiS-Dev</Creator>
 		<Creators>$(Creator), NickName73</Creators>
 		<Core_Name>NiTiS.Core</Core_Name>
-		<Core_Version>2.0.5.9</Core_Version>
+		<Core_Version>2.0.6</Core_Version>
 		<IO_Name>NiTiS.IO</IO_Name>
 		<IO_Version>1.1.1</IO_Version>
 		<Collections_Name>NiTiS.Collections</Collections_Name>
-		<Collections_Version>1.0.6</Collections_Version>
+		<Collections_Version>1.0.7</Collections_Version>
 		<Math_Name>NiTiS.Math</Math_Name>
 		<Math_Version>1.0.3</Math_Version>
 		<Interaction_Name>NiTiS.Interaction</Interaction_Name>
-		<Interaction_Version>1.0.3</Interaction_Version>
+		<Interaction_Version>1.1.0</Interaction_Version>
 		<Reflection_Name>NiTiS.Reflection</Reflection_Name>
 		<Reflection_Version>1.0.8</Reflection_Version>
 		<Additions_Name>NiTiS.Additions</Additions_Name>
-		<Additions_Version>2.1.1</Additions_Version>
+		<Additions_Version>2.1.2</Additions_Version>
 		
 		<!-- Not Included in NiTiS.Core -->
 		<!-- Other Parameters -->
@@ -57,15 +57,15 @@
 		<DefineConstants></DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="$(TargetFramework) == 'net6.0'">
-		<DefineConstants>NITIS_IO_ASYNC;NITIS_MORE_CONSTRUCTOR_SMARTDICTONARY</DefineConstants>
+		<DefineConstants>NITIS_IO_ASYNC;NITIS_MORE_CONSTRUCTOR_SMARTDICTONARY;NITIS_NULL_ANN</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="$(TargetFramework) == 'net5.0'">
-		<DefineConstants>NITIS_IO_ASYNC;NITIS_MORE_CONSTRUCTOR_SMARTDICTONARY</DefineConstants>
+		<DefineConstants>NITIS_IO_ASYNC;NITIS_MORE_CONSTRUCTOR_SMARTDICTONARY;NITIS_NULL_ANN</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="$(TargetFramework) == 'netcoreapp3.1'">
-		<DefineConstants>NITIS_IO_ASYNC;NITIS_MORE_CONSTRUCTOR_SMARTDICTONARY</DefineConstants>
+		<DefineConstants>NITIS_IO_ASYNC;NITIS_MORE_CONSTRUCTOR_SMARTDICTONARY;NITIS_NULL_ANN</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="$(TargetFramework) == 'netstandard2.1'">
-		<DefineConstants>NITIS_IO_ASYNC;NITIS_MORE_CONSTRUCTOR_SMARTDICTONARY</DefineConstants>
+		<DefineConstants>NITIS_IO_ASYNC;NITIS_MORE_CONSTRUCTOR_SMARTDICTONARY;NITIS_NULL_ANN</DefineConstants>
 	</PropertyGroup>
 </Project>

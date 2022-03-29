@@ -17,7 +17,7 @@ public static class Strings
 	/// <returns></returns>
 	public static string Multiply(this string value, int repeat)
 	{
-		return string.Concat(Enumerable.Repeat(value, repeat));
+		return String.Concat(Enumerable.Repeat(value, repeat));
 	}
 	/// <summary>
 	/// Creates string using some array
@@ -27,7 +27,7 @@ public static class Strings
 	{
 		string text = start;
 		System.Collections.Generic.List<string> list = new();
-		foreach (var item in enumarable)
+		foreach (object? item in enumarable)
 		{
 			list.Add(item?.ToString() ?? nullName);
 		}

@@ -62,11 +62,7 @@ public sealed class File : IStorageElement
 				info = SDir.GetParent(path);
 			}
 			catch (System.IO.DirectoryNotFoundException) { }
-			if (info is null)
-			{
-				throw new RootFolderNotFoundException(this);
-			}
-			return new(info.FullName);
+			return info is null ? throw new RootFolderNotFoundException(this) : (new(info.FullName));
 		}
 	}
 	public DateTime CreationTime { get => SDir.GetCreationTime(path); set => SDir.SetCreationTime(path, value); }
@@ -106,48 +102,18 @@ public sealed class File : IStorageElement
 	/// <summary>
 	/// Returns the stream to read the file
 	/// </summary>
-	/// <exception cref="StorageElementNotExistsExeption"></exception>
 	/// <exception cref="System.IO.PathTooLongException"></exception>
 	/// <exception cref="UnauthorizedAccessException"></exception>
 	/// <exception cref="NotSupportedException"></exception>
 	/// <exception cref="System.IO.IOException"></exception>
-	public System.IO.FileStream OpenForRead()
-	{
-		try
-		{
-			return SFile.OpenRead(path);
-		}
-		catch (Exception ex)
-		{
-			if (ex is System.IO.DirectoryNotFoundException || ex is System.IO.FileNotFoundException)
-			{
-				throw new StorageElementNotExistsExeption(this);
-			}
-			throw;
-		}
-	}
+	public System.IO.FileStream OpenForRead() => SFile.OpenRead(path);
 	/// <summary>
 	/// Returns the stream to write the file
 	/// </summary>
-	/// <exception cref="StorageElementNotExistsExeption"></exception>
 	/// <exception cref="System.IO.PathTooLongException"></exception>
 	/// <exception cref="UnauthorizedAccessException"></exception>
 	/// <exception cref="NotSupportedException"></exception>
-	public System.IO.FileStream OpenForWrite()
-	{
-		try
-		{
-			return SFile.OpenWrite(path);
-		}
-		catch (Exception ex)
-		{
-			if (ex is System.IO.DirectoryNotFoundException)
-			{
-				throw new StorageElementNotExistsExeption(this);
-			}
-			throw;
-		}
-	}
+	public System.IO.FileStream OpenForWrite() => SFile.OpenWrite(path);
 	/// <summary>
 	/// Returns the stream by options
 	/// </summary>
@@ -170,13 +136,11 @@ public sealed class File : IStorageElement
 				}
 			case OpenType.New:
 				{
-					if (this.Exists) throw new StorageElementAlreadyExistsException(this);
-					return SFile.Create(path);
+					return Exists ? throw new StorageElementAlreadyExistsException(this) : SFile.Create(path);
 				}
 			case OpenType.OpenOrCreate:
 				{
-					if (!this.Exists) return SFile.Create(path);
-					return SFile.Open(path, System.IO.FileMode.Open, (System.IO.FileAccess)(byte)access);
+					return Exists ? SFile.Open(path, System.IO.FileMode.Open, (System.IO.FileAccess)(byte)access) : SFile.Create(path);
 				}
 			case OpenType.Append:
 				{
@@ -214,7 +178,7 @@ public sealed class File : IStorageElement
 			throw new ArgumentNullException(nameof(copyTo));
 		}
 		this.ThrowIfNotExists();
-		SFile.Copy(this.Path, copyTo.Path, overwrite);
+		SFile.Copy(Path, copyTo.Path, overwrite);
 	}
 	/// <summary>
 	/// Move file to other space
@@ -245,7 +209,7 @@ public sealed class File : IStorageElement
 		if (copy)
 		{
 			using System.IO.FileStream stream = SFile.Create(bac.Path);
-			byte[] arr = SFile.ReadAllBytes(this.Path);
+			byte[] arr = SFile.ReadAllBytes(Path);
 			stream.Write(arr, 0, arr.Length);
 		}
 		return bac;
@@ -360,7 +324,7 @@ public sealed class File : IStorageElement
 		path ??= this.path + ".bac";
 		File bac = new(path);
 		using System.IO.FileStream stream = SFile.Create(bac.Path);
-		byte[] arr = await SFile.ReadAllBytesAsync(this.Path);
+		byte[] arr = await SFile.ReadAllBytesAsync(Path);
 		await stream.WriteAsync(arr, 0, arr.Length);
 		return bac;
 	}
