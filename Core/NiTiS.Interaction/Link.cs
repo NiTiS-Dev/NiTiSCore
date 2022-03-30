@@ -7,4 +7,5 @@ public sealed class Link<CONNECT>
 	{
 		Value = value;
 	}
+	public static Link<CONNECT> Of(CONNECT item) => new(item);
 }

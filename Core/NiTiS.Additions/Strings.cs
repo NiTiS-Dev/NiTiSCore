@@ -44,4 +44,5 @@ public static class Strings
 		if (to is null) throw new ArgumentNullException(nameof(to));
 		return self.Replace(from, to);
 	}
+	public static string ReplaceSelf(this string self, char from, char to) => self.Replace(from, to);
 }
