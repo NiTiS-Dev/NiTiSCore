@@ -57,4 +57,5 @@ public class ServiceProvider : IServiceProvider
 	}
 	public bool Exists<T>() => this.services.Exists<T>();
 	public bool Exists(Type serviceType) => this.services.Exists(serviceType);
+	public void AddService<T>(T service) => services.Add(service);
 }
