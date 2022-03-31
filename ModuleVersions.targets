@@ -6,7 +6,7 @@
 		<Creator>NiTiS-Dev</Creator>
 		<Creators>$(Creator), NickName73</Creators>
 		<Core_Name>NiTiS.Core</Core_Name>
-		<Core_Version>2.0.6.4</Core_Version>
+		<Core_Version>2.0.6.5</Core_Version>
 		<IO_Name>NiTiS.IO</IO_Name>
 		<IO_Version>1.1.3</IO_Version>
 		<Collections_Name>NiTiS.Collections</Collections_Name>
@@ -18,7 +18,7 @@
 		<Reflection_Name>NiTiS.Reflection</Reflection_Name>
 		<Reflection_Version>1.0.9</Reflection_Version>
 		<Additions_Name>NiTiS.Additions</Additions_Name>
-		<Additions_Version>2.1.3</Additions_Version>
+		<Additions_Version>2.1.4</Additions_Version>
 		
 		<!-- Not Included in NiTiS.Core -->
 		<Booru_Name>NiTiS.Booru</Booru_Name>
@@ -26,7 +26,7 @@
 		<!-- Other Parameters -->
 		
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 

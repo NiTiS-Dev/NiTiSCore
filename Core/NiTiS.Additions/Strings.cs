@@ -42,7 +42,12 @@ public static class Strings
 	{
 		if (from is null) throw new ArgumentNullException(nameof(from));
 		if (to is null) throw new ArgumentNullException(nameof(to));
-		return self.Replace(from, to);
+		self = self.Replace(from, to);
+		return self;
 	}
-	public static string ReplaceSelf(this string self, char from, char to) => self.Replace(from, to);
+	public static string ReplaceSelf(this string self, char from, char to)
+	{
+		self = self.Replace(from, to);
+		return self;
+	}
 }
