@@ -6,9 +6,9 @@
 		<Creator>NiTiS-Dev</Creator>
 		<Creators>$(Creator), NickName73</Creators>
 		<Core_Name>NiTiS.Core</Core_Name>
-		<Core_Version>2.0.6.3</Core_Version>
+		<Core_Version>2.0.6.4</Core_Version>
 		<IO_Name>NiTiS.IO</IO_Name>
-		<IO_Version>1.1.2</IO_Version>
+		<IO_Version>1.1.3</IO_Version>
 		<Collections_Name>NiTiS.Collections</Collections_Name>
 		<Collections_Version>1.0.8</Collections_Version>
 		<Math_Name>NiTiS.Math</Math_Name>

@@ -92,7 +92,7 @@ public sealed class File : IStorageElement
 	/// </summary>
 	public void Create(bool createSubDirectory = false)
 	{
-		if (createSubDirectory && Parent.Exists)
+		if (createSubDirectory && !Parent.Exists)
 		{
 			Parent.Create();
 		}
