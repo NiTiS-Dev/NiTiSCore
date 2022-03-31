@@ -22,8 +22,7 @@ public class HardTypedDictonary<M> : IEnumerable<M>
 			dict.Add(item.GetType(), item);
 		}
 	}
-
-	public void Add<T>(T obj) where T : M => this.dict.Add(typeof(T), obj);
+	public void Add(M obj) => this.dict.Add(obj.GetType(), obj);
 
 	public void Clear() => this.dict.Clear();
 	public int Count => this.dict.Count;

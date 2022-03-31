@@ -6,7 +6,7 @@ namespace NiTiS.Interaction.Services;
 
 public class ServiceProvider : IServiceProvider
 {
-	private readonly HardTypedDictonary services = new();
+	internal readonly HardTypedDictonary services = new();
 	public T GetService<T>(Type serviceType) => (T)GetService(serviceType);
 	public object GetService(Type serviceType)
 	{

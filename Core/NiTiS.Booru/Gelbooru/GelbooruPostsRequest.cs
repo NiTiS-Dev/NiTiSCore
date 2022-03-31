@@ -51,8 +51,8 @@ public class GelbooruPostsRequest
 		XmlDocument xml = site.AsyncGetXml(path).GetAwaiter().GetResult();
 		foreach (XmlNode node in xml.GetElementsByTagName("posts").Item(0).ChildNodes)
 		{
-			Console.WriteLine(node.);
-			posts.Add(new(node.));
+			//Console.WriteLine(node.);
+			//posts.Add(new(node.));
 		}
 		return posts;
 	}

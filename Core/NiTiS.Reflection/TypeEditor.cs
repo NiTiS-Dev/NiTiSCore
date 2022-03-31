@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using SType = System.Type;
 
@@ -16,6 +18,7 @@ public class TypeEditor
 		   BindingFlags.Public |
 		   BindingFlags.NonPublic |
 		   BindingFlags.Static;
+	public ConstructorInfo? GetConstructor(IEnumerable<SType> arguments) => Type.GetConstructor(arguments.ToArray());
 	public ConstructorInfo? GetFreeConstructor()
 	{
 		return Type.GetConstructor(SType.EmptyTypes);

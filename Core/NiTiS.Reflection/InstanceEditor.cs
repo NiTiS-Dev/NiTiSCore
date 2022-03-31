@@ -14,10 +14,10 @@ public sealed class InstanceEditor
 			BindingFlags.Public |
 			BindingFlags.NonPublic |
 			BindingFlags.Static;
-	public InstanceEditor(object? instance = default)
+	public InstanceEditor(object? instance = default, Type? type = null)
 	{
-		this.Instance = instance!;
-		editType = instance!.GetType();
+		Instance = instance!;
+		editType = instance?.GetType() ?? type;
 	}
 	public IEnumerable<object?> GetVariableValueEnumerable()
 	{
