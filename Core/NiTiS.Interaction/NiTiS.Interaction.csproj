@@ -4,6 +4,7 @@
 		<PP_Name>$(Interaction_Name)</PP_Name>
 		<PP_Version>$(Interaction_Version)</PP_Version>
 		<Description>The NiTiS library including interaction</Description>
+		<PackageTags>$(PackageTags);DependencyInjection</PackageTags>
 	</PropertyGroup>
 	<Import Project="../../PostModule.targets" />
 	<ItemGroup>

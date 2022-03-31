@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<!-- Project Sdk="Microsoft.NET.Sdk">
 	<Import Project="../../ModuleVersions.targets" />
 	<PropertyGroup>
 		<PP_Name>$(Booru_Name)</PP_Name>
@@ -10,4 +10,4 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\NiTiS.Additions\NiTiS.Additions.csproj" />
 	</ItemGroup>
-</Project>
+</Project -->
