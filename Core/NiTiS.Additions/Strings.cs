@@ -38,6 +38,7 @@ public static class Strings
 		}
 		return text + end;
 	}
+	[Obsolete]
 	public static string ReplaceSelf(this string self, string from, string to)
 	{
 		if (from is null) throw new ArgumentNullException(nameof(from));
@@ -45,6 +46,7 @@ public static class Strings
 		self = self.Replace(from, to);
 		return self;
 	}
+	[Obsolete]
 	public static string ReplaceSelf(this string self, char from, char to)
 	{
 		self = self.Replace(from, to);
