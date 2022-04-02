@@ -17,7 +17,7 @@ public class ServiceCollection
 	}
 	public ServiceCollection AddInstance(object instance)
 	{
-		if (!this.instances.Exists(t => t.GetType() == instance.GetType())) throw new ArgumentException("Element allready exists");
+		if (this.instances.Exists(t => t.GetType() == instance.GetType())) throw new ArgumentException("Element allready exists");
 		this.instances.Add(instance);
 		return this;
 	}
