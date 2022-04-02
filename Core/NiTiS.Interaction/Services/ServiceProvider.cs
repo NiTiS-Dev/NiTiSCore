@@ -1,10 +1,11 @@
 ﻿using NiTiS.Collections.Generic;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace NiTiS.Interaction.Services;
 
-public class ServiceProvider : IServiceProvider
+public class ServiceProvider : IServiceProvider, IDisposable
 {
 	internal readonly HardTypedDictonary services = new();
 	public T GetService<T>(Type serviceType) => (T)GetService(serviceType);
@@ -58,4 +59,11 @@ public class ServiceProvider : IServiceProvider
 	public bool Exists<T>() => this.services.Exists<T>();
 	public bool Exists(Type serviceType) => this.services.Exists(serviceType);
 	public void AddService<T>(T service) => services.Add(service);
+	public void Dispose()
+	{
+		foreach(IDisposable disp in services.Where(serv => serv is IDisposable).Cast<IDisposable>())
+		{
+			disp.Dispose();
+		}
+	}
 }
