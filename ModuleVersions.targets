@@ -26,6 +26,7 @@
 		<!-- Other Parameters -->
 		
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+                <EmbedAllSources>true</EmbedAllSources>
 		<GenerateDocumentationFile>false</GenerateDocumentationFile>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
