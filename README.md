@@ -11,8 +11,10 @@
     <img src="https://img.shields.io/github/commit-activity/m/NickName73/NiTiSCore?style=for-the-badge" /></a>
   <a href="https:\\nuget.org/packages/NiTiSCore" alt="Downloads">
     <img src="https://img.shields.io/nuget/dt/NiTiSCore?style=for-the-badge" /></a>
-  <a href="https:\\nuget.org/packages/NiTiSCore" alt="Version">
-    <img src="https://img.shields.io/nuget/v/NiTiSCore?label=release&style=for-the-badge" /></a>
-  <a href="https:\\nuget.org/packages/NiTiSCore" alt="Version">
-    <img src="https://img.shields.io/nuget/vpre/NiTiSCore?label=beta&style=for-the-badge" /></a>
 </p>
+
+|Package Name|Nuget ID|Version|
+|:-:|:-:|:-:|
+|NiTiS.Core|`NiTiSCore`|![Version](https://img.shields.io/nuget/vpre/NiTiSCore?label=%20&style=flat-square)|
+|NiTiS.Additions|`NiTiS.Additions`|![Version](https://img.shields.io/nuget/vpre/NiTiS.Additions?label=%20&style=flat-square)|
+|NiTiS.Collections|`NiTiS.Collections`|![Version](https://img.shields.io/nuget/vpre/NiTiS.Collections?label=%20&style=flat-square)|
