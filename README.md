@@ -18,3 +18,7 @@
 |NiTiS.Core|`NiTiSCore`|![Version](https://img.shields.io/nuget/vpre/NiTiSCore?label=%20&style=flat-square)|
 |NiTiS.Additions|`NiTiS.Additions`|![Version](https://img.shields.io/nuget/vpre/NiTiS.Additions?label=%20&style=flat-square)|
 |NiTiS.Collections|`NiTiS.Collections`|![Version](https://img.shields.io/nuget/vpre/NiTiS.Collections?label=%20&style=flat-square)|
+|NiTiS.IO|`NiTiS.IO`|![Version](https://img.shields.io/nuget/vpre/NiTiS.IO?label=%20&style=flat-square)|
+|NiTiS.Interaction|`NiTiS.Interaction`|![Version](https://img.shields.io/nuget/vpre/NiTiS.Interaction?label=%20&style=flat-square)|
+|NiTiS.Math|`NiTiS.Math`|![Version](https://img.shields.io/nuget/vpre/NiTiS.Math?label=%20&style=flat-square)|
+|NiTiS.Reflection|`NiTiS.Reflection`|![Version](https://img.shields.io/nuget/vpre/NiTiS.Reflection?label=%20&style=flat-square)|
