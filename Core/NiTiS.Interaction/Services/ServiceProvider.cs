@@ -12,7 +12,7 @@ public class ServiceProvider : IServiceProvider, IDisposable
 	public object GetService(Type serviceType)
 	{
 		object? service = this.services.Get(serviceType);
-		return service is not null ? service : throw new Exception("Service not found");
+		return service ?? throw new Exception("Service not found");
 	}
 	public bool TryGetService(Type serviceType,	
 		#if NITIS_NULL_ANN
@@ -59,6 +59,7 @@ public class ServiceProvider : IServiceProvider, IDisposable
 	public bool Exists<T>() => this.services.Exists<T>();
 	public bool Exists(Type serviceType) => this.services.Exists(serviceType);
 	public void AddService<T>(T service) => services.Add(service);
+	internal void AddService(Type type, object service) => services.Add(type, service);
 	public void Dispose()
 	{
 		foreach(IDisposable disp in services.Where(serv => serv is IDisposable).Cast<IDisposable>())

@@ -8,7 +8,7 @@ public class EnumCollection<ET> : IEnumerable<ET> where ET : struct, Enum
 	protected List<ET> list = new List<ET>();
 	public static EnumCollection<Enu> Of<Enu>(params Enu[] enums) where Enu : struct, Enum
 	{
-		var enumCollection = new EnumCollection<Enu>();
+		EnumCollection<Enu>? enumCollection = new EnumCollection<Enu>();
 		enumCollection.list.AddRange(enums);
 		return enumCollection;
 	}

@@ -8,96 +8,108 @@ namespace NiTiS.Interaction.Services;
 
 public class ServiceCollection
 {
-	private readonly List<Type> singletonTypes = new();
-	private readonly List<object> instances = new();
-	public ServiceCollection AddSingleton<T>()
+	private readonly ServiceProvider provider = new();
+	private readonly List<LoadEntry> entries = new();
+	private int gindex = 0;
+	public ServiceCollection AddInstance<T>(T itm)
 	{
-		this.singletonTypes.Add(typeof(T));
+		if (itm is null) throw new ArgumentNullException(nameof(itm));
+		gindex++;
+		entries.Add(new(gindex, typeof(T), itm));
 		return this;
 	}
-	public ServiceCollection AddInstance(object instance)
+	public ServiceCollection AddSingleton<T>() => AddSingleton<T>(x => new[] { x });
+	public ServiceCollection AddSingleton<T>(ArgBuilder argumentBuilder)
 	{
-		if (this.instances.Exists(t => t.GetType() == instance.GetType())) throw new ArgumentException("Element allready exists");
-		this.instances.Add(instance);
+		gindex++;
+		entries.Add(new(gindex, typeof(T), argumentBuilder));
 		return this;
 	}
-	public ServiceProvider Build() //Its works (maybe), doesnt touch!!
+	public ServiceProvider Build()
 	{
-		ServiceProvider provider = new();
-		foreach (object instanced in instances)
+		IEnumerable<LoadEntry> sortedEntries = entries.OrderBy(x => x.IsInstance ? 0 : 1).ThenBy(x => x.id);
+		foreach (LoadEntry entry in sortedEntries)
 		{
-			provider.AddService(instanced);
-		}
-		List<Type> allreadyInitialized = new(singletonTypes.Count);
-		List<Singleton> singls = new(singletonTypes.Count);
-		foreach(Type tp in singletonTypes)
-		{
-			singls.Add(new(tp));
-		}
-		void Sort()
-		{
-			singls = singls
-			   .OrderByDescending(s => s.RequiredTypes
-				   .All(t => allreadyInitialized.Contains(t)) ? 1 : 0).ToList();
-		}
-		Sort(); //Sort at start and on every cycle
-		while (singls.Count > 0)
-		{
-			Type type = singls[0].Type;
-			singls.RemoveAt(0);
-			TypeEditor editor = new(type);
-			ConstructorInfo? constr = editor.GetConstructor(new Type[] { typeof(IServiceProvider) });
-
-			object? service = constr?.Invoke(new[] { provider });
-			service ??= editor.GetFreeConstructor()?.Invoke(Array.Empty<object>());
-			if (service is null)
+			if (entry.IsInstance)
 			{
-				throw new ValidConstructorNotFoundException(type);
+				provider.AddService(entry.instance);
 			}
-			provider.AddService(service);
-			allreadyInitialized.Add(type);
-			Sort();
+			if (entry.IsSingleton)
+			{
+				entry.TryGenerate(provider);
+				provider.AddService(entry.instance);
+			}
+			if (entry.instance is not null and IService service)
+			{
+				service.Initialize(provider);
+			}
 		}
 		foreach (object obj in provider.services)
 		{
-			InstanceEditor ieditor = new(null, obj.GetType());
-			foreach (PropertyInfo i in ieditor.GetProperityEnumerable())
+			if (obj is not null and IService service)
 			{
-				AutomaticFillAttribute? attr = i.GetCustomAttribute<AutomaticFillAttribute>();
-				if (attr is not null && !attr.Type.IsIgnore() && attr.Type.IsValid(AutomaticFill.ServiceProvider))
-				{
-					Type reqType = i.PropertyType;
-					if (provider.TryGetService(reqType, out object? ser))
-					{
-						i.SetValue(obj, ser);
-					}
-				}
-			}
-			foreach (FieldInfo i in ieditor.GetVariableEnumerable())
-			{
-				AutomaticFillAttribute? attr = i.GetCustomAttribute<AutomaticFillAttribute>();
-				if (attr is not null && !attr.Type.IsIgnore() && attr.Type.IsValid(AutomaticFill.ServiceProvider))
-				{
-					Type reqType = i.FieldType;
-					if (provider.TryGetService(reqType, out object? ser))
-					{
-						i.SetValue(obj, ser);
-					}
-				}
+				service.PostInitialize(provider);
 			}
 		}
-		return provider;
+		return this.provider;
 	}
+	public delegate object[] ArgBuilder(ServiceProvider provider);
+	private struct LoadEntry
+	{
+		public readonly int id;
+		public readonly Type type;
+		public readonly ArgBuilder? builder;
+		public object? instance;
+		public bool IsSingleton => this.builder is not null;
+		public bool IsInstance => this.instance is not null;
+		internal LoadEntry(int id, Type type, ArgBuilder builder)
+		{
+			this.id = id;
+			this.type = type;
+			this.instance = null;
+			this.builder = builder;
+		}
+		internal LoadEntry(int id, Type type, object instance)
+		{
+			this.id = id;
+			this.type = type;
+			this.instance = instance;
+			this.builder = null;
+		}
+		public void TryGenerate(IServiceProvider provider)
+		{
+			object? obj = null;
+			TypeEditor edit = new(type);
+			ConstructorInfo? ctor = edit.GetFreeConstructor();
+			if (ctor is null)
+			{
+				ctor = edit.GetConstructor(CONST_PARAMS);
+				obj = ctor?.Invoke(new object[] { provider });
+			}
+			else
+			{
+				obj = ctor.Invoke(Array.Empty<object>());
+			}
+			instance = obj;
+		}
+		public static readonly Type[] CONST_PARAMS = new Type[]
+		{
+			typeof(IServiceProvider)
+		};
+	}
+
+	[Obsolete]
 	private readonly struct Singleton
 	{
 		public readonly Type Type { get; }
 		public Singleton(Type type)
 		{
 			Type = type;
-			InstanceEditor instanceEditor = new(null, type); //Unsafe, i shoud remake this classes in future with mutual class depend
+			InstanceEditor instanceEditor = new(null, type);
 			instanceEditor.Flags = BindingFlags.Instance | BindingFlags.NonPublic; //readonly + private (or maybe +protected idk)
 			RequiredTypes = instanceEditor.GetVariableEnumerable().Select(s => s.FieldType).ToArray();
 		}
 		public readonly Type[] RequiredTypes { get; }
 	}
+
 }
