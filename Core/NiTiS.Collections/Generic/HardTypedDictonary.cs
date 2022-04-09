@@ -23,6 +23,13 @@ public class HardTypedDictonary<M> : IEnumerable<M>
 		}
 	}
 	public void Add(M obj) => this.dict.Add(obj.GetType(), obj);
+	internal void Add(Type type, object obj)
+	{
+		if (obj is M m)
+		{
+			this.dict.Add(type, m);
+		}
+	}
 
 	public void Clear() => this.dict.Clear();
 	public int Count => this.dict.Count;
