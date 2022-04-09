@@ -3,6 +3,9 @@ using SMath = System.Math;
 
 namespace NiTiS.Math;
 
+/// <summary>
+/// RNG created by Brian Wichmann and David Hill
+/// </summary>
 public sealed class WichmannRandom
 {
 	private double s1, s2, s3;
@@ -25,14 +28,11 @@ public sealed class WichmannRandom
 		if (s2 < 0) { s2 += 30307; }
 		s3 = 170 * (s3 % 178) - 63 * (s3 / 178);
 		if (s3 < 0) { s3 += 30323; }
-		var r = (s1 * 1.0) / 30269 + (s2 * 1.0) / 30307 + (s3 * 1.0) / 30323;
+		double r = (s1 * 1.0) / 30269 + (s2 * 1.0) / 30307 + (s3 * 1.0) / 30323;
 		return r - SMath.Truncate(r);
 	}
 	public int this[int min, int max] => Next(min, max);
 	public int this[int max] => Next(max);
 	public int Next(int min, int max) => Next(max - min) + min;
-	public int Next(int max)
-	{
-		return (int)(max * Next());
-	}
+	public int Next(int max) => (int)(max * Next());
 }

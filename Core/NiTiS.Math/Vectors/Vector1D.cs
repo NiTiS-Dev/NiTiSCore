@@ -14,31 +14,34 @@ public struct Vector1D :
 	IEquatable<Vector1D>,
 	IEquatable<Vector1DInt>
 {
+	/// <summary>
+	/// First dimension value
+	/// </summary>
 	public float X;
 
 	public float GetValueByDimension(Axis axis)
 	{
-		if (axis == Axis.X) { return X; } else { return 0; }
+		if (axis == Axis.X) { return this.X; } else { return 0; }
 	}
 	public Vector1D(float x = 0)
 	{
-		X = x;
+		this.X = x;
 	}
 	public static Vector1D operator +(Vector1D a) => a;
-	public static Vector1D operator ++(Vector1D a) => new Vector1D(a.X + 1);
-	public static Vector1D operator -(Vector1D a) => new Vector1D(-a.X);
-	public static Vector1D operator --(Vector1D a) => new Vector1D(a.X - 1);
-	public static Vector1D operator +(Vector1D a, Vector1D b) => new Vector1D(a.X + b.X);
-	public static Vector1D operator -(Vector1D a, Vector1D b) => new Vector1D(a.X - b.X);
-	public static Vector1D operator *(Vector1D a, Vector1D b) => new Vector1D(a.X * b.X);
-	public static Vector1D operator *(Vector1D a, float b) => new Vector1D(a.X * b);
-	public static Vector1D operator /(Vector1D a, Vector1D b) => new Vector1D(a.X / b.X);
-	public static Vector1D operator /(Vector1D a, float b) => new Vector1D(a.X / b);
+	public static Vector1D operator ++(Vector1D a) => new(a.X + 1);
+	public static Vector1D operator -(Vector1D a) => new(-a.X);
+	public static Vector1D operator --(Vector1D a) => new(a.X - 1);
+	public static Vector1D operator +(Vector1D a, Vector1D b) => new(a.X + b.X);
+	public static Vector1D operator -(Vector1D a, Vector1D b) => new(a.X - b.X);
+	public static Vector1D operator *(Vector1D a, Vector1D b) => new(a.X * b.X);
+	public static Vector1D operator *(Vector1D a, float b) => new(a.X * b);
+	public static Vector1D operator /(Vector1D a, Vector1D b) => new(a.X / b.X);
+	public static Vector1D operator /(Vector1D a, float b) => new(a.X / b);
 	public static bool operator ==(Vector1D lhs, Vector1D rhs) => lhs.Equals(rhs);
 	public static bool operator !=(Vector1D lhs, Vector1D rhs) => !lhs.Equals(rhs);
 	public static bool operator ==(Vector1D lhs, Vector1DInt rhs) => lhs.Equals(rhs);
 	public static bool operator !=(Vector1D lhs, Vector1DInt rhs) => !lhs.Equals(rhs);
-	public Vector1DInt VectorInt => new Vector1DInt((int)X);
+	public Vector1DInt VectorInt => new((int)this.X);
 
 	#region Transforms
 	public static explicit operator Vector4D(Vector1D b) => new Vector4D(b.X, 0, 0, 0);
@@ -50,51 +53,34 @@ public struct Vector1D :
 	public static implicit operator Vector1DInt(Vector1D b) => new Vector1DInt((int)b.X);
 	#endregion
 
-	public double LengthSquared => X * X;
-	public double Length => Abs(X);
+	public double LengthSquared => this.X * this.X;
+	public double Length => Abs(this.X);
 	public void Normalize()
 	{
-		if (X == 0) { return; }
-		if (X < 0) { X = -1; } else { X = 1; }
+		if (this.X == 0) { return; }
+		if (this.X < 0) { this.X = -1; } else { this.X = 1; }
 	}
 
-	public override string ToString() => "{" + X + "}";
+	public override string ToString() => "{" + this.X + "}";
 	public void GetObjectData(SerializationInfo info, StreamingContext context)
 	{
-		info.AddValue("x", X);
+		info.AddValue("x", this.X);
 	}
 	public Vector1D(SerializationInfo info, StreamingContext context)
 	{
-		X = info.GetSingle("x");
+		this.X = info.GetSingle("x");
 	}
 	public bool Equals(Vector1DInt other)
 	{
-		if (other.X != X) { return false; }
+		if (other.X != this.X) { return false; }
 		return true;
 	}
 
 	public bool Equals(Vector1D other)
 	{
-		if (other.X != X) { return false; }
+		if (other.X != this.X) { return false; }
 		return true;
 	}
 
-	public override int GetHashCode()
-	{
-		return -1830369473 + X.GetHashCode();
-	}
-
-	public override bool Equals(object? obj)
-	{
-		if (obj is null) return false;
-		if (obj is Vector1DInt vec)
-		{
-			return obj.Equals(vec);
-		}
-		if (obj is Vector1D vecInt)
-		{
-			return obj.Equals(vecInt);
-		}
-		return base.Equals(obj);
-	}
+	public override int GetHashCode() => -1830369473 + this.X.GetHashCode();
 }

@@ -13,8 +13,17 @@ public struct Vector3D :
 	IEquatable<Vector3D>,
 	IEquatable<Vector3DInt>
 {
+	/// <summary>
+	/// First dimension value
+	/// </summary>
 	public float X;
+	/// <summary>
+	/// Second dimension value
+	/// </summary>
 	public float Y;
+	/// <summary>
+	/// Third dimension value
+	/// </summary>
 	public float Z;
 	public float GetValueByDimension(Axis axis)
 	{

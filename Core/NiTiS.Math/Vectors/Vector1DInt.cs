@@ -13,7 +13,9 @@ public struct Vector1DInt :
 	IEquatable<Vector1DInt>,
 	IEquatable<Vector1D>
 {
-
+	/// <summary>
+	/// First dimension value
+	/// </summary>
 	public int X;
 	public int GetValueByDimension(Axis axis)
 	{

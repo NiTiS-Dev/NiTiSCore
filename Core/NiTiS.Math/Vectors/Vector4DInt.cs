@@ -13,9 +13,21 @@ public struct Vector4DInt :
 	IEquatable<Vector4DInt>,
 	IEquatable<Vector4D>
 {
+	/// <summary>
+	/// First dimension value
+	/// </summary>
 	public int X;
+	/// <summary>
+	/// Second dimension value
+	/// </summary>
 	public int Y;
+	/// <summary>
+	/// Third dimension value
+	/// </summary>
 	public int Z;
+	/// <summary>
+	/// Four dimension value
+	/// </summary>
 	public int W;
 	public int GetValueByDimension(Axis axis)
 	{

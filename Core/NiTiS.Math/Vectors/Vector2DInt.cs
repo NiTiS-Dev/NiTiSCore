@@ -13,7 +13,13 @@ public struct Vector2DInt :
 	IEquatable<Vector2DInt>,
 	IEquatable<Vector2D>
 {
+	/// <summary>
+	/// First dimension value
+	/// </summary>
 	public int X;
+	/// <summary>
+	/// Second dimension value
+	/// </summary>
 	public int Y;
 
 	public int GetValueByDimension(Axis axis)
