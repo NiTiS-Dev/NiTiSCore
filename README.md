@@ -12,7 +12,6 @@
   <a href="https:\\nuget.org/packages/NiTiSCore" alt="Downloads">
     <img src="https://img.shields.io/nuget/dt/NiTiSCore?style=for-the-badge" /></a>
   <img src="https://img.shields.io/codacy/grade/aa9063c278db478e8e1a9ff3d37b8417?style=for-the-badge" />
-  <img src="https://img.shields.io/coveralls/NiTiS-Dev/NiTiSCore/master.svg?style=for-the-badge" />
 </p>
 
 <div align="center">
