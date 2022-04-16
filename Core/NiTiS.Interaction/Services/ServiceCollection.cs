@@ -54,7 +54,7 @@ public class ServiceCollection
 		return this.provider;
 	}
 	public delegate object[] ArgBuilder(ServiceProvider provider);
-	private struct LoadEntry
+	private struct LoadEntry : IEquatable<LoadEntry>
 	{
 		public readonly int id;
 		public readonly Type type;
@@ -92,24 +92,12 @@ public class ServiceCollection
 			}
 			instance = obj;
 		}
+
+		public bool Equals(LoadEntry other) => other.type == this.type;
+
 		public static readonly Type[] CONST_PARAMS = new Type[]
 		{
 			typeof(IServiceProvider)
 		};
 	}
-
-	[Obsolete]
-	private readonly struct Singleton
-	{
-		public readonly Type Type { get; }
-		public Singleton(Type type)
-		{
-			Type = type;
-			InstanceEditor instanceEditor = new(null, type);
-			instanceEditor.Flags = BindingFlags.Instance | BindingFlags.NonPublic; //readonly + private (or maybe +protected idk)
-			RequiredTypes = instanceEditor.GetVariableEnumerable().Select(s => s.FieldType).ToArray();
-		}
-		public readonly Type[] RequiredTypes { get; }
-	}
-
 }

@@ -6,4 +6,7 @@
 		<Description>The NiTiS library required for reflection</Description>
 	</PropertyGroup>
 	<Import Project="../../PostModule.targets" />
+	<ItemGroup>
+	  <ProjectReference Include="..\NiTiS.Collections\NiTiS.Collections.csproj" />
+	</ItemGroup>
 </Project>

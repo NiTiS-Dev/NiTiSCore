@@ -4,6 +4,7 @@
 		<PP_Name>$(Math_Name)</PP_Name>
 		<PP_Version>$(Math_Version)</PP_Version>
 		<Description>The NiTiS library including math</Description>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<Import Project="../../PostModule.targets"/>
 	<ItemGroup>

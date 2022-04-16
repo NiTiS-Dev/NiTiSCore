@@ -19,7 +19,7 @@ public enum AutomaticFill : ushort
 }
 public static class AutomaticFillExtensions
 {
-	public static bool IsIgnore(this AutomaticFill filter) => (ushort)filter % 2 == 1;
+	public static bool IsIgnore(this AutomaticFill filter) => (ushort)filter % 2 != 0;
 	public static bool IsValid(this AutomaticFill filter, AutomaticFill required) => filter.HasFlag(required);
 }
 

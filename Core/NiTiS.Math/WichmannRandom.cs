@@ -1,5 +1,4 @@
 ﻿using System;
-using SMath = System.Math;
 
 namespace NiTiS.Math;
 
