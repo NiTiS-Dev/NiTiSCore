@@ -11,10 +11,11 @@
     <img src="https://img.shields.io/github/commit-activity/m/NickName73/NiTiSCore?style=for-the-badge" /></a>
   <a href="https:\\nuget.org/packages/NiTiSCore" alt="Downloads">
     <img src="https://img.shields.io/nuget/dt/NiTiSCore?style=for-the-badge" /></a>
+  <img src="https://img.shields.io/codacy/grade/aa9063c278db478e8e1a9ff3d37b8417?style=for-the-badge" />
 </p>
 
 <div align="center">
-  
+
 |Package Name|Nuget ID|Version|
 |:-:|:-:|:-:|
 |NiTiS.Core|`NiTiSCore`|![Version](https://img.shields.io/nuget/vpre/NiTiSCore?label=%20&style=flat-square)|
