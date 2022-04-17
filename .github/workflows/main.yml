@@ -28,8 +28,9 @@ jobs:
         run: |
           cd Core
           cd NiTiS
-          dotnet build -c Release
           dotnet pack -c Release -o ../../.build/NiTiS.Core/
+          cd ../NiTiS.RawSalt
+          dotnet pack -c Release -o ../../.build/NiTiS.RawSalt/
       - name: Pack
         run: |
           cd Core/
