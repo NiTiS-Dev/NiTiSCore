@@ -8,6 +8,7 @@ on:
     paths:
     - '**.cs'
     - '**.csproj'
+    - '**.yml'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -29,8 +30,10 @@ jobs:
           cd Core
           cd NiTiS
           dotnet build -c Release
+          dotnet pack -c Release -o ../../.build
           cd ../NiTiS.RawSalt
           dotnet build -c Release
+          dotnet pack -c Release -o ../../.build
       - name: Pack
         run: |
           cd Core/
