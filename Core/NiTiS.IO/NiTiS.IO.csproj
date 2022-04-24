@@ -10,5 +10,6 @@
 	<Import Project="../../PostModule.targets" />
 	<ItemGroup>
 		<ProjectReference Include="../NiTiS.Additions/NiTiS.Additions.csproj" />
+		<ProjectReference Include="..\NiTiS.Reflection\NiTiS.Reflection.csproj" />
 	</ItemGroup>
 </Project>

@@ -1,10 +1,12 @@
 ﻿using NiTiS.Collections;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace NiTiS.Reflection;
 
+[DebuggerStepThrough]
 public partial class Class
 {
 	public Type Type { get; }

@@ -4,27 +4,15 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace NiTiS.RawSalt.Registry;
-
-public static class Registrator
-{
-	public static Registrator<T> GetRegistry<T>() where T : IEquatable<T>
-	{
-		return new Registrator<T>();
-	}
-}
-public sealed class Registrator<T> where T : IEquatable<T>
+public static class Registrator<T> where T : IEquatable<T>
 {
 	private static Idendifier[] ids;
 	private static T[] items;
 	private static int count;
 	private static int size;
-	internal Registrator()
-	{
-
-	}
-	public int Size => size;
-	public int Count => count;
-	public int GetIndex(Idendifier id)
+	public static int Size => size;
+	public static int Count => count;
+	public static int GetIndex(Idendifier id)
 	{
 		int index = 0;
 		foreach(Idendifier other in ids.Where( s => s is not null))
@@ -34,7 +22,7 @@ public sealed class Registrator<T> where T : IEquatable<T>
 		}
 		return -1;
 	}
-	public int GetIndexOf(T item)
+	public static int GetIndexOf(T item)
 	{
 		int index = 0;
 		foreach (T other in items)
@@ -44,21 +32,9 @@ public sealed class Registrator<T> where T : IEquatable<T>
 		}
 		return -1;
 	}
-	public bool Exists(Idendifier id) => GetIndex(id) != -1;
-	public bool Exists(T item) => GetIndexOf(item) != -1;
-	public RegistryKey<T>? this[Idendifier id]
-	{
-		get
-		{
-			if (Idendifier.IsNull(id))
-			{
-				return null;
-			}
-			int index = GetIndex(id);
-			return index != -1 ? new(ids[index], items[index]) : null;
-		}
-	}
-	public bool TryGet(Idendifier id, out T? value)
+	public static bool Exists(Idendifier id) => GetIndex(id) != -1;
+	public static bool Exists(T item) => GetIndexOf(item) != -1;
+	public static bool TryGet(Idendifier id, out T? value)
 	{
 		int index = GetIndex(id);
 		if (index != -1)
@@ -69,7 +45,7 @@ public sealed class Registrator<T> where T : IEquatable<T>
 		value = default;
 		return false;
 	}
-	public T? Get(Idendifier id)
+	public static T? Get(Idendifier id)
 	{
 		if (Idendifier.IsNull(id))
 		{
@@ -78,7 +54,7 @@ public sealed class Registrator<T> where T : IEquatable<T>
 		int index = GetIndex(id);
 		return index != -1 ? items[index] : default;
 	}
-	public void Registry(RegistryKey<T> key)
+	public static void Registry(RegistryKey<T> key)
 	{
 		if (CanRegistry(key.ID))
 		{
@@ -91,13 +67,13 @@ public sealed class Registrator<T> where T : IEquatable<T>
 			throw new ArgumentException("ID allready registred or equals null");
 		}
 	}
-	public bool CanRegistry(Idendifier id)
+	public static bool CanRegistry(Idendifier id)
 	{
 		if (Idendifier.IsNull(id)) return false;
 		if (Exists(id)) return false;
 		return true;
 	}
-	private void CheckArrays()
+	private static void CheckArrays()
 	{
 		int idL = ids.Length;
 		int itL = items.Length;
@@ -122,7 +98,7 @@ public sealed class Registrator<T> where T : IEquatable<T>
 			items = newItems;
 		}
 	}
-	private void RecreateArrays()
+	private static void RecreateArrays()
 	{
 		ids = new Idendifier[16];
 		items = new T[16];

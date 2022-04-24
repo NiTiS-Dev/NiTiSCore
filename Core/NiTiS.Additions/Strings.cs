@@ -17,6 +17,10 @@ public static class Strings
 	/// <returns></returns>
 	public static string Multiply(this string value, int repeat)
 	{
+		if (repeat <= 0)
+		{
+			return String.Empty;
+		}
 		return String.Concat(Enumerable.Repeat(value, repeat));
 	}
 	/// <summary>

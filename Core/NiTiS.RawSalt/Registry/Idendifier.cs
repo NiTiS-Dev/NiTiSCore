@@ -14,7 +14,6 @@ public class Idendifier : IEquatable<string>, IEquatable<Idendifier>
 	public const char ID_SPLITERATOR = '/';
 	private readonly string space, id;
 	public static readonly Idendifier NULL;
-	[Obsolete]
 	private Idendifier()
 	{
 		this.space = "\0";
@@ -58,7 +57,7 @@ public class Idendifier : IEquatable<string>, IEquatable<Idendifier>
 	}
 	public static bool IsNull(Idendifier id) => id is null || id.space == "\0";
 	public bool Equals(string? other) => ToString() == other && space != "\0" && !other.StartsWith("\0");
-	public bool Equals(Idendifier? other) => other is not null && (space, id) == (other.space, other.id) && space != "\0" && other.space != "\0";
+	public bool Equals(Idendifier? other) => (space, id) == (other?.space, other?.id) && space != "\0" && other?.space != "\0";
 
 	public override bool Equals(object? obj) => obj is Idendifier idendifier ? Equals(idendifier) : obj is string str && Equals(str);
 	public override string ToString() => $"{space}{SPACE_SPLITERATOR}{id}";

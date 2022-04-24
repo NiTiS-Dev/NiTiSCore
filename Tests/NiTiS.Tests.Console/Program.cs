@@ -1,9 +1,4 @@
-﻿using NiTiS.Math;
-using NiTiS.Math.Ranged;
-using NiTiS.RawSalt.Registry;
-using NiTiS.Reflection;
-using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿using NiTiS.IO.Format.TABS;
 
 namespace NiTiS.Tests.Console
 {
@@ -11,25 +6,44 @@ namespace NiTiS.Tests.Console
 	{
 		private static void Main(string[] args)
 		{
-			Registrator<string> reg = Registrator.GetRegistry<string>();
-			for (int i = 0; i < 32; i++)
-			{
-				reg.Registry(new(new("global", "s" + i), ""));
-				SC.WriteLine(i);
-			}
-		}
+			string tabsExample =
+@"
+m_int: 213
+globality:
+		size: 4
+	arr: [
+		's',
+		'q',
+		'0',
+		'3'
+	] 
+";
+			string tabs = TABSSerializer.Serialize(new AFD());
+			string tabs3 = TABSSerializer.Serialize(new string[] { "asdf", "assdf" });
 
-		[CompilerGenerated]
-		protected class D
-		{
-			private readonly int x = 76;
-			private readonly string df = "";
-			private Lazy<string> fd;
-			private static string dasd = "";
-			private static readonly string static_dasd;
-			public string SFsgd { get; set; }
-			public override string ToString() => x.ToString();
-			private static void SSADFS() { }
+			SC.WriteLine(TABSSerializer.ParseObject(tabsExample));
+			SC.WriteLine("------");
+			SC.WriteLine(TABSSerializer.Deserialize<AFD>(tabs));
+			SC.WriteLine("------");
+			SC.WriteLine(tabs3);
 		}
+	}
+	public class AFD
+	{
+		private string amogus;
+		public Gogol gogoliza = new();
+		public override string ToString()
+		{
+			return $"{amogus} and {gogoliza}";
+		}
+	}
+	public struct Gogol
+	{
+		private string amogus;
+		public Gogol()
+		{
+			this.amogus = "adsffdas";
+		}
+		public override string ToString() => amogus;
 	}
 }
