@@ -1,8 +1,8 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<PropertyGroup>
-		
+
 		<!-- Basic libs included in NiTiSCore -->
-		
+
 		<Creator>NiTiS-Dev</Creator>
 		<Creators>$(Creator), NickName73</Creators>
 		<Core_Name>NiTiS.Core</Core_Name>
@@ -19,7 +19,7 @@
 		<Reflection_Version>1.1.0</Reflection_Version>
 		<Additions_Name>NiTiS.Additions</Additions_Name>
 		<Additions_Version>2.2</Additions_Version>
-		
+
 		<!-- Not Included in NiTiS.Core -->
 		<Booru_Name>NiTiS.Booru</Booru_Name>
 		<Booru_Version>1.0.0</Booru_Version>
@@ -34,14 +34,15 @@
 		<NoWarn>NU5125;NU5048;CS1591</NoWarn>
 
 		<TargetFrameworks>net6.0;netstandard2.1;netcoreapp3.1;net5.0;net48</TargetFrameworks>
+		<Configurations>Debug;Release;ReleaseWithoutPack</Configurations>
 		<LangVersion>latest</LangVersion>
 		<Nullable>enable</Nullable>
-		
+
 		<!-- Metadata -->
-		
+
 		<Authors>$(Creators)</Authors>
 		<Company>$(Creator)</Company>
-		
+
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>git://github.com/NiTiS-Dev/NiTiSCore</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/NiTiS-Dev/NiTiSCore</PackageProjectUrl>
@@ -53,9 +54,14 @@
 
 		<PP_CustomNamespace>false</PP_CustomNamespace>
 		<PP_CustomID>false</PP_CustomID>
-		
-	
-</PropertyGroup>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$(Configuration)!='ReleaseWithoutPack'">
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
+		<IncludeSymbols>true</IncludeSymbols>
+	</PropertyGroup>
+
 	<PropertyGroup Condition="$(TargetFramework) == 'net48'">
 		<DefineConstants></DefineConstants>
 	</PropertyGroup>

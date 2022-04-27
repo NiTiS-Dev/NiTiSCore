@@ -5,6 +5,8 @@
 		<LangVersion>10</LangVersion>
 		<NoWarn>NU5125;NU5048</NoWarn>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+		<Configurations>Debug;Release;ReleaseWithoutPack</Configurations>
 	</PropertyGroup>
 	<ItemGroup>
 	  <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
