@@ -37,13 +37,15 @@ public readonly struct Min<T> : IComparable<T>, IComparable<Min<T>>, IEquatable<
 	}
 	public Min()
 	{
+#pragma warning disable CS8601
 		this.value = default;
+#pragma warning restore CS8601
 		if (value is null) throw new ArgumentNullException(nameof(value));
 	}
 	public Min(T value) => this.value = value;
 	public int CompareTo(T? other) => other is null ? throw new ArgumentNullException(nameof(other)) : value.CompareTo(other);
 	public int CompareTo(Min<T> other) => value.CompareTo(other.value);
-	public bool Equals(T other) => this.value.Equals(other);
+	public bool Equals(T? other) => this.value.Equals(other);
 	public bool Equals(Min<T> other) => this.value.Equals(other.value);
 	public override string? ToString() => this.value.ToString();
 }

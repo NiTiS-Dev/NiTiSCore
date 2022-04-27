@@ -83,4 +83,18 @@ public struct Vector1D :
 	}
 
 	public override int GetHashCode() => -1830369473 + this.X.GetHashCode();
+
+	public override bool Equals(object? obj)
+	{
+		if (obj is null) return false;
+		if (obj is Vector1DInt vec)
+		{
+			return this.Equals(vec);
+		}
+		if (obj is Vector1D vecInt)
+		{
+			return this.Equals(vecInt);
+		}
+		return base.Equals(obj);
+	}
 }

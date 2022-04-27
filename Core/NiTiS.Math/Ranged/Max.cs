@@ -33,13 +33,15 @@ public readonly struct Max<T> : IComparable<T>, IComparable<Max<T>>, IEquatable<
 	}
 	public Max()
 	{
+#pragma warning disable CS8601
 		this.value = default;
+#pragma warning restore CS8601
 		if (value is null) throw new ArgumentNullException(nameof(value));
 	}
 	public Max(T value) => this.value = value;
 	public int CompareTo(T? other) => other is null ? throw new ArgumentNullException(nameof(other)) : value.CompareTo(other);
 	public int CompareTo(Max<T> other) => value.CompareTo(other.value);
-	public bool Equals(T other) => this.value.Equals(other);
+	public bool Equals(T? other) => this.value.Equals(other);
 	public bool Equals(Max<T> other) => this.value.Equals(other.value);
 	public override string? ToString() => this.value.ToString();
 }
