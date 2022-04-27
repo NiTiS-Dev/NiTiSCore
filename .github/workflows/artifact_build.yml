@@ -19,9 +19,17 @@ jobs:
       - name: Build
         run: |
           cd Core
-          cd NiTiS
-          dotnet build -c Release
-          dotnet pack -c Release -o ../../.build/NiTiS.Core
+          
+          dotnet build NiTiS.Collections/ -c Release -o ../../.build --nologo
+          dotnet build NiTiS.Additions/ -c Release -o ../../.build --nologo
+          
+          dotnet build NiTiS.Math/ -c Release -o ../../.build --nologo
+          dotnet build NiTiS.Reflection/ -c Release -o ../../.build --nologo
+          dotnet build NiTiS.IO/ -c Release -o ../../.build --nologo
+          dotnet build NiTiS.Interaction/ -c Release -o ../../.build --nologo
+          
+          dotnet build NiTiS/ -c Release -o ../../.build --nologo
+          
       - name: Artifact Pack 
         uses: actions/upload-artifact@v2
         with:
