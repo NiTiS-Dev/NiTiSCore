@@ -1,0 +1,37 @@
+name: Artifact Publish
+
+on:
+  push:
+    branches: [ singleton ]
+    paths:
+    - '**.cs'
+    - '**.csproj'
+    
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          cd Core
+          
+          dotnet build NiTiS.Collections/ -c Release -o ../../.build --nologo
+          dotnet build NiTiS.Additions/ -c Release -o ../../.build --nologo
+          
+          dotnet build NiTiS.Math/ -c Release -o ../../.build --nologo
+          dotnet build NiTiS.Reflection/ -c Release -o ../../.build --nologo
+          dotnet build NiTiS.IO/ -c Release -o ../../.build --nologo
+          dotnet build NiTiS.Interaction/ -c Release -o ../../.build --nologo
+          
+          dotnet build NiTiS/ -c Release -o ../../.build --nologo
+          
+      - name: Artifact Pack 
+        uses: actions/upload-artifact@v2
+        with:
+          path: .build/
+          
