@@ -1,4 +1,4 @@
-name: NugetPublish
+name: Artifact Publish
 
 on:
   push:
