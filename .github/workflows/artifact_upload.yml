@@ -1,4 +1,4 @@
-name: Artifact Publish
+name: Artifact Uploading
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
     paths:
     - '**.cs'
     - '**.csproj'
-    - '.github/workflows/artifact_build.yml'
+    - '.github/workflows/artifact_upload.yml'
     
   workflow_dispatch:
   
