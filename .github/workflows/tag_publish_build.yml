@@ -33,9 +33,11 @@ jobs:
           
         dotnet build NiTiS/ -c ReleaseWithoutPack -o ../.build --nologo
           
-    - name: Upload binaries to release
-      uses: svenstaro/upload-release-action@v2
+    - name: Upload files to release  
+      uses: xresloader/upload-to-github-release@v1
+      env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: .build/
-        tag: ${{ github.ref }}
+       file: .build/*dll
+       tags: true
+       draft: true
