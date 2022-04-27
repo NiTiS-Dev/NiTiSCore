@@ -6,6 +6,7 @@ on:
     paths:
     - '**.cs'
     - '**.csproj'
+    - '.github/workflows/artifact_build.yml'
     
   workflow_dispatch:
   
@@ -15,20 +16,25 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
+      
+      - name: Install DotNet v6
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.x'
+          
       - name: Build
         run: |
           cd Core
           
-          dotnet build NiTiS.Collections/ -c Release -o ../../.build --nologo
-          dotnet build NiTiS.Additions/ -c Release -o ../../.build --nologo
+          dotnet build NiTiS.Collections/ -c Release -o ../../.build/Collections --nologo
+          dotnet build NiTiS.Additions/ -c Release -o ../../.build/Additions --nologo
           
-          dotnet build NiTiS.Math/ -c Release -o ../../.build --nologo
-          dotnet build NiTiS.Reflection/ -c Release -o ../../.build --nologo
-          dotnet build NiTiS.IO/ -c Release -o ../../.build --nologo
-          dotnet build NiTiS.Interaction/ -c Release -o ../../.build --nologo
+          dotnet build NiTiS.Math/ -c Release -o ../../.build/Math --nologo
+          dotnet build NiTiS.Reflection/ -c Release -o ../../.build/Reflection --nologo
+          dotnet build NiTiS.IO/ -c Release -o ../../.build/IO --nologo
+          dotnet build NiTiS.Interaction/ -c Release -o ../../.build/Interaction --nologo
           
-          dotnet build NiTiS/ -c Release -o ../../.build --nologo
+          dotnet build NiTiS/ -c Release -o ../../.build/Core --nologo
           
       - name: Artifact Pack 
         uses: actions/upload-artifact@v2

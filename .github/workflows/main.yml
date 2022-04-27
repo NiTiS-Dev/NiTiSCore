@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: NugetPublish
+name: Nuget Publish
 # Controls when the workflow will run
 on:
   push:
@@ -24,16 +24,18 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
+      
+      - name: Install DotNet v6
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.x' 
+      
       - name: Build
         run: |
           cd Core
           cd NiTiS
           dotnet build -c Release
           dotnet pack -c Release -o ../../.build/NiTiS.Core
-          cd ../NiTiS.RawSalt
-          dotnet build -c Release
-          dotnet pack -c Release -o ../../.build/NiTiS.RawSalt
       - name: Pack
         run: |
           cd Core/
@@ -44,7 +46,6 @@ jobs:
           dotnet pack NiTiS.Math/ -c Release -o ../.build/NiTiS.Math/
           dotnet pack NiTiS.Reflection/ -c Release -o ../.build/NiTiS.Reflection/
           dotnet pack NiTiS.Additions/ -c Release -o ../.build/NiTiS.Additions/
-          dotnet pack NiTiS.RawSalt/ -c Release -o ../.build/NiTiS.RawSalt/
           cd ../.build/
       
       - name: PushNUGET
@@ -71,9 +72,6 @@ jobs:
           
           dotnet nuget push NiTiS.Additions/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
           dotnet nuget push NiTiS.Additions/*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
-
-          dotnet nuget push NiTiS.RawSalt/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
-          dotnet nuget push NiTiS.RawSalt/*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
         env:
           NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
           
@@ -87,7 +85,6 @@ jobs:
           dotnet nuget push NiTiS.Math/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
           dotnet nuget push NiTiS.Reflection/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
           dotnet nuget push NiTiS.Additions/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.RawSalt/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
