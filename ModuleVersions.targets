@@ -25,7 +25,7 @@
 		<Booru_Version>1.0.0</Booru_Version>
 		<!-- RawSalt located here (https://github.com/NiTiS-Dev/NiTiS.RawSalt) -->
 		<!-- Other Parameters -->
-		
+
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<IncludeSymbols>true</IncludeSymbols>
