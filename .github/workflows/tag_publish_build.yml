@@ -1,0 +1,24 @@
+name: Tag Publish Build
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      run: |
+        dotnet build RawSalt/ -c Release -o .build/
+        dotnet build RawSalt.Engine/ -c Release -o .build/
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: .build/
+        tag: ${{ github.ref }}
