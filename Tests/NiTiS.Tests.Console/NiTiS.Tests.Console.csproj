@@ -12,6 +12,5 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Core\NiTiS.Interaction\NiTiS.Interaction.csproj" />
 	  <ProjectReference Include="..\..\Core\NiTiS.Math\NiTiS.Math.csproj" />
-	  <ProjectReference Include="..\..\Core\NiTiS.RawSalt\NiTiS.RawSalt.csproj" />
 	</ItemGroup>
 </Project>

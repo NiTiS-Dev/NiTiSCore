@@ -23,8 +23,7 @@
 		<!-- Not Included in NiTiS.Core -->
 		<Booru_Name>NiTiS.Booru</Booru_Name>
 		<Booru_Version>1.0.0</Booru_Version>
-		<RawSalt_Name>NiTiS.RawSalt</RawSalt_Name>
-		<RawSalt_Version>0.0.0.2</RawSalt_Version>
+		<!-- RawSalt located here (https://github.com/NiTiS-Dev/NiTiS.RawSalt) -->
 		<!-- Other Parameters -->
 		
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
