@@ -56,7 +56,7 @@
 		<PP_CustomID>false</PP_CustomID>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="$(Configuration)!='ReleaseWithoutPack'">
+	<PropertyGroup Condition="$(Configuration)=='ReleaseWithoutPack'">
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<GenerateDocumentationFile>false</GenerateDocumentationFile>
 		<IncludeSymbols>true</IncludeSymbols>
