@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://github.com/NickName73/NickName73/blob/main/Micros/nitis-core-logo.png?raw=true">
   <h1 align="center">
-    The C# library for NiTiS project 
+    The C# library for NiTiS projects
   </h1>
 </p>
 <p align="center">
