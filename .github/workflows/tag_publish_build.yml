@@ -20,8 +20,16 @@ jobs:
 
     - name: Build
       run: |
-        dotnet build RawSalt/ -c Release -o .build/
-        dotnet build RawSalt.Engine/ -c Release -o .build/
+        dotnet build NiTiS.Collections/ -c ReleaseWithoutPack -o ../.build --nologo
+        dotnet build NiTiS.Additions/ -c ReleaseWithoutPack -o ../.build --nologo
+          
+        dotnet build NiTiS.Math/ -c ReleaseWithoutPack -o ../.build --nologo
+        dotnet build NiTiS.Reflection/ -c ReleaseWithoutPack -o ../.build --nologo
+        dotnet build NiTiS.IO/ -c ReleaseWithoutPack -o ../.build --nologo
+        dotnet build NiTiS.Interaction/ -c ReleaseWithoutPack -o ../.build --nologo
+          
+        dotnet build NiTiS/ -c ReleaseWithoutPack -o ../.build --nologo
+          
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
