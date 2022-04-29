@@ -8,7 +8,7 @@
 		<Core_Name>NiTiS.Core</Core_Name>
 		<Core_Version>2.0.7.1</Core_Version>
 		<IO_Name>NiTiS.IO</IO_Name>
-		<IO_Version>1.2</IO_Version>
+		<IO_Version>1.2.1</IO_Version>
 		<Collections_Name>NiTiS.Collections</Collections_Name>
 		<Collections_Version>1.1.1</Collections_Version>
 		<Math_Name>NiTiS.Math</Math_Name>

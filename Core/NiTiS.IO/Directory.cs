@@ -120,4 +120,15 @@ public sealed class Directory : IStorageElement
 		return $"\"{this.path}\" [{(Exists ? "E" : "NE")}]";
 	}
 	private string GetDebuggerDisplay() => ToString();
+	/// <summary>
+	/// Returns <see langword="true"/> when all directories exists and notnull
+	/// </summary>
+	public static bool AllExists(params Directory[] directories)
+	{
+		foreach (Directory? directory in directories)
+		{
+			if (!(directory?.Exists ?? false)) return false;
+		}
+		return true;
+	}
 }

@@ -393,4 +393,15 @@ public sealed class File : IStorageElement
 	{
 		return ToString();
 	}
+	/// <summary>
+	/// Returns <see langword="true"/> when all files exists and notnull
+	/// </summary>
+	public static bool AllExists(params File?[] files)
+	{
+		foreach(File? file in files)
+		{
+			if (!(file?.Exists ?? false)) return false;
+		}
+		return true;
+	}
 }
