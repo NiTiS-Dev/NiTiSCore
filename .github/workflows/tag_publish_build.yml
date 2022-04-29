@@ -1,0 +1,43 @@
+name: Tag Publish Build
+
+on:
+  push:
+    tags:
+      - '*'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install DotNet v6
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.x' 
+
+    - name: Build
+      run: |
+        cd Core
+        dotnet build NiTiS.Collections/ -c ReleaseWithoutPack -o ../.build --nologo
+        dotnet build NiTiS.Additions/ -c ReleaseWithoutPack -o ../.build --nologo
+          
+        dotnet build NiTiS.Math/ -c ReleaseWithoutPack -o ../.build --nologo
+        dotnet build NiTiS.Reflection/ -c ReleaseWithoutPack -o ../.build --nologo
+        dotnet build NiTiS.IO/ -c ReleaseWithoutPack -o ../.build --nologo
+        dotnet build NiTiS.Interaction/ -c ReleaseWithoutPack -o ../.build --nologo
+          
+        dotnet build NiTiS/ -c ReleaseWithoutPack -o ../.build --nologo
+          
+    - name: Upload files to release  
+      uses: xresloader/upload-to-github-release@v1
+      env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+       file: .build/*dll
+       tags: true
+       draft: true
