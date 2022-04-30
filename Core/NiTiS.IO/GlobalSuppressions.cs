@@ -4,5 +4,3 @@
 // a specific target and scoped to a namespace, type, member, etc.
 
 using System.Diagnostics.CodeAnalysis;
-
-[assembly: SuppressMessage("Style", "IDE0057:Использовать оператор диапазона", Justification = "<Ожидание>", Scope = "member", Target = "~M:NiTiS.IO.Format.TABS.TABSSerializer.ParseLine(System.String)~NiTiS.IO.Format.TABS.TABSLine")]

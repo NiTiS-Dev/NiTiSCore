@@ -4,21 +4,19 @@
 /// Provides methods for action with existing file
 /// </summary>
 [System.Diagnostics.DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
-public sealed class File : IStorageElement
+public sealed class File : Path, IStorageElement
 {
-	internal string path;
 	/// <summary>
 	/// File constructor
 	/// </summary>
 	/// <param name="path">Path to some file</param>
 	/// <exception cref="ArgumentNullException"></exception>
-	public File(params string[] path)
+	public File(params string[] path) : base(Combine(path))
 	{
 		if (path is null)
 		{
 			throw new ArgumentNullException(nameof(path));
 		}
-		this.path = IO.Path.Combine(path);
 	}
 	/// <summary>
 	/// File constructor
@@ -26,7 +24,7 @@ public sealed class File : IStorageElement
 	/// <param name="fileName">Name of file</param>
 	/// <param name="parent">Directory of file</param>
 	/// <exception cref="ArgumentNullException"></exception>
-	public File(Directory parent, string fileName)
+	public File(Directory parent, string fileName) : base(Combine(parent.Path, fileName))
 	{
 		if (parent is null)
 		{
@@ -36,7 +34,6 @@ public sealed class File : IStorageElement
 		{
 			throw new ArgumentNullException(nameof(fileName));
 		}
-		this.path = SPath.Combine(parent.Path, fileName);
 	}
 	public string Path => path;
 	public string Name => SPath.GetFileName(path);

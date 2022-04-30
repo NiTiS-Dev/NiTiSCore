@@ -21,7 +21,7 @@ public static class Strings
 		{
 			return String.Empty;
 		}
-		return String.Concat(Enumerable.Repeat(value, repeat));
+		return String.Concat(System.Linq.Enumerable.Repeat(value, repeat));
 	}
 	/// <summary>
 	/// Creates string using some array

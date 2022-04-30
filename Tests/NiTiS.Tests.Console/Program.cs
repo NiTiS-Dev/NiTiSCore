@@ -1,31 +1,10 @@
-﻿using NiTiS.IO.Format.TABS;
-
-namespace NiTiS.Tests.Console
+﻿namespace NiTiS.Tests.Console
 {
 	public class Program
 	{
 		private static void Main(string[] args)
 		{
-			string tabsExample =
-@"
-m_int: 213
-globality:
-		size: 4
-	arr: [
-		's',
-		'q',
-		'0',
-		'3'
-	] 
-";
-			string tabs = TABSSerializer.Serialize(new AFD());
-			string tabs3 = TABSSerializer.Serialize(new string[] { "asdf", "assdf" });
 
-			SC.WriteLine(TABSSerializer.ParseObject(tabsExample));
-			SC.WriteLine("------");
-			SC.WriteLine(TABSSerializer.Deserialize<AFD>(tabs));
-			SC.WriteLine("------");
-			SC.WriteLine(tabs3);
 		}
 	}
 	public class AFD

@@ -6,21 +6,15 @@ namespace NiTiS.IO;
 /// Presentation of some directory
 /// </summary>
 [System.Diagnostics.DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
-public sealed class Directory : IStorageElement
+public sealed class Directory : Path, IStorageElement
 {
-	internal String path;
 	/// <summary>
 	/// Directory single constructor
 	/// </summary>
 	/// <param name="path">Path to some directory</param>
 	/// <exception cref="ArgumentNullException"></exception>
-	public Directory(params String[] path)
+	public Directory(params string[]? path) : base(Combine(path))
 	{
-		if (path is null)
-		{
-			throw new ArgumentNullException(nameof(path));
-		}
-		this.path = SPath.Combine(path);
 	}
 	public String Path => this.path;
 	public String Name => SPath.GetFileName(this.path);
