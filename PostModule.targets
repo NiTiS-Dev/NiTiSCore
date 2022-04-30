@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<PropertyGroup>
-		<AssemblyName>$(PP_Name)-$(TargetFramework)</AssemblyName>
+		<AssemblyName>$(PP_Name)-$(PP_Version)-$(TargetFramework)</AssemblyName>
 		<AssemblyTitle>$(PP_Name)</AssemblyTitle>
 		<Version>$(PP_Version)</Version>
 		<AssemblyVersion>$(PP_Version)</AssemblyVersion>
