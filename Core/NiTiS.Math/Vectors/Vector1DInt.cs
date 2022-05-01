@@ -7,7 +7,7 @@ namespace NiTiS.Math.Vectors;
 
 [Serializable]
 [DebuggerDisplay("1DInt ({X})")]
-public struct Vector1DInt :
+public readonly struct Vector1DInt :
 	IVector<int>,
 	ISerializable,
 	IEquatable<Vector1DInt>,
@@ -16,73 +16,69 @@ public struct Vector1DInt :
 	/// <summary>
 	/// First dimension value
 	/// </summary>
-	public int X;
+	public readonly int x;
 	public int GetValueByDimension(Axis axis)
 	{
-		if (axis == Axis.X) { return X; } else { return 0; }
+		if (axis == Axis.X) { return x; } else { return 0; }
 	}
 
 	public Vector1DInt(int x = 0)
 	{
-		X = x;
+		this.x = x;
 	}
 	public static Vector1DInt operator +(Vector1DInt a) => a;
-	public static Vector1DInt operator -(Vector1DInt a) => new Vector1DInt(-a.X);
-	public static Vector1DInt operator ++(Vector1DInt a) => new Vector1DInt(a.X + 1);
-	public static Vector1DInt operator --(Vector1DInt a) => new Vector1DInt(a.X - 1);
-	public static Vector1DInt operator +(Vector1DInt a, Vector1DInt b) => new Vector1DInt(a.X + b.X);
-	public static Vector1DInt operator -(Vector1DInt a, Vector1DInt b) => new Vector1DInt(a.X - b.X);
-	public static Vector1DInt operator *(Vector1DInt a, Vector1DInt b) => new Vector1DInt(a.X * b.X);
-	public static Vector1DInt operator *(Vector1DInt a, int b) => new Vector1DInt(a.X * b);
-	public static Vector1DInt operator /(Vector1DInt a, Vector1DInt b) => new Vector1DInt(a.X / b.X);
-	public static Vector1DInt operator /(Vector1DInt a, int b) => new Vector1DInt(a.X / b);
+	public static Vector1DInt operator -(Vector1DInt a) => new Vector1DInt(-a.x);
+	public static Vector1DInt operator ++(Vector1DInt a) => new Vector1DInt(a.x + 1);
+	public static Vector1DInt operator --(Vector1DInt a) => new Vector1DInt(a.x - 1);
+	public static Vector1DInt operator +(Vector1DInt a, Vector1DInt b) => new Vector1DInt(a.x + b.x);
+	public static Vector1DInt operator -(Vector1DInt a, Vector1DInt b) => new Vector1DInt(a.x - b.x);
+	public static Vector1DInt operator *(Vector1DInt a, Vector1DInt b) => new Vector1DInt(a.x * b.x);
+	public static Vector1DInt operator *(Vector1DInt a, int b) => new Vector1DInt(a.x * b);
+	public static Vector1DInt operator /(Vector1DInt a, Vector1DInt b) => new Vector1DInt(a.x / b.x);
+	public static Vector1DInt operator /(Vector1DInt a, int b) => new Vector1DInt(a.x / b);
 	public static bool operator ==(Vector1DInt lhs, Vector1D rhs) => lhs.Equals(rhs);
 	public static bool operator !=(Vector1DInt lhs, Vector1D rhs) => !lhs.Equals(rhs);
 	public static bool operator ==(Vector1DInt lhs, Vector1DInt rhs) => lhs.Equals(rhs);
 	public static bool operator !=(Vector1DInt lhs, Vector1DInt rhs) => !lhs.Equals(rhs);
 
 	#region Transforms
-	public static explicit operator Vector4D(Vector1DInt b) => new Vector4D(b.X, 0, 0, 0);
-	public static explicit operator Vector4DInt(Vector1DInt b) => new Vector4DInt(b.X, 0, 0, 0);
-	public static explicit operator Vector3D(Vector1DInt b) => new Vector3D(b.X, 0, 0);
-	public static explicit operator Vector3DInt(Vector1DInt b) => new Vector3DInt(b.X, 0, 0);
-	public static explicit operator Vector2D(Vector1DInt b) => new Vector2D(b.X, 0);
-	public static explicit operator Vector2DInt(Vector1DInt b) => new Vector2DInt(b.X, 0);
-	public static implicit operator Vector1D(Vector1DInt b) => new Vector1D(b.X);
+	public static explicit operator Vector4D(Vector1DInt b) => new Vector4D(b.x, 0, 0, 0);
+	public static explicit operator Vector4DInt(Vector1DInt b) => new Vector4DInt(b.x, 0, 0, 0);
+	public static explicit operator Vector3D(Vector1DInt b) => new Vector3D(b.x, 0, 0);
+	public static explicit operator Vector3DInt(Vector1DInt b) => new Vector3DInt(b.x, 0, 0);
+	public static explicit operator Vector2D(Vector1DInt b) => new Vector2D(b.x, 0);
+	public static explicit operator Vector2DInt(Vector1DInt b) => new Vector2DInt(b.x, 0);
+	public static implicit operator Vector1D(Vector1DInt b) => new Vector1D(b.x);
 	#endregion
 
-	public override string ToString() => "{" + X + "}";
+	public override string ToString() => "{" + x + "}";
 
-	public double LengthSquared => X * X;
-	public double Length => Abs(X);
-	public void Normalize()
-	{
-		if (X == 0) { return; }
-		if (X < 0) { X = -1; } else { X = 1; }
-	}
+	public double LengthSquared => x * x;
+	public double Length => Abs(x);
+	public Vector1DInt Normalize() => new(VectorMath.Normalize(x));
 	public void GetObjectData(SerializationInfo info, StreamingContext context)
 	{
-		info.AddValue("x", X);
+		info.AddValue("x", x);
 	}
-	public Vector1DInt(SerializationInfo info, StreamingContext context)
+	private Vector1DInt(SerializationInfo info, StreamingContext context)
 	{
-		X = info.GetInt32("x");
+		x = info.GetInt32("x");
 	}
 	public bool Equals(Vector1DInt other)
 	{
-		if (other.X != X) { return false; }
+		if (other.x != x) { return false; }
 		return true;
 	}
 
 	public bool Equals(Vector1D other)
 	{
-		if (other.X != X) { return false; }
+		if (other.x != x) { return false; }
 		return true;
 	}
 
 	public override int GetHashCode()
 	{
-		return -1830369473 + X.GetHashCode();
+		return -1830369473 + x.GetHashCode();
 	}
 	public override bool Equals(object? obj)
 	{

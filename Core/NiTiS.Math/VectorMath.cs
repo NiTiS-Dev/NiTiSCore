@@ -21,6 +21,16 @@ public static class VectorMath
 	{
 		return new Vector1D(size);
 	}
+	public static float Normalize(float value)
+	{
+		if (value == 0f) return 0f;
+		if (value < 0f) return -1f; else return 1f; 
+	}
+	public static int Normalize(int value)
+	{
+		if (value == 0) return 0;
+		if (value < 0) return -1; else return 1;
+	}
 	public static bool CompareVectors<T>(IVector<T> left, IVector<T> right, EnumCollection<Axis> axis)
 	{
 		foreach (Axis i in axis)

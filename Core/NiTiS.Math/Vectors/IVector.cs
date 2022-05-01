@@ -13,10 +13,6 @@ public interface IVector
 	/// Returns the length of a vector squared, use to compare the lengths of vectors
 	/// </summary>
 	double LengthSquared { get; }
-	/// <summary>
-	/// Normalizes the vector. The length of the vector becomes equal to 1 and the vector retains its direction
-	/// </summary>
-	void Normalize();
 }
 /// <summary>
 /// Interface for creating vectors
