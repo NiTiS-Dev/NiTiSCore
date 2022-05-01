@@ -7,7 +7,7 @@ namespace NiTiS.Math.Vectors;
 
 
 [Serializable]
-[DebuggerDisplay("1DFloat ({X})")]
+[DebuggerDisplay("1DFloat ({x})")]
 public readonly struct Vector1D :
 	IVector<float>,
 	ISerializable,

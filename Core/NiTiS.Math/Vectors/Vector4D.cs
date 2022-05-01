@@ -6,7 +6,7 @@ using static System.Math;
 namespace NiTiS.Math.Vectors;
 
 [Serializable]
-[DebuggerDisplay("4DFloat ({X}:{Y}:{Z}:{W})")]
+[DebuggerDisplay("4DFloat ({x}:{y}:{z}:{w})")]
 public readonly struct Vector4D :
 	IVector<float>,
 	ISerializable,

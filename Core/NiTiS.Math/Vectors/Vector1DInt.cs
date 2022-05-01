@@ -6,7 +6,7 @@ using static System.Math;
 namespace NiTiS.Math.Vectors;
 
 [Serializable]
-[DebuggerDisplay("1DInt ({X})")]
+[DebuggerDisplay("1DInt ({x})")]
 public readonly struct Vector1DInt :
 	IVector<int>,
 	ISerializable,
