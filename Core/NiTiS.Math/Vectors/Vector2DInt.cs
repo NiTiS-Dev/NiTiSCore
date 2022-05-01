@@ -56,7 +56,7 @@ public readonly struct Vector2DInt :
 	public static explicit operator Vector4DInt(Vector2DInt b) => new Vector4DInt(b.x, b.y, 0, 0);
 	public static explicit operator Vector3D(Vector2DInt b) => new Vector3D(b.x, b.y, 0);
 	public static explicit operator Vector3DInt(Vector2DInt b) => new Vector3DInt(b.x, b.y, 0);
-	public static implicit operator Vector2D(Vector2DInt b) => new Vector2DInt(b.x, b.y);
+	public static implicit operator Vector2D(Vector2DInt b) => new Vector2D(b.x, b.y);
 	public static implicit operator Vector1D(Vector2DInt b) => new Vector1D(b.x);
 	public static implicit operator Vector1DInt(Vector2DInt b) => new Vector1DInt(b.x);
 	#endregion
