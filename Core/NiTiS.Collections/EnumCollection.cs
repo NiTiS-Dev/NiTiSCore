@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace NiTiS.Collections;
+
+[Obsolete]
 public class EnumCollection<ET> : IEnumerable<ET> where ET : struct, Enum
 {
 	protected List<ET> list = new List<ET>();

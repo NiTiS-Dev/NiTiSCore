@@ -6,7 +6,7 @@ namespace NiTiS.Collections.Generic;
 public class SmartDictonary<TKey, TValue> : Dictionary<TKey, TValue> where TKey : notnull
 {
 	public delegate TKey KeyGetter(TValue key);
-	private readonly KeyGetter keyGetter;
+	protected readonly KeyGetter keyGetter;
 	public SmartDictonary(KeyGetter keyGetter)
 	{
 		this.keyGetter = keyGetter;
@@ -48,7 +48,15 @@ public class SmartDictonary<TKey, TValue> : Dictionary<TKey, TValue> where TKey 
 #endif
 	public void Add(TValue value)
 	{
-
 		base.Add(keyGetter(value), value);
+	}
+	public void Remove(TValue value)
+	{
+		base.Remove(keyGetter(value));
+	}
+	public void Remove(TValue value, out TKey key)
+	{
+		key = keyGetter(value);
+		base.Remove(key);
 	}
 }
