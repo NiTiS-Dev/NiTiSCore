@@ -68,21 +68,22 @@ public sealed class File : Path, IStorageElement
 	public DateTime LastAccessTimeUTC { get => SDir.GetLastAccessTimeUtc(path); set => SDir.SetLastAccessTime(path, value); }
 	public bool Exists => SFile.Exists(path);
 	/// <summary>
-	/// Renaming the file (or moving it)
+	/// Renaming the file
 	/// </summary>
-	/// <param name="newName">New name; for example <c>image2.png</c></param>
-	/// <param name="replace">Is it worth moving the file?</param>
-	public void Rename(string newName, bool replace = false)
+	/// <remarks>
+	/// if you want to rename file to other location, use <see cref="MoveTo(File, Boolean)"/> method
+	/// </remarks>
+	/// <param name="newName">New name</param>
+	/// <param name="overwrite">Should I delete the file with the same name</param>
+	public void Rename(string newName, bool overwrite = false)
 	{
-		if (replace)
+		ThrowIfNotExists();
+		File newLocation = new(Parent.Path, newName);
+		if (overwrite)
 		{
-			ThrowIfNotExists();
-			Replace(new(Parent.Path, newName), CreateBackupFile(copy: replace));
+			newLocation.Delete();
 		}
-		else
-		{
-			this.path = IO.Path.Combine(Parent.Path, newName);
-		}
+		this.path = newLocation.path;
 	}
 	/// <summary>
 	/// Create file if not exists

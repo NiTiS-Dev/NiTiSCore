@@ -16,8 +16,8 @@ public sealed class Directory : Path, IStorageElement
 	public Directory(params string[]? path) : base(Combine(path))
 	{
 	}
-	public String Path => this.path;
-	public String Name => SPath.GetFileName(this.path);
+	public string Path => this.path;
+	public string Name => SPath.GetFileName(this.path);
 	/// <summary>
 	/// Directory where located this directory
 	/// </summary>
@@ -41,23 +41,19 @@ public sealed class Directory : Path, IStorageElement
 	public DateTime LastAccessTimeUTC { get => SDir.GetLastAccessTimeUtc(this.path); set => SDir.SetLastAccessTime(this.path, value); }
 	public bool Exists => SDir.Exists(path);
 	/// <summary>
-	/// Renaming the directory (or moving it)
+	/// Renaming the directory
 	/// </summary>
-	/// <param name="newName">New name; for example <c>image2.png</c></param>
-	/// <param name="replace">Is it worth moving the file?</param>
-	public void Rename(String newName, Boolean replace = false)
+	/// <param name="newName">New name</param>
+	/// <param name="overwrite">Should I delete the directory with the same name</param>
+	public void Rename(string newName, bool overwrite = false)
 	{
-		if (replace)
+		ThrowIfNotExists();
+		Directory newLocation = new(Parent.Path, newName);
+		if (overwrite)
 		{
-			ThrowIfNotExists();
-			String newPath = IO.Path.Combine(Parent.path, newName);
-			SDir.Move(this.path, newPath);
-			this.path = newPath;
+			newLocation.Delete();
 		}
-		else
-		{
-			this.path = IO.Path.Combine(Parent.Path, newName);
-		}
+		this.path = newLocation.path;
 	}
 	/// <summary>
 	/// Returns path separated by folders
@@ -105,6 +101,14 @@ public sealed class Directory : Path, IStorageElement
 	{
 		if (!Exists) throw new StorageElementNotExistsExeption(this);
 	}
+	/// <summary>
+	/// Delete current file from storage
+	/// </summary>
+	public void Delete(bool recursive) => SDir.Delete(path, recursive);
+	/// <summary>
+	/// Delete current file from storage
+	/// </summary>
+	public void Delete() => SDir.Delete(path);
 
 	public static Directory GetCurrentDirectory() => new Directory(SDir.GetCurrentDirectory());
 	public static Directory GetEnviromentDirectory(Environment.SpecialFolder folder) => new Directory(Environment.GetFolderPath(folder));
