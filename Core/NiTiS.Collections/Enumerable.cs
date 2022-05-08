@@ -10,13 +10,21 @@ public static class Enumerable
 {
 	public static IEnumerable<T> AppendRange<T>(this IEnumerable<T> @this, IEnumerable<T> range)
 	{
-		foreach(T i in @this)
+		foreach (T item in @this)
 		{
-			yield return i;
+			yield return item;
 		}
-		foreach(T i in range)
+		foreach (T item in range)
 		{
-			yield return i;
+			yield return item;
 		}
+	}
+	public static IEnumerable<T> ForEach<T>(this IEnumerable<T> @this, Action<T> action)
+	{
+		foreach (T item in @this)
+		{
+			action(item);
+		}
+		return @this;
 	}
 }

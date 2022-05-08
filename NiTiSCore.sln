@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiS.Reflection", "Core\Ni
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiS.Additions", "Core\NiTiS.Additions\NiTiS.Additions.csproj", "{38B61F33-2804-476E-9270-E45F22ACA162}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiS.IO.Format", "Core\NiTiS.IO.Format\NiTiS.IO.Format.csproj", "{6CE3456C-E0D4-432F-9865-F8A005A28581}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,14 @@ Global
 		{38B61F33-2804-476E-9270-E45F22ACA162}.ReleaseWithoutPack|Any CPU.Build.0 = ReleaseWithoutPack|Any CPU
 		{38B61F33-2804-476E-9270-E45F22ACA162}.ResourcePack|Any CPU.ActiveCfg = Release|Any CPU
 		{38B61F33-2804-476E-9270-E45F22ACA162}.ResourcePack|Any CPU.Build.0 = Release|Any CPU
+		{6CE3456C-E0D4-432F-9865-F8A005A28581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CE3456C-E0D4-432F-9865-F8A005A28581}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CE3456C-E0D4-432F-9865-F8A005A28581}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CE3456C-E0D4-432F-9865-F8A005A28581}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CE3456C-E0D4-432F-9865-F8A005A28581}.ReleaseWithoutPack|Any CPU.ActiveCfg = ReleaseWithoutPack|Any CPU
+		{6CE3456C-E0D4-432F-9865-F8A005A28581}.ReleaseWithoutPack|Any CPU.Build.0 = ReleaseWithoutPack|Any CPU
+		{6CE3456C-E0D4-432F-9865-F8A005A28581}.ResourcePack|Any CPU.ActiveCfg = Release|Any CPU
+		{6CE3456C-E0D4-432F-9865-F8A005A28581}.ResourcePack|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
