@@ -25,17 +25,16 @@ jobs:
       - name: Build
         run: |
           cd Core/
-          dotnet build NiTiS/ --nologo
           
-          dotnet build NiTiS.Collections/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies
-          dotnet build NiTiS.Additions/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies
+          dotnet build NiTiS.Collections/ -c ReleaseWithoutPack -o ../.build/NiTiS.Collections/ --nologo --no-dependencies
+          dotnet build NiTiS.Additions/ -c ReleaseWithoutPack -o ../.build/NiTiS.Additions/ --nologo --no-dependencies
           
-          dotnet build NiTiS.Math/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies
-          dotnet build NiTiS.Reflection/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies
-          dotnet build NiTiS.IO/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies
-          dotnet build NiTiS.Interaction/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies
+          dotnet build NiTiS.Math/ -c ReleaseWithoutPack -o ../.build/NiTiS.Math/ --nologo --no-dependencies
+          dotnet build NiTiS.Reflection/ -c ReleaseWithoutPack -o ../.build/NiTiS.Reflections/ --nologo --no-dependencies
+          dotnet build NiTiS.IO/ -c ReleaseWithoutPack -o ../.build/NiTiS.IO/ --nologo --no-dependencies
+          dotnet build NiTiS.Interaction/ -c ReleaseWithoutPack -o ../.build/NiTiS.Interaction/ --nologo --no-dependencies
           
-          dotnet build NiTiS/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies
+          dotnet build NiTiS/ -c ReleaseWithoutPack -o ../.build/NiTiS.Core/ --nologo --no-dependencies
           
       - name: Artifact Pack 
         uses: actions/upload-artifact@v2
