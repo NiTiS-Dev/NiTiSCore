@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<AssemblyName>$(PP_Name)</AssemblyName>
 		<AssemblyTitle>$(PP_Name)</AssemblyTitle>
-		<TargetName Condition="$(Configuration)=='ReleaseWithoutPack'">$(PP_Name)-$(TargetFramework)</TargetName>
+		<TargetName>$(PP_Name)-$(TargetFramework)</TargetName>
 		<Version>$(PP_Version)</Version>
 		<AssemblyVersion>$(PP_Version)</AssemblyVersion>
 		<Title>$(PP_Name)</Title>
