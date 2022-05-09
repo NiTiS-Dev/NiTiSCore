@@ -24,7 +24,7 @@ jobs:
       run: |
         cd Core
         
-        dotnet build -c ReleaseWithoutPack -o ../.build/NiTiS.Core
+        dotnet build NiTiS/ -c ReleaseWithoutPack -o ../.build/NiTiS.Core
     - name: Build Subs
       run: |
         cd Core
