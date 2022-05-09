@@ -24,7 +24,8 @@ jobs:
           
       - name: Build
         run: |
-          cd Core
+          cd Core/
+          dotnet build NiTiS/ --nologo
           
           dotnet build NiTiS.Collections/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies
           dotnet build NiTiS.Additions/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies

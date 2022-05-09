@@ -32,20 +32,20 @@ jobs:
       
       - name: Build
         run: |
-          cd Core
+          cd Core/
           cd NiTiS
-          dotnet build -c Release
-          dotnet pack -c Release -o ../../.build/NiTiS.Core
+          dotnet build -c Release --nologo
+          dotnet pack -c Release -o ../../.build/NiTiS.Core --nologo
       - name: Pack
         run: |
           cd Core/
           ls
           dotnet pack NiTiS.IO/ -c Release -o ../.build/NiTiS.IO/ --no-dependencies
-          dotnet pack NiTiS.Collections/ -c Release -o ../.build/NiTiS.Collections/ --no-dependencies
-          dotnet pack NiTiS.Interaction/ -c Release -o ../.build/NiTiS.Interaction/ --no-dependencies
-          dotnet pack NiTiS.Math/ -c Release -o ../.build/NiTiS.Math/ --no-dependencies
-          dotnet pack NiTiS.Reflection/ -c Release -o ../.build/NiTiS.Reflection/ --no-dependencies
-          dotnet pack NiTiS.Additions/ -c Release -o ../.build/NiTiS.Additions/ --no-dependencies
+          dotnet pack NiTiS.Collections/ -c Release -o ../.build/NiTiS.Collections/ --no-dependencies --nologo
+          dotnet pack NiTiS.Interaction/ -c Release -o ../.build/NiTiS.Interaction/ --no-dependencies --nologo
+          dotnet pack NiTiS.Math/ -c Release -o ../.build/NiTiS.Math/ --no-dependencies --nologo
+          dotnet pack NiTiS.Reflection/ -c Release -o ../.build/NiTiS.Reflection/ --no-dependencies --nologo
+          dotnet pack NiTiS.Additions/ -c Release -o ../.build/NiTiS.Additions/ --no-dependencies --nologo
       
       - name: PushNUGET
         run: |
