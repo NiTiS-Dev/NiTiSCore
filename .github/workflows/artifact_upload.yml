@@ -26,15 +26,15 @@ jobs:
         run: |
           cd Core
           
-          dotnet build NiTiS.Collections/ -c ReleaseWithoutPack -o ../.build --nologo
-          dotnet build NiTiS.Additions/ -c ReleaseWithoutPack -o ../.build --nologo
+          dotnet build NiTiS.Collections/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies
+          dotnet build NiTiS.Additions/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies
           
-          dotnet build NiTiS.Math/ -c ReleaseWithoutPack -o ../.build --nologo
-          dotnet build NiTiS.Reflection/ -c ReleaseWithoutPack -o ../.build --nologo
-          dotnet build NiTiS.IO/ -c ReleaseWithoutPack -o ../.build --nologo
-          dotnet build NiTiS.Interaction/ -c ReleaseWithoutPack -o ../.build --nologo
+          dotnet build NiTiS.Math/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies
+          dotnet build NiTiS.Reflection/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies
+          dotnet build NiTiS.IO/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies
+          dotnet build NiTiS.Interaction/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies
           
-          dotnet build NiTiS/ -c ReleaseWithoutPack -o ../.build --nologo
+          dotnet build NiTiS/ -c ReleaseWithoutPack -o ../.build --nologo --no-dependencies
           
       - name: Artifact Pack 
         uses: actions/upload-artifact@v2

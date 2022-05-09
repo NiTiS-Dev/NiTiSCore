@@ -11,8 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiS.Tests.Console", "Test
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{20426B97-414C-42B8-8E5A-03884DCEE307}"
 	ProjectSection(SolutionItems) = preProject
+		.github\workflows\artifact_upload.yml = .github\workflows\artifact_upload.yml
 		ModuleVersions.targets = ModuleVersions.targets
+		.github\workflows\nuget_publish.yml = .github\workflows\nuget_publish.yml
 		PostModule.targets = PostModule.targets
+		.github\workflows\tag_publish_build.yml = .github\workflows\tag_publish_build.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiS.Collections", "Core\NiTiS.Collections\NiTiS.Collections.csproj", "{2C0033F0-3362-4376-9D59-AAA28CFED451}"
