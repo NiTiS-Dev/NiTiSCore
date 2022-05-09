@@ -46,7 +46,6 @@ jobs:
           dotnet pack NiTiS.Math/ -c Release -o ../.build/NiTiS.Math/
           dotnet pack NiTiS.Reflection/ -c Release -o ../.build/NiTiS.Reflection/
           dotnet pack NiTiS.Additions/ -c Release -o ../.build/NiTiS.Additions/
-          cd ../.build/
       
       - name: PushNUGET
         run: |
