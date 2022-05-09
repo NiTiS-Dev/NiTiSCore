@@ -26,7 +26,7 @@ jobs:
         run: |
           cd Core/
 
-          dotnet build NiTiS/ -c ReleaseWithoutPack -0 ../.build/
+          dotnet build NiTiS/ -c ReleaseWithoutPack -o ../.build/
           
       - name: Artifact Pack 
         uses: actions/upload-artifact@v2
