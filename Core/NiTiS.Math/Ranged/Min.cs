@@ -6,7 +6,7 @@ namespace NiTiS.Math.Ranged;
 /// Sets the minimum value of the given type
 /// </summary>
 /// <typeparam name="T">The type for compair</typeparam>
-public readonly struct Min<T> : IComparable<T>, IComparable<Min<T>>, IEquatable<T>, IEquatable<Min<T>> where T : IComparable
+public readonly struct Min<T> : IComparable<T>, IComparable<Max<T>>, IComparable<Min<T>>, IEquatable<T>, IEquatable<Max<T>>, IEquatable<Min<T>> where T : IComparable
 {
 	/// <summary>
 	/// Single field, who contains value
@@ -45,7 +45,50 @@ public readonly struct Min<T> : IComparable<T>, IComparable<Min<T>>, IEquatable<
 	public Min(T value) => this.value = value;
 	public int CompareTo(T? other) => other is null ? throw new ArgumentNullException(nameof(other)) : value.CompareTo(other);
 	public int CompareTo(Min<T> other) => value.CompareTo(other.value);
+	public int CompareTo(Max<T> other) => value.CompareTo(other.value);
 	public bool Equals(T? other) => this.value.Equals(other);
 	public bool Equals(Min<T> other) => this.value.Equals(other.value);
+	public bool Equals(Max<T> other) => this.value.Equals(other.value);
 	public override string? ToString() => this.value.ToString();
+
+	public override bool Equals(object? obj)
+	{
+		if (obj is Max<T> max) { return Equals(max); }
+		if (obj is Min<T> min) { return Equals(min); }
+		if (obj is T item) { return Equals(item); }
+		return false;
+	}
+
+	public override int GetHashCode()
+		=> this.value.GetHashCode();
+
+	public static bool operator ==(Min<T> left, Min<T> right)
+	{
+		return left.Equals(right);
+	}
+
+	public static bool operator !=(Min<T> left, Min<T> right)
+	{
+		return !(left == right);
+	}
+
+	public static bool operator <(Min<T> left, Min<T> right)
+	{
+		return left.CompareTo(right) < 0;
+	}
+
+	public static bool operator <=(Min<T> left, Min<T> right)
+	{
+		return left.CompareTo(right) <= 0;
+	}
+
+	public static bool operator >(Min<T> left, Min<T> right)
+	{
+		return left.CompareTo(right) > 0;
+	}
+
+	public static bool operator >=(Min<T> left, Min<T> right)
+	{
+		return left.CompareTo(right) >= 0;
+	}
 }

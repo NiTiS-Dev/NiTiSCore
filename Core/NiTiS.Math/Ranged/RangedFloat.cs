@@ -117,17 +117,21 @@ public struct RangedFloat : IRangedVar<float>, IEquatable<RangedFloat>, IEquatab
 			   max == other.max;
 	}
 
-	public override int GetHashCode()
-	{
-		int hashCode = -281913742;
-		hashCode = hashCode * -1521134295 + value.GetHashCode();
-		hashCode = hashCode * -1521134295 + min.GetHashCode();
-		hashCode = hashCode * -1521134295 + max.GetHashCode();
-		return hashCode;
-	}
-
 	public bool Equals(float other)
 	{
 		return value.Equals(other);
+	}
+
+	public override int GetHashCode()
+	{
+#if NET48
+		int hashCode = -281913742;
+		hashCode = hashCode * -1521134295 + this.value.GetHashCode();
+		hashCode = hashCode * -1521134295 + this.min.GetHashCode();
+		hashCode = hashCode * -1521134295 + this.max.GetHashCode();
+		return hashCode;
+#else
+		return HashCode.Combine(this.value, this.min, this.max);
+#endif
 	}
 }

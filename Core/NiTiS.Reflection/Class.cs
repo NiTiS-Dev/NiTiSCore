@@ -62,46 +62,7 @@ public partial class Class
 			| BindingFlags.NonPublic
 			);
 	}
-	public Class(object itm)
-	{
-		Type = itm.GetType();
-		Fields = new(Type
-			, BindingFlags.Instance
-			| BindingFlags.IgnoreCase
-			| BindingFlags.Public
-			| BindingFlags.NonPublic
-			);
-		StaticFields = new(Type
-			, BindingFlags.Static
-			| BindingFlags.IgnoreCase
-			| BindingFlags.Public
-			| BindingFlags.NonPublic
-			);
-		Properties = new(Type
-			, BindingFlags.Instance
-			| BindingFlags.IgnoreCase
-			| BindingFlags.Public
-			| BindingFlags.NonPublic
-			);
-		StaticProperties = new(Type
-			, BindingFlags.Static
-			| BindingFlags.IgnoreCase
-			| BindingFlags.Public
-			| BindingFlags.NonPublic
-			);
-		Methods = new(Type
-			, BindingFlags.Instance
-			| BindingFlags.IgnoreCase
-			| BindingFlags.Public
-			| BindingFlags.NonPublic
-			);
-		StaticMethods = new(Type
-			, BindingFlags.Static
-			| BindingFlags.IgnoreCase
-			| BindingFlags.Public
-			| BindingFlags.NonPublic
-			);
-	}
+	public Class(object itm) : this(itm.GetType()) { }
 	public static Class Of<T>() => new(typeof(T));
 	public static Class Of(object itm) => new(itm);
 	public FieldInfo? GetField(Environment env, string name)

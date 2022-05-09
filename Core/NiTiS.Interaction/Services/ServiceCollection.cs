@@ -78,7 +78,7 @@ public class ServiceCollection
 		}
 		public void TryGenerate(IServiceProvider provider)
 		{
-			object? obj = null;
+			object? obj;
 			Class edit = new(type);
 			ConstructorInfo? ctor = edit.Constructors.Free();
 			if (ctor is null)
