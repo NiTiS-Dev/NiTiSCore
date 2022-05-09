@@ -36,7 +36,7 @@ jobs:
           dotnet build NiTiS.Additions/ -c ReleaseWithoutPack -o ../.build/NiTiS.Additions/ --nologo --no-dependencies
           
           dotnet build NiTiS.Math/ -c ReleaseWithoutPack -o ../.build/NiTiS.Math/ --nologo --no-dependencies
-          dotnet build NiTiS.Reflection/ -c ReleaseWithoutPack -o ../.build/NiTiS.Reflections/ --nologo --no-dependencies
+          dotnet build NiTiS.Reflection/ -c ReleaseWithoutPack -o ../.build/NiTiS.Reflection/ --nologo --no-dependencies
           dotnet build NiTiS.IO/ -c ReleaseWithoutPack -o ../.build/NiTiS.IO/ --nologo --no-dependencies
           dotnet build NiTiS.Interaction/ -c ReleaseWithoutPack -o ../.build/NiTiS.Interaction/ --nologo --no-dependencies
           
