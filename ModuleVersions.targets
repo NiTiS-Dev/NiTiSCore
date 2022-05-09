@@ -34,7 +34,7 @@
 
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<DebugType>embedded</DebugType>
+		<DebugType>portable</DebugType>
 
 		<NoWarn>NU5125;NU5048;CS1591</NoWarn>
 
