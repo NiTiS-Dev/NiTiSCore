@@ -6,6 +6,4 @@
 		<Description>The NiTiS library including collections</Description>
 	</PropertyGroup>
 	<Import Project="../../PostModule.targets" />
-	<ItemGroup>
-	</ItemGroup>
 </Project>

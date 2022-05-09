@@ -28,6 +28,8 @@
 		<!-- RawSalt located here (https://github.com/NiTiS-Dev/NiTiS.RawSalt) -->
 		<!-- Other Parameters -->
 
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
@@ -60,13 +62,11 @@
 		<PP_CustomNamespace>false</PP_CustomNamespace>
 		<PP_CustomID>false</PP_CustomID>
 	</PropertyGroup>
-
-	<PropertyGroup Condition="$(Configuration)=='ReleaseWithoutPack'">
-		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-		<GenerateDocumentationFile>false</GenerateDocumentationFile>
-		<IncludeSymbols>true</IncludeSymbols>
-	</PropertyGroup>
 	
+	<PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
+		
 	<PropertyGroup Condition="$(TargetFramework) == 'net48'">
 		<DefineConstants></DefineConstants>
 	</PropertyGroup>
