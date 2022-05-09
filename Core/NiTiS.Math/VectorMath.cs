@@ -1,5 +1,4 @@
-﻿using NiTiS.Collections;
-using NiTiS.Math.Vectors;
+﻿using NiTiS.Math.Vectors;
 
 namespace NiTiS.Math;
 

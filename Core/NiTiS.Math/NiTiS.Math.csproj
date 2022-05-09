@@ -8,6 +8,6 @@
 	</PropertyGroup>
 	<Import Project="../../PostModule.targets" />
 	<ItemGroup>
-		<ProjectReference Include="../NiTiS.Collections/NiTiS.Collections.csproj" />
+		<!-- ProjectReference Include="../NiTiS.Collections/NiTiS.Collections.csproj" /-->
 	</ItemGroup>
 </Project>
