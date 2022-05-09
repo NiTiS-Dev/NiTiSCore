@@ -51,8 +51,8 @@ jobs:
         run: |
           cd .build/
           ls
-          dotnet nuget push NiTiS.Core*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
-          dotnet nuget push NiTiS.Core*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiSCore*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiSCore*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
           
           dotnet nuget push NiTiS.IO*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
           dotnet nuget push NiTiS.IO*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
@@ -77,7 +77,7 @@ jobs:
       - name: PushGIT
         run: |
           cd .build/
-          dotnet nuget push NiTiS.Core/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiSCore/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
           dotnet nuget push NiTiS.IO/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
           dotnet nuget push NiTiS.Collections/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
           dotnet nuget push NiTiS.Interaction/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate

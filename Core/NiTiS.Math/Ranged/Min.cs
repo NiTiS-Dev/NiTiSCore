@@ -43,12 +43,19 @@ public readonly struct Min<T> : IComparable<T>, IComparable<Max<T>>, IComparable
 		if (value is null) throw new ArgumentNullException(nameof(value));
 	}
 	public Min(T value) => this.value = value;
+	/// <inheritdoc/>
 	public int CompareTo(T? other) => other is null ? throw new ArgumentNullException(nameof(other)) : value.CompareTo(other);
+	/// <inheritdoc/>
 	public int CompareTo(Min<T> other) => value.CompareTo(other.value);
+	/// <inheritdoc/>
 	public int CompareTo(Max<T> other) => value.CompareTo(other.value);
+	/// <inheritdoc/>
 	public bool Equals(T? other) => this.value.Equals(other);
+	/// <inheritdoc/>
 	public bool Equals(Min<T> other) => this.value.Equals(other.value);
+	/// <inheritdoc/>
 	public bool Equals(Max<T> other) => this.value.Equals(other.value);
+	/// <inheritdoc/>
 	public override string? ToString() => this.value.ToString();
 
 	public override bool Equals(object? obj)
