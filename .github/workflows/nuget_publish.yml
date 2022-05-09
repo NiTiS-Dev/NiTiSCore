@@ -40,12 +40,12 @@ jobs:
         run: |
           cd Core/
           ls
-          dotnet pack NiTiS.IO/ -c Release -o ../.build/NiTiS.IO/
-          dotnet pack NiTiS.Collections/ -c Release -o ../.build/NiTiS.Collections/
-          dotnet pack NiTiS.Interaction/ -c Release -o ../.build/NiTiS.Interaction/
-          dotnet pack NiTiS.Math/ -c Release -o ../.build/NiTiS.Math/
-          dotnet pack NiTiS.Reflection/ -c Release -o ../.build/NiTiS.Reflection/
-          dotnet pack NiTiS.Additions/ -c Release -o ../.build/NiTiS.Additions/
+          dotnet pack NiTiS.IO/ -c Release -o ../.build/NiTiS.IO/ --no-dependencies
+          dotnet pack NiTiS.Collections/ -c Release -o ../.build/NiTiS.Collections/ --no-dependencies
+          dotnet pack NiTiS.Interaction/ -c Release -o ../.build/NiTiS.Interaction/ --no-dependencies
+          dotnet pack NiTiS.Math/ -c Release -o ../.build/NiTiS.Math/ --no-dependencies
+          dotnet pack NiTiS.Reflection/ -c Release -o ../.build/NiTiS.Reflection/ --no-dependencies
+          dotnet pack NiTiS.Additions/ -c Release -o ../.build/NiTiS.Additions/ --no-dependencies
       
       - name: PushNUGET
         run: |
