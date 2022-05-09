@@ -28,9 +28,6 @@
 		<!-- RawSalt located here (https://github.com/NiTiS-Dev/NiTiS.RawSalt) -->
 		<!-- Other Parameters -->
 
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
 		<NoWarn>NU5125;NU5048;CS1591</NoWarn>
