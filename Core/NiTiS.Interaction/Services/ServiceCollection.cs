@@ -79,11 +79,11 @@ public class ServiceCollection
 		public void TryGenerate(IServiceProvider provider)
 		{
 			object? obj = null;
-			TypeEditor edit = new(type);
-			ConstructorInfo? ctor = edit.GetFreeConstructor();
+			Class edit = new(type);
+			ConstructorInfo? ctor = edit.Constructors.Free();
 			if (ctor is null)
 			{
-				ctor = edit.GetConstructor(CONST_PARAMS);
+				ctor = edit.Constructors[CONST_PARAMS];
 				obj = ctor?.Invoke(new object[] { provider });
 			}
 			else

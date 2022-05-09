@@ -1,5 +1,4 @@
-﻿using NiTiS.Collections;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
@@ -16,6 +15,7 @@ public partial class Class
 	public PropertyList StaticProperties { get; }
 	public MethodList Methods { get; }
 	public MethodList StaticMethods { get; }
+	public ConstructorList Constructors { get; }
 	public Class(Type type)
 	{
 		Type = type;
@@ -51,6 +51,12 @@ public partial class Class
 			);
 		StaticMethods = new(Type
 			, BindingFlags.Static
+			| BindingFlags.IgnoreCase
+			| BindingFlags.Public
+			| BindingFlags.NonPublic
+			);
+		Constructors = new(Type
+			, BindingFlags.Instance
 			| BindingFlags.IgnoreCase
 			| BindingFlags.Public
 			| BindingFlags.NonPublic
@@ -100,7 +106,7 @@ public partial class Class
 	public static Class Of(object itm) => new(itm);
 	public FieldInfo? GetField(Environment env, string name)
 	{
-		IEnumerable<FieldInfo> fields = null;
+		IEnumerable<FieldInfo>? fields = null;
 		if (env.HasFlag(Environment.Exclusive))
 		{
 			fields ??= Array.Empty<FieldInfo>();
@@ -111,6 +117,7 @@ public partial class Class
 			fields ??= Array.Empty<FieldInfo>();
 			fields.AppendRange(StaticFields);
 		}
+		if (fields is null) { return null; }
 		foreach (FieldInfo info in fields)
 		{
 			if (info.Name == name) return info;
@@ -119,7 +126,7 @@ public partial class Class
 	}
 	public PropertyInfo? GetProperty(Environment env, string name)
 	{
-		IEnumerable<PropertyInfo> properties = null;
+		IEnumerable<PropertyInfo>? properties = null;
 		if (env.HasFlag(Environment.Exclusive))
 		{
 			properties ??= Array.Empty<PropertyInfo>();
@@ -130,6 +137,7 @@ public partial class Class
 			properties ??= Array.Empty<PropertyInfo>();
 			properties.AppendRange(StaticProperties);
 		}
+		if (properties is null) { return null; }
 		foreach (PropertyInfo info in properties)
 		{
 			if (info.Name == name) return info;
@@ -138,7 +146,7 @@ public partial class Class
 	}
 	public MethodInfo? GetMethod(Environment env, string name)
 	{
-		IEnumerable<MethodInfo> methods = null;
+		IEnumerable<MethodInfo>? methods = null;
 		if (env.HasFlag(Environment.Exclusive))
 		{
 			methods ??= Array.Empty<MethodInfo>();
@@ -149,6 +157,7 @@ public partial class Class
 			methods ??= Array.Empty<MethodInfo>();
 			methods.AppendRange(StaticMethods);
 		}
+		if (methods is null) { return null; }
 		foreach (MethodInfo info in methods)
 		{
 			if (info.Name == name) return info;
@@ -230,6 +239,14 @@ public partial class Class
 			this.flags = flags;
 		}
 	}
+	public partial class ConstructorList
+	{
+		internal ConstructorList(Type tp, BindingFlags flags)
+		{
+			this.tp = tp;
+			this.flags = flags;
+		}
+	}
 
 	/// <summary>
 	/// Member location
@@ -245,5 +262,13 @@ public partial class Class
 		/// One on all objects
 		/// </summary>
 		Static = 2,
+	}
+}
+internal static class InternalExtension
+{
+	public static IEnumerable<T> AppendRange<T>(this IEnumerable<T> enumer, IEnumerable<T> other)
+	{
+		foreach (T item in enumer) { yield return item; }
+		foreach (T item in other) { yield return item; }
 	}
 }

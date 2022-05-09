@@ -23,9 +23,7 @@ public class ServiceProvider : IServiceProvider, IDisposable
 		if (services.Exists(serviceType))
 		{
 			service = this.services.Get(serviceType);
-#pragma warning disable CS8762 // Параметр должен иметь значение, отличное от NULL, при выходе в определенном состоянии.
 			return true;
-#pragma warning restore CS8762 // Параметр должен иметь значение, отличное от NULL, при выходе в определенном состоянии.
 		}
 		else
 		{
