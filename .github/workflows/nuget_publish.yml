@@ -40,7 +40,7 @@ jobs:
         run: |
           cd Core/
           ls
-          dotnet pack NiTiS.IO/ -c Release -o ../.build/ --no-dependencies
+          dotnet pack NiTiS.IO/ -c Release -o ../.build/ --nologo
           dotnet pack NiTiS.Collections/ -c Release -o ../.build/ --nologo
           dotnet pack NiTiS.Interaction/ -c Release -o ../.build/ --nologo
           dotnet pack NiTiS.Math/ -c Release -o ../.build/ --nologo
