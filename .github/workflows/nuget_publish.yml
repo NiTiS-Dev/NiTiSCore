@@ -78,12 +78,12 @@ jobs:
         run: |
           cd .build/
           dotnet nuget push NiTiSCore*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.IO/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.Collections/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.Interaction/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.Math/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.Reflection/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
-          dotnet nuget push NiTiS.Additions/*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.IO*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Collections*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Interaction*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Math*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Reflection*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
+          dotnet nuget push NiTiS.Additions*.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN} --skip-duplicate
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
