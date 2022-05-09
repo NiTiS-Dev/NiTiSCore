@@ -34,43 +34,43 @@ jobs:
         run: |
           cd Core/
           cd NiTiS
-          dotnet build -c Release --nologo
-          dotnet pack -c Release -o ../../.build/NiTiS.Core --nologo
+          dotnet build -c Release -o ../../.build/ --nologo
+          dotnet pack -c Release -o ../../.build/ --nologo
       - name: Pack
         run: |
           cd Core/
           ls
-          dotnet pack NiTiS.IO/ -c Release -o ../.build/NiTiS.IO/ --no-dependencies
-          dotnet pack NiTiS.Collections/ -c Release -o ../.build/NiTiS.Collections/ --no-dependencies --nologo
-          dotnet pack NiTiS.Interaction/ -c Release -o ../.build/NiTiS.Interaction/ --no-dependencies --nologo
-          dotnet pack NiTiS.Math/ -c Release -o ../.build/NiTiS.Math/ --no-dependencies --nologo
-          dotnet pack NiTiS.Reflection/ -c Release -o ../.build/NiTiS.Reflection/ --no-dependencies --nologo
-          dotnet pack NiTiS.Additions/ -c Release -o ../.build/NiTiS.Additions/ --no-dependencies --nologo
+          dotnet pack NiTiS.IO/ -c Release -o ../.build/ --no-dependencies
+          dotnet pack NiTiS.Collections/ -c Release -o ../.build/ --nologo
+          dotnet pack NiTiS.Interaction/ -c Release -o ../.build/ --nologo
+          dotnet pack NiTiS.Math/ -c Release -o ../.build/ --nologo
+          dotnet pack NiTiS.Reflection/ -c Release -o ../.build/ --nologo
+          dotnet pack NiTiS.Additions/ -c Release -o ../.build/ --nologo
       
       - name: PushNUGET
         run: |
           cd .build/
           ls
-          dotnet nuget push NiTiS.Core/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
-          dotnet nuget push NiTiS.Core/*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.Core*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.Core*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
           
-          dotnet nuget push NiTiS.IO/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
-          dotnet nuget push NiTiS.IO/*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.IO*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.IO*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
           
-          dotnet nuget push NiTiS.Collections/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
-          dotnet nuget push NiTiS.Collections/*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.Collections*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.Collections*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
           
-          dotnet nuget push NiTiS.Interaction/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
-          dotnet nuget push NiTiS.Interaction/*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.Interaction*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.Interaction*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
           
-          dotnet nuget push NiTiS.Math/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
-          dotnet nuget push NiTiS.Math/*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.Math*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.Math*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
           
-          dotnet nuget push NiTiS.Reflection/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
-          dotnet nuget push NiTiS.Reflection/*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.Reflection*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.Reflection*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
           
-          dotnet nuget push NiTiS.Additions/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
-          dotnet nuget push NiTiS.Additions/*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.Additions*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.Additions*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
         env:
           NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
           

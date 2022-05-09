@@ -22,7 +22,7 @@ public class HardTypedDictonary<M> : IEnumerable<M>
 			dict.Add(item.GetType(), item);
 		}
 	}
-	public void Add(M obj) => this.dict.Add(obj.GetType(), obj);
+	public void Add(M obj) => this.dict.Add(obj!.GetType(), obj);
 	public void Add(Type type, object obj)
 	{
 		if (obj is M m)

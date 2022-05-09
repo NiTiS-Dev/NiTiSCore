@@ -12,6 +12,7 @@
 	  <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
 	</ItemGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\..\Core\NiTiS.Collections\NiTiS.Collections.csproj" />
 	  <ProjectReference Include="..\..\Core\NiTiS.Interaction\NiTiS.Interaction.csproj" />
 	  <ProjectReference Include="..\..\Core\NiTiS.IO\NiTiS.IO.csproj" />
 	  <ProjectReference Include="..\..\Core\NiTiS.Math\NiTiS.Math.csproj" />
