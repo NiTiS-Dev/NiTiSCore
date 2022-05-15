@@ -88,9 +88,9 @@ public unsafe class Sequence<T> : IEnumerable<T>
 	/// <inheritdoc/>
 	public IEnumerator<T> GetEnumerator()
 	{
-		foreach (T item in block)
+		for (ulong i = 0; i < size; i++)
 		{
-			yield return item;
+			yield return block[i];
 		}
 	}
 	/// <inheritdoc/>
