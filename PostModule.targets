@@ -23,7 +23,7 @@
 	<ItemGroup Condition="$(TargetFramework) != 'net48'">
 		<Compile Remove="**/*.net48.cs" />
 	</ItemGroup>
-	<ItemGroup>
+	<ItemGroup Condition="$(Configuration)=='Release'">
 		<None Include="README.md" Pack="true" PackagePath="\"/>
 	</ItemGroup>
 </Project>
