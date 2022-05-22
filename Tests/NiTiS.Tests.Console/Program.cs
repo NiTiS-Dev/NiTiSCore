@@ -1,4 +1,4 @@
-﻿using NiTiS.Collections.Generic;
+﻿using NiTiS.IO;
 
 namespace NiTiS.Tests.Console
 {
@@ -6,18 +6,11 @@ namespace NiTiS.Tests.Console
 	{
 		private static void Main(string[] args)
 		{
-			Sequence<char> seq = new(2);
-			SC.WriteLine(seq.LengthLimit);
-			seq.Add('2');
-			SC.WriteLine(seq.LengthLimit);
-			seq.Add('a');
-			SC.WriteLine(seq.LengthLimit);
-			seq.Add('b');
-			SC.WriteLine(seq.LengthLimit);
-			seq.Add('c');
-			SC.WriteLine(seq.Length);
-			SC.WriteLine(seq.LengthLimit);
-			SC.WriteLine(seq);
+			MemorySize size1 = new(1024);
+			MemorySize size2 = new(1000);
+
+			SC.WriteLine(size2 < size1);
+			SC.WriteLine(size2 * 2 < size1);
 		}
 	}
 }

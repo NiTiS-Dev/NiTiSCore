@@ -36,6 +36,7 @@ public sealed class File : Path, IStorageElement
 		}
 	}
 	public string Path => path;
+	public MemorySize Size => Exists ? new( new System.IO.FileInfo(path).Length ) : MemorySize.Zero;
 	public string Name => SPath.GetFileName(path);
 	/// <summary>
 	/// Name of the element (extension exclude)
