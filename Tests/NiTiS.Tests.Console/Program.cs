@@ -1,16 +1,9 @@
-﻿using NiTiS.IO;
-
-namespace NiTiS.Tests.Console
+﻿namespace NiTiS.Tests.Console
 {
-	public class Program
+	public static class Program
 	{
-		private static void Main(string[] args)
+		private static void Main()
 		{
-			MemorySize size1 = new(1024);
-			MemorySize size2 = new(1000);
-
-			SC.WriteLine(size2 < size1);
-			SC.WriteLine(size2 * 2 < size1);
 		}
 	}
 }

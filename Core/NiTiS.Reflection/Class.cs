@@ -65,6 +65,7 @@ public partial class Class
 	public Class(object itm) : this(itm.GetType()) { }
 	public static Class Of<T>() => new(typeof(T));
 	public static Class Of(object itm) => new(itm);
+	public static Class OfType(Type type) => new(type);
 	public FieldInfo? GetField(Environment env, string name)
 	{
 		IEnumerable<FieldInfo>? fields = null;
