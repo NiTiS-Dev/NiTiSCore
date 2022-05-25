@@ -43,7 +43,7 @@ public sealed class File : Path, IStorageElement
 	/// </summary>
 	public string NameWithoutExtension => SPath.GetFileNameWithoutExtension(path);
 	/// <summary>
-	/// Extension of the file
+	/// Extension of the file (including the period ".")
 	/// </summary>
 	public string Extension => SPath.GetExtension(path);
 	/// <summary>
