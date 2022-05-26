@@ -1,4 +1,2 @@
-<h1 align="center">
-NiTiS.Collections
-</h1>
+# NiTiS.Collections
 The NiTiS library including collections
