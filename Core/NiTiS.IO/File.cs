@@ -6,35 +6,9 @@
 [System.Diagnostics.DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 public sealed class File : Path, IStorageElement
 {
-	/// <summary>
-	/// File constructor
-	/// </summary>
-	/// <param name="path">Path to some file</param>
-	/// <exception cref="ArgumentNullException"></exception>
-	public File(params string[] path) : base(Combine(path))
-	{
-		if (path is null)
-		{
-			throw new ArgumentNullException(nameof(path));
-		}
-	}
-	/// <summary>
-	/// File constructor
-	/// </summary>
-	/// <param name="fileName">Name of file</param>
-	/// <param name="parent">Directory of file</param>
-	/// <exception cref="ArgumentNullException"></exception>
-	public File(Directory parent, string fileName) : base(Combine(parent.Path, fileName))
-	{
-		if (parent is null)
-		{
-			throw new ArgumentNullException(nameof(path));
-		}
-		if (fileName is null)
-		{
-			throw new ArgumentNullException(nameof(fileName));
-		}
-	}
+	public File(params string[] path) : base(Combine(path)) { }
+	public File(Directory parent, string fileName) : base(Combine(parent.Path, fileName)) { }
+	public File(string path) : base(path) { }
 	public string Path => path;
 	public MemorySize Size => Exists ? new( new System.IO.FileInfo(path).Length ) : MemorySize.Zero;
 	public string Name => SPath.GetFileName(path);

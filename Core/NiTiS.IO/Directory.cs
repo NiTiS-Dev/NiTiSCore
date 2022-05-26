@@ -8,14 +8,10 @@ namespace NiTiS.IO;
 [System.Diagnostics.DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 public sealed class Directory : Path, IStorageElement
 {
-	/// <summary>
-	/// Directory single constructor
-	/// </summary>
-	/// <param name="path">Path to some directory</param>
-	/// <exception cref="ArgumentNullException"></exception>
-	public Directory(params string[]? path) : base(Combine(path))
-	{
-	}
+	public Directory(params string[] path) : base(Combine(path)) { }
+	public Directory(string path) : base(path) { }
+	public Directory(Directory directory, string directoryName) : base(Combine(directory.Path, directoryName)) { }
+	public Directory(File file) : base(file.Parent.path) { }
 	public string Path => this.path;
 	public string Name => SPath.GetFileName(this.path);
 	/// <summary>
