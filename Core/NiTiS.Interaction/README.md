@@ -1,4 +1,2 @@
-<h1 align="center">
-NiTiS.Interaction
-</h1>
+# NiTiS.Interaction
 The NiTiS library including interaction
