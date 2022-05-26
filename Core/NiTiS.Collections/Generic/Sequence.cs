@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace NiTiS.Collections.Generic;
 
@@ -41,13 +42,20 @@ public unsafe class Sequence<T> : IEnumerable<T>
 		this.maxSize = startSize;
 		this.comparer = equalityComparer;
 	}
+	/// <summary>
+	/// Add item to end of sequence
+	/// </summary>
+	/// <param name="item"></param>
 	public void Add(T item)
 	{
 		block[size] = item;
 		size++;
 		CheckArray();
 	}
-	//TODO: Decline to use Add method
+	/// <summary>
+	/// Add range of items to end of sequence
+	/// </summary>
+	/// <param name="items"></param>
 	public void AddRange(params T[] items)
 	{
 		foreach(T item in items)
@@ -56,7 +64,13 @@ public unsafe class Sequence<T> : IEnumerable<T>
 		}
 	}
 	/// <summary>
-	/// 
+	/// Add range of items to end of sequence
+	/// </summary>
+	/// <param name="items"></param>
+	public void AddRange(IEnumerable<T> items)
+		=> AddRange(items.ToArray());
+	/// <summary>
+	/// Return index of item in sequence
 	/// </summary>
 	/// <param name="item"></param>
 	/// <returns><see cref="UInt64.MaxValue"/> when not found</returns>

@@ -1,5 +1,8 @@
-﻿namespace NiTiS.Collections.Pseudo;
+﻿using System;
 
+namespace NiTiS.Collections.Pseudo;
+
+[Obsolete]
 public static class Iterator
 {
 	public static void Range(Iterate iterator, int start, int end)

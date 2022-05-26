@@ -1,8 +1,9 @@
-﻿namespace NiTiS.Collections.Generic;
+﻿using System;
+
+namespace NiTiS.Collections.Generic;
 
 public class Twosome<L, R>
 {
-	public delegate string Concat(L l, R r);
 	private L left;
 	private R right;
 
@@ -26,7 +27,7 @@ public class Twosome<L, R>
 	{
 		return "[" + left + " : " + right + "]";
 	}
-	public string ToString(Concat concat)
+	public string ToString(Func<L, R, string> concat)
 	{
 		return concat(left, right);
 	}

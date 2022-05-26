@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace NiTiS.Collections.Pseudo;
 
+[Obsolete]
 public class RangeInt : IEnumerable, IEnumerable<Int32>
 {
 	private int start;

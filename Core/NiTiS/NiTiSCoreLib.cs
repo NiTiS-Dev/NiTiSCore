@@ -7,7 +7,7 @@ public static class NiTiSCoreLib
 	public static readonly Assembly[] BasicLibs =
 	{
 #nullable disable
-        Assembly.GetAssembly(typeof(NiTiSCoreLib)),
+		Assembly.GetAssembly(typeof(NiTiSCoreLib)),
 		Assembly.GetAssembly(typeof(Additions.EnumInfo)),
 		Assembly.GetAssembly(typeof(Collections.SingletonManager)),
 		Assembly.GetAssembly(typeof(Interaction.Result)),
