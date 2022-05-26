@@ -1,4 +1,2 @@
-<h1 align="center">
-NiTiS.Additions
-</h1>
+# NiTiS.Additions
 The NiTiS library that make some improvements
