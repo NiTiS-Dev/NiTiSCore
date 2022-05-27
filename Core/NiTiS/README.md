@@ -2,5 +2,7 @@
 
 # The C# library for NiTiS project
 
-![Activity](https://img.shields.io/github/commit-activity/m/NiTiS-Dev/NiTiSCore)
-![Contributors](https://img.shields.io/github/contributors/NiTiS-Dev/NiTiSCore)
+![Activity](https://img.shields.io/github/commit-activity/m/NiTiS-Dev/NiTiSCore?style=flat-square)
+![Contributors](https://img.shields.io/github/contributors/NiTiS-Dev/NiTiSCore?style=flat-square)
+
+[Wiki Page](https://nitis-dev.github.io/NiTiSLibsWiki)
