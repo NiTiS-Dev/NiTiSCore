@@ -8,6 +8,10 @@ on:
     - '**.csproj'
     - '.github/workflows/artifact_upload.yml'
     
+  pull_request:
+    branches: 
+      - '*'
+    
   workflow_dispatch:
   
 jobs:
