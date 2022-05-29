@@ -12,7 +12,7 @@ public static class NiTiSCoreLib
 		Assembly.GetAssembly(typeof(Collections.SingletonManager)),
 		Assembly.GetAssembly(typeof(Interaction.Result)),
 		Assembly.GetAssembly(typeof(IO.File)),
-		Assembly.GetAssembly(typeof(Math.Axis)),
+		Assembly.GetAssembly(typeof(Math.Comparer)),
 		Assembly.GetAssembly(typeof(Reflection.ValidConstructorNotFoundException))
 #nullable restore
     };
