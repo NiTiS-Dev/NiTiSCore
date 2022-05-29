@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -55,20 +55,27 @@ public unsafe class Sequence<T> : IEnumerable<T>
 	/// <summary>
 	/// Add range of items to end of sequence
 	/// </summary>
-	/// <param name="items"></param>
-	public void AddRange(params T[] items)
-	{
-		foreach(T item in items)
-		{
-			Add(item);
-		}
-	}
+	/// <param name="items"><see cref="IEnumerable{T}"/> object with range of <typeparamref name="T"/></param>
+	public void AddRange(IEnumerable<T> items)
+		=> AddRange(items.ToArray());
 	/// <summary>
 	/// Add range of items to end of sequence
 	/// </summary>
-	/// <param name="items"></param>
-	public void AddRange(IEnumerable<T> items)
-		=> AddRange(items.ToArray());
+	/// <param name="items">Array of <typeparamref name="T"/></param>
+	public void AddRange(params T[] items)
+	{
+		ulong lenght = (ulong)items.Length;
+		ulong newSize = size + lenght;
+		ulong first = size;
+
+		size = newSize;
+		if (newSize > maxSize) CheckArray();
+
+		for (ulong i = 0; i < lenght; i++)
+		{
+			this.block[first + i] = items[i];
+		}
+	}
 	/// <summary>
 	/// Return index of item in sequence
 	/// </summary>
@@ -92,12 +99,13 @@ public unsafe class Sequence<T> : IEnumerable<T>
 	/// </summary>
 	protected void CheckArray()
 	{
-		if (size == maxSize)
+		do
 		{
 			T[] newBlock = new T[maxSize *= 2];
 			block.CopyTo(newBlock, 0);
 			block = newBlock;
 		}
+		while (size >= maxSize);
 	}
 	/// <inheritdoc/>
 	public IEnumerator<T> GetEnumerator()

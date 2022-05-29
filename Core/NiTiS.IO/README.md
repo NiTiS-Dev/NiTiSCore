@@ -1,4 +1,2 @@
-<h1 align="center">
-NiTiS.IO
-</h1>
+# NiTiS.IO
 The NiTiS library containing the IO managment

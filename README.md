@@ -26,4 +26,9 @@
 |NiTiS.Math|`NiTiS.Math`|![Version](https://img.shields.io/nuget/vpre/NiTiS.Math?label=%20&style=flat-square)|
 |NiTiS.Reflection|`NiTiS.Reflection`|![Version](https://img.shields.io/nuget/vpre/NiTiS.Reflection?label=%20&style=flat-square)|
 
+---
+  <a href="https://nitis-dev.github.io/NiTiSLibsWiki">**NiTISCore Wiki**</a>
+  <a>**|**</a>
+  <a href="https://www.nuget.org/packages/NiTiSCore">**Nuget Package**</a>
+  
 </div>

@@ -1,4 +1,2 @@
-<h1 align="center">
-NiTiS.Math
-</h1>
+# NiTiS.Math
 The NiTiS library including math

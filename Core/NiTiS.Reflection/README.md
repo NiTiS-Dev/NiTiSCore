@@ -1,4 +1,2 @@
-<h1 align="center">
-NiTiS.Reflection
-</h1>
+# NiTiS.Reflection
 The NiTiS library required for reflection
