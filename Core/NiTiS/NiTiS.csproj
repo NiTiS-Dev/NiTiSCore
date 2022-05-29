@@ -6,6 +6,8 @@
 		<PP_Name>$(Core_Name)</PP_Name>
 		<PP_Version>$(Core_Version)</PP_Version>
 		<Description>The main NiTiS library</Description>
+
+		<PP_Beta>true</PP_Beta>
 		
 		<RootNamespace>NiTiS</RootNamespace>
 		<PackageId>NiTiSCore</PackageId>

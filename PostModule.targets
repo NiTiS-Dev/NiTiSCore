@@ -4,17 +4,19 @@
 		<AssemblyTitle>$(PP_Name)</AssemblyTitle>
 		<TargetName Condition="$(Configuration)=='ReleaseWithoutPack'">$(PP_Name)-$(TargetFramework)</TargetName>
 		<Version>$(PP_Version)</Version>
+		<Version Condition="$(PP_Beta)">$(Version)-beta</Version>
 		<AssemblyVersion>$(PP_Version)</AssemblyVersion>
 		<Title>$(PP_Name)</Title>
 		<RootNamespace Condition="$(PP_CustomNamespace)">$(PP_Name)</RootNamespace>
 		<PackageId Condition="$(PP_CustomID)=='false'">$(PP_Name)</PackageId>
 		<PackageId Condition="$(PP_CustomID)=='true'">$(PackageId)</PackageId>
 		<PackageIdPrefix></PackageIdPrefix>
-		<PackageVersion>$(PP_Version)</PackageVersion>
+		<PackageVersion>$(Version)</PackageVersion>
 		<PackageDescription>$(Description)</PackageDescription>
 		<Summary>$(Description)</Summary>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
+	
 	<ItemGroup Condition="$(Configuration)=='Release'">
 		<Compile Remove="**/*.test.cs" />
 		<Compile Remove="**/*.debug.cs" />

@@ -5,6 +5,8 @@
 		<PP_Version>$(IO_Version)</PP_Version>
 		<Description>The NiTiS library containing the IO managment</Description>
 
+		<PP_Beta>true</PP_Beta>
+		
 		<NoWarn>$(NoWarn);CS1591</NoWarn>
 	</PropertyGroup>
 	<Import Project="../../PostModule.targets" />
