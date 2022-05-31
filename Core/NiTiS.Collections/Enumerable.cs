@@ -19,6 +19,25 @@ public static class Enumerable
 			yield return item;
 		}
 	}
+	public static IEnumerable<T> AppendRangeAtBegin<T>(this IEnumerable<T> @this, IEnumerable<T> range)
+	{
+		foreach (T item in range)
+		{
+			yield return item;
+		}
+		foreach (T item in @this)
+		{
+			yield return item;
+		}
+	}
+	public static IEnumerable<T> AppendAtBegin<T>(this IEnumerable<T> @this, T obj)
+	{
+		yield return obj;
+		foreach (T item in @this)
+		{
+			yield return item;
+		}
+	}
 	public static IEnumerable<T> ForEach<T>(this IEnumerable<T> @this, Action<T> action)
 	{
 		foreach (T item in @this)
