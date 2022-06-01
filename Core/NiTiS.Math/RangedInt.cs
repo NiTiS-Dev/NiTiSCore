@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace NiTiS.Math.Ranged;
+namespace NiTiS.Math;
 
 [DebuggerDisplay("Int ({MinValue}~{Value}~{MaxValue})")]
+[Obsolete("Use Ranged<T> unstead")]
 public struct RangedInt : IRangedVar<int>, IEquatable<RangedInt>, IEquatable<int>
 {
 	private int value;
@@ -14,17 +15,11 @@ public struct RangedInt : IRangedVar<int>, IEquatable<RangedInt>, IEquatable<int
 	public void SetValue(int value)
 	{
 		if (value < min)
-		{
 			this.value = min;
-		}
 		else if (value > max)
-		{
 			this.value = max;
-		}
 		else
-		{
 			this.value = value;
-		}
 	}
 
 	public static RangedInt operator +(RangedInt left, IRangedVar<int> right)

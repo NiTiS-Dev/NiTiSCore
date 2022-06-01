@@ -1,6 +1,17 @@
-﻿using System;
+﻿
+/* Необъединенное слияние из проекта "NiTiS.Math (net48)"
+До:
+using System;
+После:
+using NiTiS;
+using NiTiS.Math;
+using NiTiS.Math;
+using NiTiS.Math.Ranged;
+using System;
+*/
+using System;
 
-namespace NiTiS.Math.Ranged;
+namespace NiTiS.Math;
 
 /// <summary>
 /// Sets the maximum value of the given type
@@ -23,12 +34,9 @@ public readonly struct Max<T> : IComparable<T>, IComparable<Max<T>>, IComparable
 		int comp = left.CompareTo(right);
 		T value;
 		if (comp < 0)
-		{
 			value = right;
-		}else
-		{
+		else
 			value = left.value;
-		}
 		return new Max<T>(value);
 	}
 	public Max()
@@ -56,10 +64,7 @@ public readonly struct Max<T> : IComparable<T>, IComparable<Max<T>>, IComparable
 
 	public override bool Equals(object? obj)
 	{
-		if (obj is Max<T> max) { return Equals(max); }
-		if (obj is Min<T> min) { return Equals(min); }
-		if (obj is T item) { return Equals(item); }
-		return false;
+		if (obj is Max<T> max) return Equals(max); 		if (obj is Min<T> min) return Equals(min); 		if (obj is T item) return Equals(item); 		return false;
 	}
 
 	public override int GetHashCode()

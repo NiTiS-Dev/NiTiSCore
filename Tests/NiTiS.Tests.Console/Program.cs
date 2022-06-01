@@ -1,9 +1,4 @@
-﻿using NiTiS.Collections.Generic;
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Reflection.Emit;
+﻿using NiTiS.Math;
 
 namespace NiTiS.Tests.Console
 {
@@ -11,10 +6,10 @@ namespace NiTiS.Tests.Console
 	{
 		private static void Main()
 		{
-			vec2 vector = new(2, 2);
-			vec2 vector2 = new(1, 2);
-			int size = sizeof(vec2i);
-			SC.WriteLine(size);
+			Ranged<int> range = new(2, 4, 3);
+			SC.WriteLine(range);
+			range.SetValue(1);
+			SC.WriteLine(range);
 		}
 	}
 }

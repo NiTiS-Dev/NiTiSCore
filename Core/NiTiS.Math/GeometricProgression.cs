@@ -5,7 +5,7 @@ using System.Diagnostics;
 namespace NiTiS.Math;
 
 [DebuggerDisplay("Progression [{First}:*{Q}] {Get(1)},{Get(2)},{Get(3)}")]
-public class GeometricProgression : IProgression
+public class GeometricProgression : IProgression<double>
 {
 	public double First { get; set; }
 	public double Q { get; private set; }

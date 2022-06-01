@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace NiTiS.Math.Ranged;
+namespace NiTiS.Math;
 
 [DebuggerDisplay("Float ({MinValue}~{Value}~{MaxValue})")]
+[Obsolete("Use Ranged<T> unstead")]
 public struct RangedFloat : IRangedVar<float>, IEquatable<RangedFloat>, IEquatable<float>
 {
 	private float value;
@@ -15,17 +16,11 @@ public struct RangedFloat : IRangedVar<float>, IEquatable<RangedFloat>, IEquatab
 	public void SetValue(float value)
 	{
 		if (value < min)
-		{
 			this.value = min;
-		}
 		else if (value > max)
-		{
 			this.value = max;
-		}
 		else
-		{
 			this.value = value;
-		}
 	}
 
 	public static RangedFloat operator +(RangedFloat left, IRangedVar<float> right)

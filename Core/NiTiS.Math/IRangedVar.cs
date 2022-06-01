@@ -1,4 +1,4 @@
-﻿namespace NiTiS.Math.Ranged;
+﻿namespace NiTiS.Math;
 
 public interface IRangedVar<T>
 {
