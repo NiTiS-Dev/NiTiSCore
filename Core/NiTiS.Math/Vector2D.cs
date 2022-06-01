@@ -1,14 +1,29 @@
 ﻿// The NiTiS-Dev licenses this file to you under the MIT license.
 
+
+/* Необъединенное слияние из проекта "NiTiS.Math (netstandard2.1)"
+До:
 using System;
+После:
+using NiTiS;
+using NiTiS.Math;
+using NiTiS.Math;
+using NiTiS.Math.Vectors;
+using System;
+*/
+using System;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
-namespace NiTiS.Math.Vectors;
+namespace NiTiS.Math;
 
+[DebuggerDisplay($"{{{nameof(ToString)}(),nq}}")]
+[StructLayout(LayoutKind.Sequential)]
 public readonly struct Vector2D<T> : IEquatable<Vector2D<T>> where T : unmanaged, IEquatable<T>
 {
 	public readonly T x, y;
 	public Vector2D(T x, T y)
-		=> (this.x, this.y) = (x, y); 
+		=> (this.x, this.y) = (x, y);
 	public static Vector2D<T> operator +(Vector2D<T> left, Vector2D<T> right)
 		=> Add(left, right);
 	public static Vector2D<T> operator -(Vector2D<T> left, Vector2D<T> right)
@@ -55,6 +70,6 @@ public readonly struct Vector2D<T> : IEquatable<Vector2D<T>> where T : unmanaged
 #else
 		=> HashCode.Combine(x, y);
 #endif
-	public override string ToString() 
+	public override string ToString()
 		=> $"{{{x}, {y}}}";
 }

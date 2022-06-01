@@ -10,9 +10,9 @@
 		<IO_Name>NiTiS.IO</IO_Name>
 		<IO_Version>1.3.6</IO_Version>
 		<Collections_Name>NiTiS.Collections</Collections_Name>
-		<Collections_Version>1.2.3.3</Collections_Version>
+		<Collections_Version>1.3</Collections_Version>
 		<Math_Name>NiTiS.Math</Math_Name>
-		<Math_Version>2.0.0.0</Math_Version>
+		<Math_Version>2.0.0.1</Math_Version>
 		<Interaction_Name>NiTiS.Interaction</Interaction_Name>
 		<Interaction_Version>1.3.2.5</Interaction_Version>
 		<Reflection_Name>NiTiS.Reflection</Reflection_Name>
@@ -54,7 +54,7 @@
 		<RepositoryUrl>git://github.com/NiTiS-Dev/NiTiSCore</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/NiTiS-Dev/NiTiSCore</PackageProjectUrl>
 		<PackageLicenseUrl>https://raw.githubusercontent.com/NiTiS-Dev/NiTiSCore/singleton/LICENSE.txt</PackageLicenseUrl>
-		<PackageIconUrl>https://github.com/NiTiS-Dev/NiTiSCore/raw/singleton/icon.png</PackageIconUrl>
+		<PackageIconUrl>https://raw.githubusercontent.com/NiTiS-Dev/meta/singleton/ntscr/core/original.png</PackageIconUrl>
 		<PackageReadmeUrl>https://raw.githubusercontent.com/NiTiS-Dev/NiTiSCore/singleton/nuget.md</PackageReadmeUrl>
 		<PackageTags>NiTiS;NickName73;Core;NiTiSCore;NiTiSDev</PackageTags>
 		<Copyright>Copyright (c) 2022 $(Creator)</Copyright>

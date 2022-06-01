@@ -4,6 +4,8 @@
 		<PP_Name>$(Collections_Name)</PP_Name>
 		<PP_Version>$(Collections_Version)</PP_Version>
 		<Description>The NiTiS library including collections</Description>
+		<PackageTags>$(PackageTags);Collections;Sequence</PackageTags>
+		<PackageIconUrl>https://raw.githubusercontent.com/NiTiS-Dev/meta/singleton/ntscr/collections/original.png</PackageIconUrl>
 	</PropertyGroup>
 	<Import Project="../../PostModule.targets" />
 </Project>

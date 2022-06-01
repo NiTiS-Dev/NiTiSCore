@@ -1,18 +1,20 @@
 ﻿// The NiTiS-Dev licenses this file to you under the MIT license.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
-namespace NiTiS.Math.Vectors;
+namespace NiTiS.Math;
 
+[DebuggerDisplay($"{{{nameof(ToString)}(),nq}}")]
+[StructLayout(LayoutKind.Sequential)]
 public readonly struct Vector3D<T> : IEquatable<Vector3D<T>> where T : unmanaged, IEquatable<T>
 {
 	public readonly T x, y, z;
 	public Vector3D(T x, T y, T z)
 		=> (this.x, this.y, this.z) = (x, y, z);
+	public Vector3D(Vector2D<T> vec2, T z)
+		=> (this.x, this.y, this.z) = (vec2.x, vec2.y, z);
 	public static Vector3D<T> operator +(Vector3D<T> left, Vector3D<T> right)
 		=> Add(left, right);
 	public static Vector3D<T> operator -(Vector3D<T> left, Vector3D<T> right)

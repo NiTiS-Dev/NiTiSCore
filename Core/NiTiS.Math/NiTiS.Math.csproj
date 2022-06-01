@@ -10,7 +10,4 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<Import Project="../../PostModule.targets" />
-	<ItemGroup>
-		<!-- ProjectReference Include="../NiTiS.Collections/NiTiS.Collections.csproj" /-->
-	</ItemGroup>
 </Project>
