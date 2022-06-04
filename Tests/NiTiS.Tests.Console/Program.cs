@@ -6,10 +6,7 @@ namespace NiTiS.Tests.Console
 	{
 		private static void Main()
 		{
-			Ranged<int> range = new(2, 4, 3);
-			SC.WriteLine(range);
-			range.SetValue(1);
-			SC.WriteLine(range);
+
 		}
 	}
 }

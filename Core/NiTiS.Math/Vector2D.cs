@@ -1,16 +1,4 @@
 ﻿// The NiTiS-Dev licenses this file to you under the MIT license.
-
-
-/* Необъединенное слияние из проекта "NiTiS.Math (netstandard2.1)"
-До:
-using System;
-После:
-using NiTiS;
-using NiTiS.Math;
-using NiTiS.Math;
-using NiTiS.Math.Vectors;
-using System;
-*/
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;

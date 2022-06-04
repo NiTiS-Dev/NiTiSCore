@@ -5,6 +5,7 @@
 		<PP_Version>$(Interaction_Version)</PP_Version>
 		<Description>The NiTiS library including interaction</Description>
 		<PackageTags>$(PackageTags);DependencyInjection</PackageTags>
+		<PackageIconUrl>https://raw.githubusercontent.com/NiTiS-Dev/meta/singleton/ntscr/interaction/original.png</PackageIconUrl>
 	</PropertyGroup>
 	<Import Project="../../PostModule.targets" />
 	<ItemGroup>

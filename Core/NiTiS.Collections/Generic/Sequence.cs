@@ -116,9 +116,10 @@ public unsafe class Sequence<T> : IEnumerable<T>
 		}
 	}
 	/// <inheritdoc/>
-	IEnumerator IEnumerable.GetEnumerator() => this.block.GetEnumerator();
-	public override string ToString() => GetType().Name.Split('`')[0] + "<" + typeof(T).Name + ">";
-
-	private string GetDebuggerDisplay()
+	IEnumerator IEnumerable.GetEnumerator() 
+		=> this.block.GetEnumerator();
+	public override string ToString() 
+		=> GetType().Name.Split('`')[0] + "<" + typeof(T).Name + ">";
+	private protected string GetDebuggerDisplay()
 		=> $"{{{typeof(T).Name} ({Length})}}";
 }

@@ -4,7 +4,7 @@
 		<PP_Name>$(IO_Name)</PP_Name>
 		<PP_Version>$(IO_Version)</PP_Version>
 		<Description>The NiTiS library containing the IO managment</Description>
-		
+		<PackageTags>$(PackageTags);IO;File System</PackageTags>
 		<NoWarn>$(NoWarn);CS1591</NoWarn>
 	</PropertyGroup>
 	<Import Project="../../PostModule.targets" />

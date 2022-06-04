@@ -37,6 +37,12 @@ public sealed class Directory : Path, IStorageElement
 	public DateTime LastAccessTimeUTC { get => SDir.GetLastAccessTimeUtc(this.path); set => SDir.SetLastAccessTime(this.path, value); }
 	public bool Exists => SDir.Exists(path);
 	/// <summary>
+	/// Create <see cref="IO.File"/> instance (without creating a real file)
+	/// </summary>
+	/// <returns>File with name "<paramref name="fileName"/>" alocated in this directory</returns>
+	public File File(string fileName)
+		=> new(path, fileName);
+	/// <summary>
 	/// Renaming the directory
 	/// </summary>
 	/// <param name="newName">New name</param>

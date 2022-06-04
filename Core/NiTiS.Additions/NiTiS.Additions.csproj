@@ -4,6 +4,7 @@
 		<PP_Name>$(Additions_Name)</PP_Name>
 		<PP_Version>$(Additions_Version)</PP_Version>
 		<Description>The NiTiS library that make some improvements</Description>
+		<PackageTags>$(PackageTags);Additions;Extension Methods</PackageTags>
 	</PropertyGroup>
 	<Import Project="../../PostModule.targets" />
 	<ItemGroup>

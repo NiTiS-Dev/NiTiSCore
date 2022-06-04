@@ -4,7 +4,8 @@
 		<PP_Name>$(Math_Name)</PP_Name>
 		<PP_Version>$(Math_Version)</PP_Version>
 		<Description>The NiTiS library including math</Description>
-
+		<PackageTags>$(PackageTags);Math</PackageTags>
+		
 		<PP_Beta>true</PP_Beta>
 		
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
