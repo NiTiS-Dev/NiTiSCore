@@ -1,0 +1,11 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug"]
+assignees:
+  - NickName73
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Test
