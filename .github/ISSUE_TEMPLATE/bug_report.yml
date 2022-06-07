@@ -25,4 +25,5 @@ body:
     id: version
     attributes:
       label: Version of core
+      placeholder: "X.Y.Z.W"
       
