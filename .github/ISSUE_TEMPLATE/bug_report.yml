@@ -5,10 +5,6 @@ labels: ["bug"]
 assignees:
   - NickName73
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Test
   - type: textarea
     id: bug
     attributes:
@@ -25,3 +21,8 @@ body:
       placeholder: "Write here..."
     validations:
       required: false
+  - type: input
+    id: version
+    attributes:
+      label: Version of core
+      
