@@ -9,3 +9,10 @@ body:
     attributes:
       value: |
         Test
+  - type: textarea
+    id: bug
+    attributes:
+      label: Describe the bug
+      description: "A clear and concise description of what the bug is."
+    validations:
+      required: true
