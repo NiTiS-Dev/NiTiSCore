@@ -6,11 +6,11 @@
 		<Creator>NiTiS-Dev</Creator>
 		<Creators>$(Creator), NickName73</Creators>
 		<Core_Name>NiTiS.Core</Core_Name>
-		<Core_Version>2.1.0.2</Core_Version>
+		<Core_Version>2.1.0.3</Core_Version>
 		<IO_Name>NiTiS.IO</IO_Name>
 		<IO_Version>1.3.7</IO_Version>
 		<Collections_Name>NiTiS.Collections</Collections_Name>
-		<Collections_Version>1.3.1</Collections_Version>
+		<Collections_Version>1.3.2</Collections_Version>
 		<Math_Name>NiTiS.Math</Math_Name>
 		<Math_Version>2.0.0.2</Math_Version>
 		<Interaction_Name>NiTiS.Interaction</Interaction_Name>

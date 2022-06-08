@@ -99,13 +99,12 @@ public unsafe class Sequence<T> : IEnumerable<T>
 	/// </summary>
 	protected void CheckArray()
 	{
-		do
+		while (size >= maxSize)
 		{
 			T[] newBlock = new T[maxSize *= 2];
 			block.CopyTo(newBlock, 0);
 			block = newBlock;
 		}
-		while (size >= maxSize);
 	}
 	/// <inheritdoc/>
 	public IEnumerator<T> GetEnumerator()

@@ -1,4 +1,5 @@
-﻿using NiTiS.Math;
+﻿using NiTiS.Collections.Generic;
+using NiTiS.Math;
 
 namespace NiTiS.Tests.Console
 {
@@ -6,7 +7,9 @@ namespace NiTiS.Tests.Console
 	{
 		private static void Main()
 		{
-
+			Sequence<int> sequence = new(16);
+			sequence.Add(1);
+			SC.WriteLine(sequence.LengthLimit);
 		}
 	}
 }
