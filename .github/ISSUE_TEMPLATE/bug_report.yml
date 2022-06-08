@@ -1,0 +1,29 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug"]
+assignees:
+  - NickName73
+body:
+  - type: textarea
+    id: bug
+    attributes:
+      label: Describe the bug
+      description: "A clear and concise description of what the bug is."
+      placeholder: "Write here..."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes: 
+      label: Expected behavior
+      description: "A clear and concise description of what you expected to happen."
+      placeholder: "Write here..."
+    validations:
+      required: false
+  - type: input
+    id: version
+    attributes:
+      label: Version of core
+      placeholder: "X.Y.Z.W"
+      
