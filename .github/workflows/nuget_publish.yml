@@ -45,7 +45,8 @@ jobs:
           dotnet pack NiTiS.Math/ -c Release -o ../.build/NiTiS.Math --nologo
           dotnet pack NiTiS.Reflection/ -c Release -o ../.build/NiTiS.Reflection --nologo
           dotnet pack NiTiS.Additions/ -c Release -o ../.build/NiTiS.Additions --nologo
-      
+          dotnet pack NiTiS.Net/ -c Release -o ../.build/NiTiS.Net --nologo
+          dotnet pack NiTiS.Booru/ -c Release -o ../.build/NiTiS.Booru --nologo
       - name: PushNUGET
         run: |
           cd .build/
@@ -69,6 +70,12 @@ jobs:
           
           dotnet nuget push NiTiS.Additions/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
           dotnet nuget push NiTiS.Additions/*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+
+          dotnet nuget push NiTiS.Net/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.Net/*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+
+          dotnet nuget push NiTiS.Booru/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+          dotnet nuget push NiTiS.Booru/*.snupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
         env:
           NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
           

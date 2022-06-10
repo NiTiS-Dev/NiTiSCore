@@ -1,13 +1,18 @@
-﻿<!-- Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<Import Project="../../ModuleVersions.targets" />
 	<PropertyGroup>
 		<PP_Name>$(Booru_Name)</PP_Name>
 		<PP_Version>$(Booru_Version)</PP_Version>
-		<TargetFrameworks>net6.0;netstandard2.1;netcoreapp3.1;net5.0</TargetFrameworks>
 		<Description>The NiTiS library whos get data and image from booru sites</Description>
+		<PP_SupportNet48>false</PP_SupportNet48>
 	</PropertyGroup>
 	<Import Project="../../PostModule.targets" />
 	<ItemGroup>
 	  <ProjectReference Include="..\NiTiS.Additions\NiTiS.Additions.csproj" />
+	  <ProjectReference Include="..\NiTiS.Net\NiTiS.Net.csproj" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" Condition="$(TargetFramework)=='netstandard2.1'" />
 	</ItemGroup>
-</Project -->
+	<ItemGroup>
+	  <Folder Include="Gelbooru\" />
+	</ItemGroup>
+</Project>

@@ -28,6 +28,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiS.Reflection", "Core\Ni
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiS.Additions", "Core\NiTiS.Additions\NiTiS.Additions.csproj", "{38B61F33-2804-476E-9270-E45F22ACA162}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiS.Booru", "Core\NiTiS.Booru\NiTiS.Booru.csproj", "{D1CCEC52-FCF6-426F-9B57-5C9E4DBBEFB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiTiS.Net", "Core\NiTiS.Net\NiTiS.Net.csproj", "{193119A9-B94A-42C1-9124-94DF5A7C2203}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,6 +104,22 @@ Global
 		{38B61F33-2804-476E-9270-E45F22ACA162}.ReleaseWithoutPack|Any CPU.Build.0 = ReleaseWithoutPack|Any CPU
 		{38B61F33-2804-476E-9270-E45F22ACA162}.ResourcePack|Any CPU.ActiveCfg = Release|Any CPU
 		{38B61F33-2804-476E-9270-E45F22ACA162}.ResourcePack|Any CPU.Build.0 = Release|Any CPU
+		{D1CCEC52-FCF6-426F-9B57-5C9E4DBBEFB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1CCEC52-FCF6-426F-9B57-5C9E4DBBEFB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1CCEC52-FCF6-426F-9B57-5C9E4DBBEFB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1CCEC52-FCF6-426F-9B57-5C9E4DBBEFB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1CCEC52-FCF6-426F-9B57-5C9E4DBBEFB1}.ReleaseWithoutPack|Any CPU.ActiveCfg = ReleaseWithoutPack|Any CPU
+		{D1CCEC52-FCF6-426F-9B57-5C9E4DBBEFB1}.ReleaseWithoutPack|Any CPU.Build.0 = ReleaseWithoutPack|Any CPU
+		{D1CCEC52-FCF6-426F-9B57-5C9E4DBBEFB1}.ResourcePack|Any CPU.ActiveCfg = ReleaseWithoutPack|Any CPU
+		{D1CCEC52-FCF6-426F-9B57-5C9E4DBBEFB1}.ResourcePack|Any CPU.Build.0 = ReleaseWithoutPack|Any CPU
+		{193119A9-B94A-42C1-9124-94DF5A7C2203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{193119A9-B94A-42C1-9124-94DF5A7C2203}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{193119A9-B94A-42C1-9124-94DF5A7C2203}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{193119A9-B94A-42C1-9124-94DF5A7C2203}.Release|Any CPU.Build.0 = Release|Any CPU
+		{193119A9-B94A-42C1-9124-94DF5A7C2203}.ReleaseWithoutPack|Any CPU.ActiveCfg = Release|Any CPU
+		{193119A9-B94A-42C1-9124-94DF5A7C2203}.ReleaseWithoutPack|Any CPU.Build.0 = Release|Any CPU
+		{193119A9-B94A-42C1-9124-94DF5A7C2203}.ResourcePack|Any CPU.ActiveCfg = Release|Any CPU
+		{193119A9-B94A-42C1-9124-94DF5A7C2203}.ResourcePack|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

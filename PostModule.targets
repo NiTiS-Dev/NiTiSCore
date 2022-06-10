@@ -7,9 +7,13 @@
 		<Version Condition="$(PP_Beta)">$(Version)-beta</Version>
 		<AssemblyVersion>$(PP_Version)</AssemblyVersion>
 		<Title>$(PP_Name)</Title>
+		
 		<RootNamespace Condition="$(PP_CustomNamespace)">$(PP_Name)</RootNamespace>
 		<PackageId Condition="$(PP_CustomID)=='false'">$(PP_Name)</PackageId>
 		<PackageId Condition="$(PP_CustomID)=='true'">$(PackageId)</PackageId>
+
+		<TargetFrameworks Condition="$(PP_SupportNet48)">$(TargetFrameworks);net48</TargetFrameworks>
+		
 		<PackageIdPrefix></PackageIdPrefix>
 		<PackageVersion>$(Version)</PackageVersion>
 		<PackageDescription>$(Description)</PackageDescription>

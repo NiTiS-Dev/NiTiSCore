@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="../../ModuleVersions.targets" />
+	<PropertyGroup>
+		<PP_Name>$(Net_Name)</PP_Name>
+		<PP_Version>$(Net_Version)</PP_Version>
+		<Description>The NiTiS library usage for interaction with web</Description>
+		<PackageTags>$(PackageTags);Net</PackageTags>
+		<PP_SupportNet48>false</PP_SupportNet48>
+	</PropertyGroup>
+	<Import Project="../../PostModule.targets" />
+</Project>

@@ -6,8 +6,6 @@
 		<Description>The NiTiS library including math</Description>
 		<PackageTags>$(PackageTags);Math</PackageTags>
 		
-		<PP_Beta>true</PP_Beta>
-		
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<Import Project="../../PostModule.targets" />
