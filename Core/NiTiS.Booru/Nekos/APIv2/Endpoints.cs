@@ -10,7 +10,6 @@ public static class Endpoints
 		public static readonly Endpoint
 			Neko,
 			NekoGif,
-			Fox,
 			Holo,
 			PatGif,
 			PokeGif,
@@ -26,12 +25,12 @@ public static class Endpoints
 			RealDog,
 			RealLizard,
 			RealGoose,
-			Waifu;
+			Waifu,
+			Wallpaper;
 		static SFW()
 		{
 			Neko = SFW("neko");
 			NekoGif = SFW("ngif");
-			Fox = SFW("fox");
 			Holo = SFW("holo");
 			PatGif = SFW("pat");
 			PokeGif = SFW("poke");
@@ -48,6 +47,7 @@ public static class Endpoints
 			RealLizard = SFW("lizard");
 			RealGoose = SFW("goose");
 			Waifu = SFW("waifu");
+			Wallpaper = SFW("wallpaper");
 		}
 	}
 }

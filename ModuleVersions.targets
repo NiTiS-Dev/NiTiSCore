@@ -22,7 +22,7 @@
 
 		<!-- Not Included in NiTiS.Core -->
 		<Booru_Name>NiTiS.Booru</Booru_Name>
-		<Booru_Version>0.0.0.1</Booru_Version>
+		<Booru_Version>0.0.0.2</Booru_Version>
 		<TABS_Name>NiTiS.TABS</TABS_Name>
 		<TABS_Version>0.0.0.1</TABS_Version>
 		<Net_Name>NiTiS.Net</Net_Name>

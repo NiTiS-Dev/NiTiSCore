@@ -1,7 +1,5 @@
 ﻿// The NiTiS-Dev licenses this file to you under the MIT license.
-
-using NiTiS.Net;
-using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace NiTiS.Booru.Nekos.APIv2;
 public class Client : NekoAPI
@@ -10,4 +8,6 @@ public class Client : NekoAPI
 	{
 
 	}
+	public Task<ResourceResponse> RequestImage(Endpoint endpoint)
+		=> GetJsonResponseAsync<ResourceResponse>(new(Base.OriginalString + "/img/" + endpoint.filter));
 }

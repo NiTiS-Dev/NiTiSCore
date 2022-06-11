@@ -1,5 +1,4 @@
-﻿using NiTiS.Collections.Generic;
-using NiTiS.Math;
+﻿using NiTiS.Booru.Nekos.APIv2;
 
 namespace NiTiS.Tests.Console
 {
@@ -7,9 +6,9 @@ namespace NiTiS.Tests.Console
 	{
 		private static void Main()
 		{
-			Sequence<int> sequence = new(16);
-			sequence.Add(1);
-			SC.WriteLine(sequence.LengthLimit);
+			Client client = new();
+			ResourceResponse resource = client.RequestImage(Endpoints.SFW.Fox).Result;
+			SC.WriteLine(resource);
 		}
 	}
 }
